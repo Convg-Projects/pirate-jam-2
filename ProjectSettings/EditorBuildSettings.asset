@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MichaelMultiplayerTestZone2.unity
+    guid: a99d7724052ee3f41b2dce04a1972ee9
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerTestZone.unity
+    guid: 3ce218c33d972384d8667e3c44a526e5
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/MichaelQuickTestZone.unity
+    guid: 25da62b4ab6e32346ac1d0c4c2a21b4d
+  - enabled: 1
+    path: Assets/Scenes/MichaelSurfTest.unity
+    guid: 8ac0d02af0ea89342b608946e6856975
+  - enabled: 1
+    path: Assets/Scenes/MichaelQuickTestZoneVertical.unity
+    guid: bcdf6e8561bc250418fdca59bf696a55
+  - enabled: 1
+    path: Assets/Scenes/MichaelTargetScene.unity
+    guid: fedd96678e3b1ef4993ec2ef610274a0
+  m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
