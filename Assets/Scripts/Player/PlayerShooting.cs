@@ -25,19 +25,21 @@ public class PlayerShooting : NetworkBehaviour
     firingCooldown -= Time.deltaTime;
 
     if (Input.GetMouseButton(0) && firingCooldown <= 0f){
-      SpawnBulletRpc(fireTransform.position, fireTransform.forward);
+      SpawnBulletRpc(fireTransform.position, fireTransform.forward, NetworkManager.Singleton.LocalClientId);
 
       firingCooldown = maxFiringCooldown;
     }
   }
 
   [Rpc(SendTo.Server)]
-  private void SpawnBulletRpc(Vector3 spawnPosition, Vector3 spawnDirection){
+  private void SpawnBulletRpc(Vector3 spawnPosition, Vector3 spawnDirection, ulong ownerId){
     var instance = Instantiate(NetworkManager.GetNetworkPrefabOverride(projectilePrefab));
     var instanceNetworkObject = instance.GetComponent<NetworkObject>();
     instanceNetworkObject.Spawn();
 
     instance.transform.position = spawnPosition;
+
+    instance.GetComponent<ProjectileController>().owner = NetworkManager.ConnectedClients[ownerId].PlayerObject;
 
     Rigidbody instanceRB = instance.GetComponent<Rigidbody>();
     instanceRB.velocity = GetComponent<Rigidbody>().velocity;

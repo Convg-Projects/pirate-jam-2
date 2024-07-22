@@ -11,6 +11,7 @@ public class PlayerNetworking : NetworkBehaviour
       ServerRpcParams serverRpcParams = default;
       ulong clientId = serverRpcParams.Receive.SenderClientId;
 
+      LobbyManager.Instance.LeaveLobby();
       DisconnectSelfRPC(clientId);
     }
   }
@@ -26,7 +27,15 @@ public class PlayerNetworking : NetworkBehaviour
 
   public override void OnNetworkDespawn(){
     if(IsOwner){
+      Cursor.visible = true;
+      Cursor.lockState = CursorLockMode.None;
       SceneManager.LoadScene(0);
     }
+  }
+
+  void OnApplicationQuit() {
+    Debug.Log("QUIT");
+
+    LobbyManager.Instance.LeaveLobby();
   }
 }

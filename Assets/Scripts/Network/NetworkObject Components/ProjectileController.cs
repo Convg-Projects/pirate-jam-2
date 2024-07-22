@@ -6,12 +6,13 @@ using Unity.Netcode;
 public class ProjectileController : NetworkBehaviour
 {
   public int Damage = 10;
+  [HideInInspector]public NetworkObject owner;
   private float lifeLeft = 4f;
   private bool dead = false;
 
   void OnCollisionEnter(Collision col){
     if(!IsSpawned){return;}
-    //if(col)
+    if(col.transform.parent.gameObject.GetComponent<NetworkObject>() == owner){return;}
     if(col.gameObject.GetComponent<Health>() != null){
       Health healthController = col.gameObject.GetComponent<Health>();
       healthController.ChangeHealthServerRpc(-Damage);

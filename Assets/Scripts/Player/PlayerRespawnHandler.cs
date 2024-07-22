@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using Unity.Services.Authentication;
 using TMPro;
 
 public class PlayerRespawnHandler : NetworkBehaviour
@@ -18,7 +19,7 @@ public class PlayerRespawnHandler : NetworkBehaviour
     if(!IsOwner){
       gameCanvas.SetActive(false);
     }
-    
+
     base.OnNetworkSpawn();
   }
 
