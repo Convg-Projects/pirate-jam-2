@@ -12,15 +12,15 @@ public class ProjectileController : NetworkBehaviour
   public NetworkVariable<bool> validHit = new NetworkVariable<bool>(false);
 
   void OnCollisionEnter(Collision col){
-    if(col.transform.tag == "Player"){
+    /*if(col.transform.tag == "Player"){
       OnCollisionRpc(col.gameObject.GetComponent<NetworkObject>().OwnerClientId);
       if(validHit.Value){
         DoDamage(col.gameObject);
       } else {
         return;
       }
-    }
-    if(col.gameObject.GetComponent<Health>() != null){
+    }*/
+    if(col.gameObject.GetComponent<Health>() != null && GetComponent<NetworkObject>().OwnerClientId != col.GetComponent<NetworkObject>().OwnerClientId){
       Health healthController = col.gameObject.GetComponent<Health>();
       healthController.ChangeHealthServerRpc(-Damage);
       DestroyProjectileRpc();
@@ -29,7 +29,7 @@ public class ProjectileController : NetworkBehaviour
     DestroyProjectileRpc();
   }
 
-  [Rpc(SendTo.Server)]
+  /*[Rpc(SendTo.Server)]
   void OnCollisionRpc(ulong clientId){
     if(!IsSpawned){return;}
     if(!IsOwner){return;}
@@ -38,16 +38,16 @@ public class ProjectileController : NetworkBehaviour
       return;
     }
     validHit.Value = true;
-  }
+  }*/
 
-  void DoDamage(GameObject target){
+  /*void DoDamage(GameObject target){
     if(target.GetComponent<Health>() != null){
       Debug.Log("ID " + target.GetComponent<NetworkObject>().OwnerClientId + " has health");
       Health healthController = target.GetComponent<Health>();
       healthController.ChangeHealthServerRpc(-Damage);
       DestroyProjectileRpc();
     }
-  }
+  }*/
 
   void Update(){
     lifeLeft -= Time.deltaTime;
