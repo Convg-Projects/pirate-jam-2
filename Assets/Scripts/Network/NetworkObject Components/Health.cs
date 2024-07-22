@@ -42,7 +42,7 @@ public class Health : NetworkBehaviour
     Debug.Log("Changing deadness");
     if(isDead && isPlayer){
       PlayerRespawnHandler respawnHandler = GetComponent<PlayerRespawnHandler>();
-      respawnHandler.respawnTime.Value = respawnHandler.maxRespawnTime;
+      respawnHandler.ResetTimerRpc();
     }
     if(!isDead){
       health.Value = maxHealth;

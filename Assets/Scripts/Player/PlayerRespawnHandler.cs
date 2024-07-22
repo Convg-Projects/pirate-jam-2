@@ -12,10 +12,12 @@ public class PlayerRespawnHandler : NetworkBehaviour
   [SerializeField]private TextMeshProUGUI countdownText;
   [SerializeField]private GameObject colliderParent;
   public float maxRespawnTime = 10f;
-  public NetworkVariable<float> respawnTime = new NetworkVariable<float>();
+  public NetworkVariable<float> respawnTime = new NetworkVariable<float>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
   void Update(){
     if(GetComponent<Health>().dead.Value){
+      if(IsServer){
+      }
       if(IsOwner){
         respawnTime.Value -= Time.deltaTime;
         countdownText.text = respawnTime.Value + "s";
@@ -30,6 +32,11 @@ public class PlayerRespawnHandler : NetworkBehaviour
     } else {
       ChangeActiveStatus(true);
     }
+  }
+
+  [Rpc(SendTo.Owner)]
+  public void ResetTimerRpc(){
+    respawnTime.Value = maxRespawnTime;
   }
 
   public void ChangeActiveStatus(bool active){
