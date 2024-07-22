@@ -9,7 +9,7 @@ public class PlayerNetworking : NetworkBehaviour
   public void Update(){
     if(Input.GetKeyDown(KeyCode.Escape) && IsOwner){
       ServerRpcParams serverRpcParams = default;
-      ulong clientId = serverRpcParams.Receive.SenderClientId;
+      ulong clientId = NetworkManager.Singleton.LocalClientId;
 
       LobbyManager.Instance.LeaveLobby();
       DisconnectSelfRPC(clientId);
