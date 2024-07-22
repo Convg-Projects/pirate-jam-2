@@ -26,7 +26,9 @@ public class ProjectileController : NetworkBehaviour
       DestroyProjectileRpc();
       return;
     }
-    DestroyProjectileRpc();
+    if(col.gameObject.GetComponent<Health>() == null){
+      DestroyProjectileRpc();
+    }
   }
 
   /*[Rpc(SendTo.Server)]
