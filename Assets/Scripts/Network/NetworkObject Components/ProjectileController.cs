@@ -12,24 +12,27 @@ public class ProjectileController : NetworkBehaviour
 
   void OnCollisionEnter(Collision col){
     if(col.transform.tag == "Player"){
-      OnCollisionRpc(col.gameObject.GetComponent<NetworkObject>().OwnerClientId);
+      bool doDamage = OnCollisionRpc(col.gameObject.GetComponent<NetworkObject>().OwnerClientId);
+
+      if(col.gameObject.GetComponent<Health>() != null){
+        Debug.Log("ID " + col.gameObject.GetComponent<NetworkObject>().OwnerClientId + " has health")
+        Health healthController = col.gameObject.GetComponent<Health>();
+        healthController.ChangeHealthServerRpc(-Damage);
+        DestroyProjectileRpc();
+      }
     }
   }
 
   [Rpc(SendTo.Server)]
   void OnCollisionRpc(ulong clientId){
-    if(!IsSpawned){return;}
-    if(!IsOwner){return;}
+    if(!IsSpawned){return false;}
+    if(!IsOwner){return false;}
     if(GetComponent<NetworkObject>().OwnerClientId == clientId){
       Debug.Log("i the owner WOWOWOWOW FUCK YOU");
-      return;
+      return false;
     }
 
-    if(NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.gameObject.GetComponent<Health>() != null){
-      Health healthController = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.gameObject.GetComponent<Health>();
-      healthController.ChangeHealthServerRpc(-Damage);
-      DestroyProjectileRpc();
-    }
+    return true;
   }
 
   void Update(){
