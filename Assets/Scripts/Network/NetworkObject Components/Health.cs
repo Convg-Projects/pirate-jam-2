@@ -18,7 +18,7 @@ public class Health : NetworkBehaviour
     ChangeHealthServerRpc(maxHealth);
     health.OnValueChanged += OnHealthChanged;
     if(displayHealth){
-      healthText.text = maxHealth;
+      healthText.text = "Health: " + maxHealth.ToString();
     }
 
     base.OnNetworkSpawn();
@@ -26,7 +26,7 @@ public class Health : NetworkBehaviour
 
   public void OnHealthChanged(int previous, int current){
     if(displayHealth){
-      healthText.Text = health;
+      healthText.text = "Health: " + health.Value.ToString();
     }
     if(current <= 0 && !dead.Value){
       HandleDeathRpc();
