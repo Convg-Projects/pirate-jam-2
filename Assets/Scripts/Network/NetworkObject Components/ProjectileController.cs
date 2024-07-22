@@ -13,7 +13,10 @@ public class ProjectileController : NetworkBehaviour
   void OnCollisionEnter(Collision col){
     if(!IsSpawned){return;}
     if(col.gameObject.GetComponent<NetworkObject>() != null){
-      if(IsOwner && col.gameObject.GetComponent<NetworkObject>().IsOwner){Debug.LogError("uh oh im the owner"); return;}
+      if(IsOwner && col.gameObject.GetComponent<NetworkObject>().IsOwner){
+        Debug.Log("i the owner WOWOWOWOW FUCK YOU");
+        return;
+      }
     }
     if(col.gameObject.GetComponent<Health>() != null){
       Health healthController = col.gameObject.GetComponent<Health>();
