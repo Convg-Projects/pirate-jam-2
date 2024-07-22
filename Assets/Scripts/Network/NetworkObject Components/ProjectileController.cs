@@ -11,16 +11,22 @@ public class ProjectileController : NetworkBehaviour
   private bool dead = false;
 
   void OnCollisionEnter(Collision col){
+    if(col.transform.tag == "Player"){
+      OnCollisionRpc(col.gameObject.GetComponent<NetworkObject>().OwnerClientId);
+    }
+  }
+
+  [Rpc(SendTo.Everyone)]
+  void OnCollisionRpc(ulong clientId){
     if(!IsSpawned){return;}
     if(!IsOwner){return;}
-    if(col.gameObject.GetComponent<NetworkObject>() != null){
-      if(col.gameObject.GetComponent<NetworkObject>().IsOwner){
-        Debug.Log("i the owner WOWOWOWOW FUCK YOU");
-        return;
-      }
+    if(NetworkManager.ConnectedClients[clientId].PlayerObject.IsOwner){
+      Debug.Log("i the owner WOWOWOWOW FUCK YOU");
+      return;
     }
-    if(col.gameObject.GetComponent<Health>() != null){
-      Health healthController = col.gameObject.GetComponent<Health>();
+
+    if(NetworkManager.ConnectedClients[clientId].PlayerObject.gameObject.GetComponent<Health>() != null){
+      Health healthController = NetworkManager.ConnectedClients[clientId].PlayerObject.gameObject.GetComponent<Health>();
       healthController.ChangeHealthServerRpc(-Damage);
       DestroyProjectileRpc();
     }
