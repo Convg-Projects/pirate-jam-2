@@ -38,6 +38,8 @@ public class PlayerMovement : NetworkBehaviour
   [SerializeField]private float groundDrag = 1f;
   [SerializeField]private float dragRamp = 0.7f;
 
+  [HideInInspector]public float haltMovementTime = 0f;
+
   [SerializeField]private string horizontalLookAxis = "Mouse X";
   [SerializeField]private string verticalLookAxis = "Mouse Y";
   [SerializeField]private float lookSensitivity = 20f;
@@ -72,8 +74,11 @@ public class PlayerMovement : NetworkBehaviour
 
   void FixedUpdate(){
     if(!IsOwner){return;}
+    haltMovementTime -= Time.fixedDeltaTime;
 
-    Move();
+    if(haltMovementTime <= 0f){
+      Move();
+    }
   }
 
   void Update(){

@@ -4931,3 +4931,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a82bd2d6836b874dbe8174a85e262ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectRange: 0.5
+  boostForce: 50
+  maxBoostCooldown: 0.5
