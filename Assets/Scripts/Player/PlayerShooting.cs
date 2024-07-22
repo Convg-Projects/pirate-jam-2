@@ -35,11 +35,11 @@ public class PlayerShooting : NetworkBehaviour
   private void SpawnBulletRpc(Vector3 spawnPosition, Vector3 spawnDirection, ulong ownerId){
     var instance = Instantiate(NetworkManager.GetNetworkPrefabOverride(projectilePrefab));
     var instanceNetworkObject = instance.GetComponent<NetworkObject>();
-    instanceNetworkObject.Spawn();
+    instanceNetworkObject.SpawnWithOwnership(NetworkManager.LocalClientId);
 
     instance.transform.position = spawnPosition;
 
-    instance.GetComponent<ProjectileController>().owner = NetworkManager.ConnectedClients[ownerId].PlayerObject;
+    //instance.GetComponent<ProjectileController>().owner = NetworkManager.ConnectedClients[ownerId].PlayerObject;
 
     Rigidbody instanceRB = instance.GetComponent<Rigidbody>();
     instanceRB.velocity = GetComponent<Rigidbody>().velocity;

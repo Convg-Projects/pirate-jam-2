@@ -4932,5 +4932,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectRange: 0.5
-  boostForce: 50
+  boostForce: 65
   maxBoostCooldown: 0.5
