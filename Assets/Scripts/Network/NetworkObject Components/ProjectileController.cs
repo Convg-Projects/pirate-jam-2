@@ -16,11 +16,11 @@ public class ProjectileController : NetworkBehaviour
     }
   }
 
-  [Rpc(SendTo.Everyone)]
+  [Rpc(SendTo.Server)]
   void OnCollisionRpc(ulong clientId){
     if(!IsSpawned){return;}
     if(!IsOwner){return;}
-    if(NetworkManager.ConnectedClients[clientId].PlayerObject.IsOwner){
+    if(GetComponent<NetworkObject>().OwnerClientId == clientId){
       Debug.Log("i the owner WOWOWOWOW FUCK YOU");
       return;
     }
