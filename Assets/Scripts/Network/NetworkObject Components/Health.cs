@@ -15,10 +15,12 @@ public class Health : NetworkBehaviour
   public NetworkVariable<bool> dead = new NetworkVariable<bool>();
 
   public override void OnNetworkSpawn(){
-    ChangeHealthServerRpc(maxHealth);
-    health.OnValueChanged += OnHealthChanged;
-    if(displayHealth){
-      healthText.text = "Health: " + maxHealth.ToString();
+    if(IsOwner){
+      ChangeHealthServerRpc(maxHealth);
+      health.OnValueChanged += OnHealthChanged;
+      if(displayHealth){
+        healthText.text = "Health: " + maxHealth.ToString();
+      }
     }
 
     base.OnNetworkSpawn();

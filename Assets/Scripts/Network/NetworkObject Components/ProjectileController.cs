@@ -11,6 +11,7 @@ public class ProjectileController : NetworkBehaviour
 
   void OnCollisionEnter(Collision col){
     if(!IsSpawned){return;}
+    //if(col)
     if(col.gameObject.GetComponent<Health>() != null){
       Health healthController = col.gameObject.GetComponent<Health>();
       healthController.ChangeHealthServerRpc(-Damage);

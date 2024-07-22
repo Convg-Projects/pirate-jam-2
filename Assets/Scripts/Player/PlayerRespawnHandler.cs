@@ -14,6 +14,14 @@ public class PlayerRespawnHandler : NetworkBehaviour
   public float maxRespawnTime = 10f;
   public NetworkVariable<float> respawnTime = new NetworkVariable<float>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
+  public override void OnNetworkSpawn(){
+    if(!IsOwner){
+      gameCanvas.SetActive(false);
+    }
+    
+    base.OnNetworkSpawn();
+  }
+
   void Update(){
     if(GetComponent<Health>().dead.Value){
       if(IsServer){
