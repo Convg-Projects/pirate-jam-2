@@ -16,6 +16,7 @@ public class PlayerMovement : NetworkBehaviour
   private float camStandHeight;
   [SerializeField]private float crouchDistance = 0.5f;
   [SerializeField]private float crouchSpeedMultiplier = 0.5f;
+  [SerializeField]private CapsuleCollider capsuleCollider;
 
   [SerializeField]private float jumpForce = 35f;
   [SerializeField]private float gravityMultiplier = 2f;
@@ -44,20 +45,17 @@ public class PlayerMovement : NetworkBehaviour
 
   private Rigidbody rb;
   private Collider col;
-  private CapsuleCollider cCol;
   public Camera cam;
 
   public override void OnNetworkSpawn(){
     rb = GetComponent<Rigidbody>();
-    col = GetComponent<Collider>();
-    cCol = GetComponent<CapsuleCollider>();
 
     maxAcceleration *= maxGroundSpeed;
 
-    groundDistance = col.bounds.extents.y;
+    groundDistance = capsuleCollider.bounds.extents.y;
     groundCheckDistance += groundDistance;
-    capsuleStandHeight = cCol.center.y;
-    standHeight = cCol.height;
+    capsuleStandHeight = capsuleCollider.center.y;
+    standHeight = capsuleCollider.height;
     camStandHeight = cam.transform.localPosition.y;
     camRotationX = cam.transform.localRotation.eulerAngles.x;
 
@@ -160,13 +158,13 @@ public class PlayerMovement : NetworkBehaviour
     if(Input.GetKey(KeyCode.LeftControl)){
       crouched = true;
       cam.transform.localPosition = new Vector3(cam.transform.localPosition.x, camStandHeight - crouchDistance, cam.transform.localPosition.z);
-      cCol.center = new Vector3(cCol.center.x, capsuleStandHeight - crouchDistance/2, cCol.center.z);
-      cCol.height = standHeight - crouchDistance;
+      capsuleCollider.center = new Vector3(capsuleCollider.center.x, capsuleStandHeight - crouchDistance/2, capsuleCollider.center.z);
+      capsuleCollider.height = standHeight - crouchDistance;
     } else {
       crouched = false;
       cam.transform.localPosition = new Vector3(cam.transform.localPosition.x, camStandHeight, cam.transform.localPosition.z);
-      cCol.center = new Vector3(cCol.center.x, capsuleStandHeight, cCol.center.z);
-      cCol.height = standHeight;
+      capsuleCollider.center = new Vector3(capsuleCollider.center.x, capsuleStandHeight, capsuleCollider.center.z);
+      capsuleCollider.height = standHeight;
     }
   }
 
