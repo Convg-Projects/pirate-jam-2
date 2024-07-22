@@ -21,7 +21,6 @@ public class Health : NetworkBehaviour
   public void OnHealthChanged(int previous, int current){
     if(current <= 0 && !dead.Value){
       HandleDeathRpc();
-      SetDeadRpc(true);
     }
   }
 
@@ -32,9 +31,10 @@ public class Health : NetworkBehaviour
 
   [Rpc(SendTo.Server)]
   public void HandleDeathRpc(){
-    if(destroyOnDeath){
+    if(destroyOnDeath && !dead.Value){
       GetComponent<NetworkObject>().Despawn();
     }
+    SetDeadRpc(true);
   }
 
   [Rpc(SendTo.Server)]
@@ -42,7 +42,10 @@ public class Health : NetworkBehaviour
     Debug.Log("Changing deadness");
     if(isDead && isPlayer){
       PlayerRespawnHandler respawnHandler = GetComponent<PlayerRespawnHandler>();
-      respawnHandler.respawnTime = respawnHandler.maxRespawnTime;
+      respawnHandler.respawnTime.Value = respawnHandler.maxRespawnTime;
+    }
+    if(!isDead){
+      health.Value = maxHealth;
     }
     dead.Value = isDead;
   }

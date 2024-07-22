@@ -12,18 +12,15 @@ public class PlayerRespawnHandler : NetworkBehaviour
   [SerializeField]private TextMeshProUGUI countdownText;
   [SerializeField]private GameObject colliderParent;
   public float maxRespawnTime = 10f;
-  [HideInInspector]public float respawnTime;
+  public NetworkVariable<float> respawnTime = new NetworkVariable<float>();
 
   void Update(){
-    //Debug.Log(GetComponent<Health>().dead.Value + respawnTime.ToString());
     if(GetComponent<Health>().dead.Value){
       if(IsOwner){
-        Debug.Log(respawnTime);
-        respawnTime -= Time.deltaTime;
-        Debug.Log(respawnTime);
-        countdownText.text = respawnTime + "s";
+        respawnTime.Value -= Time.deltaTime;
+        countdownText.text = respawnTime.Value + "s";
 
-        if(respawnTime <= 0f){
+        if(respawnTime.Value <= 0f){
           GetComponent<Health>().SetDeadRpc(false);
           transform.position = Vector3.zero;
         }
