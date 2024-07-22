@@ -9,15 +9,14 @@ using UnityEngine.UI;
 
 public class LobbyListUI : MonoBehaviour {
 
-
     public static LobbyListUI Instance { get; private set; }
-
-
 
     [SerializeField] private Transform lobbySingleTemplate;
     [SerializeField] private Transform container;
     [SerializeField] private Button refreshButton;
     [SerializeField] private Button createLobbyButton;
+    private float maxRefreshTime = 3f;
+    private float refreshTime = 1f;
 
 
     private void Awake() {
@@ -30,10 +29,20 @@ public class LobbyListUI : MonoBehaviour {
     }
 
     private void Start() {
+        LobbyManager.Instance.RefreshLobbyList();
+
         LobbyManager.Instance.OnLobbyListChanged += LobbyManager_OnLobbyListChanged;
         LobbyManager.Instance.OnJoinedLobby += LobbyManager_OnJoinedLobby;
         LobbyManager.Instance.OnLeftLobby += LobbyManager_OnLeftLobby;
         LobbyManager.Instance.OnKickedFromLobby += LobbyManager_OnKickedFromLobby;
+    }
+
+    private void Update(){
+      refreshTime -= Time.deltaTime;
+      if(refreshTime <= 0f){
+        LobbyManager.Instance.RefreshLobbyList();
+        refreshTime = maxRefreshTime;
+      }
     }
 
     private void LobbyManager_OnKickedFromLobby(object sender, LobbyManager.LobbyEventArgs e) {
