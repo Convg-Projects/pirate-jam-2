@@ -25,8 +25,8 @@ public class ProjectileController : NetworkBehaviour
       return;
     }
 
-    if(NetworkManager.ConnectedClients[clientId].PlayerObject.gameObject.GetComponent<Health>() != null){
-      Health healthController = NetworkManager.ConnectedClients[clientId].PlayerObject.gameObject.GetComponent<Health>();
+    if(NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.gameObject.GetComponent<Health>() != null){
+      Health healthController = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.gameObject.GetComponent<Health>();
       healthController.ChangeHealthServerRpc(-Damage);
       DestroyProjectileRpc();
     }
