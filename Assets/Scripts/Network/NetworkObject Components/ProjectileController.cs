@@ -9,30 +9,44 @@ public class ProjectileController : NetworkBehaviour
   //[HideInInspector]public NetworkObject owner;
   private float lifeLeft = 4f;
   private bool dead = false;
+  public NetworkVariable<bool> validHit = new NetworkVariable<bool>(false);
 
   void OnCollisionEnter(Collision col){
     if(col.transform.tag == "Player"){
-      bool doDamage = OnCollisionRpc(col.gameObject.GetComponent<NetworkObject>().OwnerClientId);
-
-      if(col.gameObject.GetComponent<Health>() != null){
-        Debug.Log("ID " + col.gameObject.GetComponent<NetworkObject>().OwnerClientId + " has health")
-        Health healthController = col.gameObject.GetComponent<Health>();
-        healthController.ChangeHealthServerRpc(-Damage);
-        DestroyProjectileRpc();
+      OnCollisionRpc(col.gameObject.GetComponent<NetworkObject>().OwnerClientId);
+      if(validHit.Value){
+        DoDamage(col.gameObject);
+      } else {
+        return;
       }
     }
+    if(col.gameObject.GetComponent<Health>() != null){
+      Health healthController = col.gameObject.GetComponent<Health>();
+      healthController.ChangeHealthServerRpc(-Damage);
+      DestroyProjectileRpc();
+      return;
+    }
+    DestroyProjectileRpc();
   }
 
   [Rpc(SendTo.Server)]
   void OnCollisionRpc(ulong clientId){
-    if(!IsSpawned){return false;}
-    if(!IsOwner){return false;}
+    if(!IsSpawned){return;}
+    if(!IsOwner){return;}
     if(GetComponent<NetworkObject>().OwnerClientId == clientId){
       Debug.Log("i the owner WOWOWOWOW FUCK YOU");
-      return false;
+      return;
     }
+    validHit.Value = true;
+  }
 
-    return true;
+  void DoDamage(GameObject target){
+    if(target.GetComponent<Health>() != null){
+      Debug.Log("ID " + target.GetComponent<NetworkObject>().OwnerClientId + " has health");
+      Health healthController = target.GetComponent<Health>();
+      healthController.ChangeHealthServerRpc(-Damage);
+      DestroyProjectileRpc();
+    }
   }
 
   void Update(){
