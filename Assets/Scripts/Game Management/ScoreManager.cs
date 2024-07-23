@@ -62,8 +62,12 @@ public class ScoreManager : NetworkBehaviour
     clockText.text = string.Format("{0:00}:{1:00}", ts.Minutes, ts.Seconds);
   }
 
-  public void OnTimeChanged(float previous, float current){
+  public void SyncTime(){
     localTimeLeft = timeLeft.Value;
+  }
+
+  public void OnTimeChanged(float previous, float current){
+    SyncTime();
   }
 
   [Rpc(SendTo.Everyone)]
