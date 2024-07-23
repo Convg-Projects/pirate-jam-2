@@ -46,12 +46,13 @@ public class ScoreManager : NetworkBehaviour
 
   void Update(){
     if(IsHost && !gameEnded){
+      timerHeartbeatTime -= Time.deltaTime;
       if(timerHeartbeatTime <= 0f){
         timeLeft.Value = gameDuration - (float) NetworkManager.ServerTime.Time;
         timerHeartbeatTime = 15f;
       }
 
-      if(timeLeft.Value <= 0f){
+      if(localTimeLeft.Value <= 0f){
         EndGameRpc();
         gameEnded = true;
       }
