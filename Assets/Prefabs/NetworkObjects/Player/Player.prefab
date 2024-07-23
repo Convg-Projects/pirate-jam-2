@@ -3126,7 +3126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireTransform: {fileID: 9063106904294025050}
   maxFiringCooldown: 0.3
-  bulletForce: 50
+  bulletForce: 75
   projectilePrefab: {fileID: 5547158417193266677, guid: a82643ed4a76255469a01cf462db198d,
     type: 3}
 --- !u!114 &4429453749069171661
