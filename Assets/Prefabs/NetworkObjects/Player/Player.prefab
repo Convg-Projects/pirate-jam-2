@@ -3074,17 +3074,17 @@ MonoBehaviour:
   crouchDistance: 0.5
   crouchSpeedMultiplier: 0.5
   capsuleCollider: {fileID: 7983759248973798970}
-  jumpForce: 80
-  gravityMultiplier: 1.1
+  jumpForce: 120
+  gravityMultiplier: 1.2
   maxDragDelay: 0.05
-  maxCoyoteTime: 0.2
+  maxCoyoteTime: 0.1
   maxNoyoteTime: 0.3
   horizontalMovementAxis: Horizontal
   verticalMovementAxis: Vertical
-  forwardSpeed: 2
+  forwardSpeed: 3.5
   sideSpeed: 1
   maxGroundSpeed: 80
-  maxAirSpeed: 9
+  maxAirSpeed: 20
   maxAcceleration: 10
   groundDrag: 50
   dragRamp: 0.5
