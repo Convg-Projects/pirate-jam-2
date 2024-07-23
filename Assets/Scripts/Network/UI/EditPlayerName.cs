@@ -38,11 +38,11 @@ public class EditPlayerName : MonoBehaviour {
         });
 
         playerNameText.text = playerName;
-        LobbyManager.Instance.UpdatePlayerName(GetPlayerName());
     }
 
     private void Start() {
         OnNameChanged += EditPlayerName_OnNameChanged;
+        LobbyManager.Instance.UpdatePlayerName(GetPlayerName());
     }
 
     private void EditPlayerName_OnNameChanged(object sender, EventArgs e) {
