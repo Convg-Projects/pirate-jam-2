@@ -35,7 +35,7 @@ public class LobbyManager : MonoBehaviour {
     private float lobbyPollTimer;
     private float refreshLobbyListTimer = 5f;
     private Lobby joinedLobby;
-    private string playerName;
+    public string playerName { get; private set; }
 
     public const string KEY_START_GAME = "Start";
     public event EventHandler<EventArgs> OnGameStarted;

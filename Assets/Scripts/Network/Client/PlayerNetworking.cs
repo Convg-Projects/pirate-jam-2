@@ -21,7 +21,7 @@ public class PlayerNetworking : NetworkBehaviour
     Debug.Log("Disconnecting client " + clientId);
     if(NetworkManager.Singleton.ConnectedClients.ContainsKey(clientId)){
       NetworkManager.Singleton.DisconnectClient(clientId);
-      NetworkManager.ConnectedClients[clientId].PlayerObject.Despawn();
+      NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.Despawn();
     }
   }
 

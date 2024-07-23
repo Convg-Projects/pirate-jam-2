@@ -11,12 +11,15 @@ public class Health : NetworkBehaviour
   [SerializeField]private bool isPlayer = false;
   [SerializeField]private bool displayHealth = false;
   [SerializeField]private TextMeshProUGUI healthText;
+
   NetworkVariable<int> health = new NetworkVariable<int>();
   public NetworkVariable<bool> dead = new NetworkVariable<bool>();
 
+  NetworkVariable<ulong> lastAttackerId = new NetworkVariable<ulong>();
+
   public override void OnNetworkSpawn(){
     if(IsOwner){
-      ChangeHealthServerRpc(maxHealth);
+      ChangeHealthServerRpc(maxHealth, 0);
       health.OnValueChanged += OnHealthChanged;
       if(displayHealth){
         healthText.text = "Health: " + maxHealth.ToString();
@@ -36,15 +39,18 @@ public class Health : NetworkBehaviour
   }
 
   [Rpc(SendTo.Server)]
-  public void ChangeHealthServerRpc(int amount){
+  public void ChangeHealthServerRpc(int amount, ulong attackerId){
       health.Value += amount;
+      lastAttackerId.Value = attackerId;
   }
 
   [Rpc(SendTo.Server)]
   public void HandleDeathRpc(){
-    if(destroyOnDeath && !dead.Value){
+    if(dead.Value){return;}
+    if(destroyOnDeath){
       GetComponent<NetworkObject>().Despawn();
     }
+    NetworkManager.Singleton.ConnectedClients[lastAttackerId.Value].PlayerObject.gameObject.GetComponent<PlayerScore>().UpdateScore(1);
     SetDeadRpc(true);
   }
 

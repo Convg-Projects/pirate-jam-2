@@ -38,6 +38,7 @@ public class EditPlayerName : MonoBehaviour {
         });
 
         playerNameText.text = playerName;
+        LobbyManager.Instance.UpdatePlayerName(GetPlayerName());
     }
 
     private void Start() {

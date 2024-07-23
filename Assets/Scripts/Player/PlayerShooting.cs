@@ -34,10 +34,10 @@ public class PlayerShooting : NetworkBehaviour
   [Rpc(SendTo.Server)]
   private void SpawnBulletRpc(Vector3 spawnPosition, Vector3 spawnDirection, ulong ownerId){
     var instance = Instantiate(NetworkManager.GetNetworkPrefabOverride(projectilePrefab));
+    instance.transform.position = spawnPosition;
     var instanceNetworkObject = instance.GetComponent<NetworkObject>();
     instanceNetworkObject.SpawnWithOwnership(ownerId);
 
-    instance.transform.position = spawnPosition;
 
     //instance.GetComponent<ProjectileController>().owner = NetworkManager.ConnectedClients[ownerId].PlayerObject;
 
