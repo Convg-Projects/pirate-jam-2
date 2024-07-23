@@ -52,7 +52,7 @@ public class ScoreManager : NetworkBehaviour
         timerHeartbeatTime = 15f;
       }
 
-      if(localTimeLeft.Value <= 0f){
+      if(localTimeLeft <= 0f){
         EndGameRpc();
         gameEnded = true;
       }
