@@ -19,10 +19,14 @@ public class ScoreManager : NetworkBehaviour
 
   [SerializeField]private float gameDuration = 500f;
   public NetworkVariable<float> timeLeft = new NetworkVariable<float>();
+  private float localTimeLeft;
+  private float timerHeartbeatTime;
 
   private bool gameEnded = false;
 
   public override void OnNetworkSpawn(){
+    timeLeft.OnValueChanged += OnTimeChanged;
+
     if (Instance != null){
       Debug.Log("There is already a Score Manager instance. Destroying component!");
       Destroy(this);
@@ -32,6 +36,7 @@ public class ScoreManager : NetworkBehaviour
 
     if(IsHost){
       timeLeft.Value = gameDuration;
+      localTimeLeft = gameDuration;
     }
 
     base.OnNetworkSpawn();
@@ -39,15 +44,24 @@ public class ScoreManager : NetworkBehaviour
 
   void Update(){
     if(IsHost && !gameEnded){
-      timeLeft.Value = gameDuration - (float) NetworkManager.ServerTime.Time;
+      if(timerHeartbeatTime <= 0f){
+        timeLeft.Value = gameDuration - (float) NetworkManager.ServerTime.Time;
+        timerHeartbeatTime = 15f;
+      }
 
       if(timeLeft.Value <= 0f){
         EndGameRpc();
         gameEnded = true;
       }
     }
+    localTimeLeft -= Time.deltaTime;
+
     var ts = TimeSpan.FromSeconds(timeLeft.Value);
     clockText.text =  string.Format("{0:00}:{1:00}", ts.Minutes, ts.Seconds);
+  }
+
+  public void OnTimeChanged(int previous, int current){
+    localTimeLeft = timeLeft.Value;
   }
 
   [Rpc(SendTo.Everyone)]
