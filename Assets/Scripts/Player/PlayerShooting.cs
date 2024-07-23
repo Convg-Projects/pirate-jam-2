@@ -42,7 +42,6 @@ public class PlayerShooting : NetworkBehaviour
     //instance.GetComponent<ProjectileController>().owner = NetworkManager.ConnectedClients[ownerId].PlayerObject;
 
     Rigidbody instanceRB = instance.GetComponent<Rigidbody>();
-    instanceRB.velocity = GetComponent<Rigidbody>().velocity;
     instanceRB.AddForce(bulletForce * spawnDirection.normalized, ForceMode.Impulse);
   }
 }
