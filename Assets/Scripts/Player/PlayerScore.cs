@@ -13,6 +13,7 @@ public class PlayerScore : NetworkBehaviour
     currentScore.Value = 0;
 
     base.OnNetworkSpawn();
+    ScoreManager.Instance.SyncTime();
   }
 
   private void Update(){

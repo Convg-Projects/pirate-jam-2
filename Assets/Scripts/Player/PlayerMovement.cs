@@ -51,7 +51,6 @@ public class PlayerMovement : NetworkBehaviour
 
   public override void OnNetworkSpawn(){
     rb = GetComponent<Rigidbody>();
-    ScoreManager.Instance.SyncTime();
 
     maxAcceleration *= maxGroundSpeed;
 
