@@ -58,8 +58,8 @@ public class ScoreManager : NetworkBehaviour
     }
     localTimeLeft -= Time.deltaTime;
 
-    var ts = TimeSpan.FromSeconds(timeLeft.Value);
-    clockText.text =  string.Format("{0:00}:{1:00}", ts.Minutes, ts.Seconds);
+    var ts = TimeSpan.FromSeconds(localTimeLeft);
+    clockText.text = string.Format("{0:00}:{1:00}", ts.Minutes, ts.Seconds);
   }
 
   public void OnTimeChanged(float previous, float current){
