@@ -3129,6 +3129,8 @@ MonoBehaviour:
   bulletForce: 75
   projectilePrefab: {fileID: 5547158417193266677, guid: a82643ed4a76255469a01cf462db198d,
     type: 3}
+  dummyProjectilePrefab: {fileID: 5547158417193266677, guid: 8a39b07966b780e4bb865d6e8e49cbd8,
+    type: 3}
 --- !u!114 &4429453749069171661
 MonoBehaviour:
   m_ObjectHideFlags: 0

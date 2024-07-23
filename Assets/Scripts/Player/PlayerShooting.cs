@@ -9,6 +9,7 @@ public class PlayerShooting : NetworkBehaviour
   [SerializeField]private float maxFiringCooldown = 0.5f;
   [SerializeField]private float bulletForce = 100f;
   [SerializeField]private GameObject projectilePrefab;
+  [SerializeField]private GameObject dummyProjectilePrefab;
   private float firingCooldown;
 
   public override void OnNetworkSpawn(){
@@ -26,10 +27,8 @@ public class PlayerShooting : NetworkBehaviour
 
     if (Input.GetMouseButton(0) && firingCooldown <= 0f){
       if(!IsHost){ //Spawn a fake bullet to make the drooling clients happy
-        var localInstance = Instantiate(NetworkManager.GetNetworkPrefabOverride(projectilePrefab));
+        var localInstance = Instantiate(NetworkManager.GetNetworkPrefabOverride(dummyProjectilePrefab));
         localInstance.transform.position = fireTransform.position;
-
-        localInstance.GetComponent<ProjectileController>().isBlank = true;
 
         Rigidbody localInstanceRB = localInstance.GetComponent<Rigidbody>();
         localInstanceRB.AddForce(bulletForce * fireTransform.forward.normalized, ForceMode.Impulse);
