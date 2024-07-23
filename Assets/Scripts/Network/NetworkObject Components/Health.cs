@@ -50,7 +50,9 @@ public class Health : NetworkBehaviour
     if(destroyOnDeath){
       GetComponent<NetworkObject>().Despawn();
     }
-    NetworkManager.Singleton.ConnectedClients[lastAttackerId.Value].PlayerObject.gameObject.GetComponent<PlayerScore>().UpdateScore(1);
+    if(lastAttackerId.Value < (ulong) 9999){
+      NetworkManager.Singleton.ConnectedClients[lastAttackerId.Value].PlayerObject.gameObject.GetComponent<PlayerScore>().UpdateScore(1);
+    }
     SetDeadRpc(true);
   }
 

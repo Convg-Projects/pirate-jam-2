@@ -89,6 +89,7 @@ public class PlayerMovement : NetworkBehaviour
     //groundDrag = CheckGrounded();
     Jump();
     Crouch();
+    DoDeathBarrier();
 
     if(grounded){
       Debug.DrawRay(cam.transform.position, cam.transform.forward * 3, Color.green);
@@ -178,6 +179,12 @@ public class PlayerMovement : NetworkBehaviour
     camRotationX = Mathf.Clamp(camRotationX + Input.GetAxis(verticalLookAxis) * lookSensitivity * Time.deltaTime * 25f, -85f, 85f);
 
     cam.transform.localRotation = Quaternion.Euler(-camRotationX, 0, 0);
+  }
+
+  void DoDeathBarrier(){
+    if(transform.position.y <= -10f){
+      GetComponent<Health>().ChangeHealthServerRpc(-99999, 99999);
+    }
   }
 
   void OnCollisionStay(Collision collisionInfo){
