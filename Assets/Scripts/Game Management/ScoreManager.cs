@@ -25,7 +25,9 @@ public class ScoreManager : NetworkBehaviour
   private bool gameEnded = false;
 
   public override void OnNetworkSpawn(){
-    timeLeft.OnValueChanged += OnTimeChanged;
+    if(IsOwner){
+      timeLeft.OnValueChanged += OnTimeChanged;
+    }
 
     if (Instance != null){
       Debug.Log("There is already a Score Manager instance. Destroying component!");
@@ -60,7 +62,7 @@ public class ScoreManager : NetworkBehaviour
     clockText.text =  string.Format("{0:00}:{1:00}", ts.Minutes, ts.Seconds);
   }
 
-  public void OnTimeChanged(int previous, int current){
+  public void OnTimeChanged(float previous, float current){
     localTimeLeft = timeLeft.Value;
   }
 
