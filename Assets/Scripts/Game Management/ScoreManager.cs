@@ -106,7 +106,7 @@ public class ScoreManager : NetworkBehaviour
     bronzeText.text = bronzeName + ": " + bronzeScore;
 
     GameObject localPlayerObject = NetworkManager.Singleton.LocalClient.PlayerObject.gameObject;
-    localText.text = localPlayerObject.GetComponent<PlayerId>().playerName.Value.stringValue + ": " + localPlayerObject.GetComponent<PlayerScore>().currentScore;
+    localText.text = localPlayerObject.GetComponent<PlayerId>().playerName.Value.stringValue + ": " + localPlayerObject.GetComponent<PlayerScore>().currentScore.Value;
 
     goldText.gameObject.SetActive(true);
     silverText.gameObject.SetActive(true);
@@ -120,7 +120,7 @@ public class ScoreManager : NetworkBehaviour
     silverText.text = silverName + ": " + silverScore;
 
     GameObject localPlayerObject = NetworkManager.Singleton.LocalClient.PlayerObject.gameObject;
-    localText.text = localPlayerObject.GetComponent<PlayerId>().playerName.Value.stringValue + ": " + localPlayerObject.GetComponent<PlayerScore>().currentScore;
+    localText.text = localPlayerObject.GetComponent<PlayerId>().playerName.Value.stringValue + ": " + localPlayerObject.GetComponent<PlayerScore>().currentScore.Value;
 
     goldText.gameObject.SetActive(true);
     silverText.gameObject.SetActive(true);
