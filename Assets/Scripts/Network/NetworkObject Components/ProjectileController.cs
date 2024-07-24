@@ -5,6 +5,7 @@ using Unity.Netcode;
 
 public class ProjectileController : NetworkBehaviour
 {
+  [SerializeField]private GameObject impactParticlePrefab;
   [SerializeField]private GameObject renderer;
   public int Damage = 10;
   private float lifeLeft = 4f;
@@ -40,8 +41,16 @@ public class ProjectileController : NetworkBehaviour
     }
   }
 
+  [Rpc(SendTo.Everyone)]
+  void SpawnImpactParticleRpc(Vector3 spawnPosition){
+    GameObject particleInstance = GameObject.Instantiate(impactParticlePrefab);
+
+    particleInstance.transform.position = spawnPosition;
+  }
+
   [Rpc(SendTo.Server)]
   void DestroyProjectileRpc(){
+    SpawnImpactParticleRpc(transform.position);
     GetComponent<NetworkObject>().Despawn();
   }
 }

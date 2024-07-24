@@ -161,7 +161,7 @@ public class PlayerMovement : NetworkBehaviour
   }
 
   void Crouch(){
-    if(Input.GetKey(KeyCode.LeftControl)){
+    if(Input.GetKey(KeyCode.LeftShift)){
       crouched = true;
       cam.transform.localPosition = new Vector3(cam.transform.localPosition.x, camStandHeight - crouchDistance, cam.transform.localPosition.z);
       capsuleCollider.center = new Vector3(capsuleCollider.center.x, capsuleStandHeight - crouchDistance/2, capsuleCollider.center.z);

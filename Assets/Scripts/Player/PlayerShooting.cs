@@ -26,17 +26,22 @@ public class PlayerShooting : NetworkBehaviour
     firingCooldown -= Time.deltaTime;
 
     if (Input.GetMouseButton(0) && firingCooldown <= 0f){
-      if(!IsHost){ //Spawn a fake bullet to make the drooling clients happy
-        var localInstance = Instantiate(NetworkManager.GetNetworkPrefabOverride(dummyProjectilePrefab));
-        localInstance.transform.position = fireTransform.position;
-
-        Rigidbody localInstanceRB = localInstance.GetComponent<Rigidbody>();
-        localInstanceRB.AddForce(bulletForce * fireTransform.forward.normalized, ForceMode.Impulse);
-      }
+      SpawnFakeBulletRpc(fireTransform.position, fireTransform.forward, NetworkManager.Singleton.LocalClientId);
 
       SpawnBulletRpc(fireTransform.position, fireTransform.forward, NetworkManager.Singleton.LocalClientId);
 
       firingCooldown = maxFiringCooldown;
+    }
+  }
+
+  [Rpc(SendTo.Everyone)]
+  private void SpawnFakeBulletRpc(Vector3 spawnPosition, Vector3 spawnDirection, ulong ownerId){
+    if(!IsHost){ //Spawn a fake bullet to make clients happy
+      var localInstance = Instantiate(NetworkManager.GetNetworkPrefabOverride(dummyProjectilePrefab));
+      localInstance.transform.position = spawnPosition;
+
+      Rigidbody localInstanceRB = localInstance.GetComponent<Rigidbody>();
+      localInstanceRB.AddForce(bulletForce * spawnDirection, ForceMode.Impulse);
     }
   }
 
