@@ -38,6 +38,8 @@ public class PlayerMovement : NetworkBehaviour
   [SerializeField]private float groundDrag = 1f;
   [SerializeField]private float dragRamp = 0.7f;
 
+  [HideInInspector]public float haltMovementTime = 0f;
+
   [SerializeField]private string horizontalLookAxis = "Mouse X";
   [SerializeField]private string verticalLookAxis = "Mouse Y";
   [SerializeField]private float lookSensitivity = 20f;
@@ -72,8 +74,11 @@ public class PlayerMovement : NetworkBehaviour
 
   void FixedUpdate(){
     if(!IsOwner){return;}
+    haltMovementTime -= Time.fixedDeltaTime;
 
-    Move();
+    if(haltMovementTime <= 0f){
+      Move();
+    }
   }
 
   void Update(){
@@ -84,6 +89,7 @@ public class PlayerMovement : NetworkBehaviour
     //groundDrag = CheckGrounded();
     Jump();
     Crouch();
+    DoDeathBarrier();
 
     if(grounded){
       Debug.DrawRay(cam.transform.position, cam.transform.forward * 3, Color.green);
@@ -173,6 +179,12 @@ public class PlayerMovement : NetworkBehaviour
     camRotationX = Mathf.Clamp(camRotationX + Input.GetAxis(verticalLookAxis) * lookSensitivity * Time.deltaTime * 25f, -85f, 85f);
 
     cam.transform.localRotation = Quaternion.Euler(-camRotationX, 0, 0);
+  }
+
+  void DoDeathBarrier(){
+    if(transform.position.y <= -10f){
+      GetComponent<Health>().ChangeHealthServerRpc(-99999, 99999);
+    }
   }
 
   void OnCollisionStay(Collision collisionInfo){

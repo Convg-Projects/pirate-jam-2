@@ -9,6 +9,7 @@ public class PlayerShooting : NetworkBehaviour
   [SerializeField]private float maxFiringCooldown = 0.5f;
   [SerializeField]private float bulletForce = 100f;
   [SerializeField]private GameObject projectilePrefab;
+  [SerializeField]private GameObject dummyProjectilePrefab;
   private float firingCooldown;
 
   public override void OnNetworkSpawn(){
@@ -25,22 +26,31 @@ public class PlayerShooting : NetworkBehaviour
     firingCooldown -= Time.deltaTime;
 
     if (Input.GetMouseButton(0) && firingCooldown <= 0f){
-      SpawnBulletRpc(fireTransform.position, fireTransform.forward);
+      if(!IsHost){ //Spawn a fake bullet to make the drooling clients happy
+        var localInstance = Instantiate(NetworkManager.GetNetworkPrefabOverride(dummyProjectilePrefab));
+        localInstance.transform.position = fireTransform.position;
+
+        Rigidbody localInstanceRB = localInstance.GetComponent<Rigidbody>();
+        localInstanceRB.AddForce(bulletForce * fireTransform.forward.normalized, ForceMode.Impulse);
+      }
+
+      SpawnBulletRpc(fireTransform.position, fireTransform.forward, NetworkManager.Singleton.LocalClientId);
 
       firingCooldown = maxFiringCooldown;
     }
   }
 
   [Rpc(SendTo.Server)]
-  private void SpawnBulletRpc(Vector3 spawnPosition, Vector3 spawnDirection){
+  private void SpawnBulletRpc(Vector3 spawnPosition, Vector3 spawnDirection, ulong ownerId){
     var instance = Instantiate(NetworkManager.GetNetworkPrefabOverride(projectilePrefab));
-    var instanceNetworkObject = instance.GetComponent<NetworkObject>();
-    instanceNetworkObject.Spawn();
-
     instance.transform.position = spawnPosition;
+    var instanceNetworkObject = instance.GetComponent<NetworkObject>();
+    instanceNetworkObject.SpawnWithOwnership(ownerId);
+
+
+    //instance.GetComponent<ProjectileController>().owner = NetworkManager.ConnectedClients[ownerId].PlayerObject;
 
     Rigidbody instanceRB = instance.GetComponent<Rigidbody>();
-    instanceRB.velocity = GetComponent<Rigidbody>().velocity;
     instanceRB.AddForce(bulletForce * spawnDirection.normalized, ForceMode.Impulse);
   }
 }

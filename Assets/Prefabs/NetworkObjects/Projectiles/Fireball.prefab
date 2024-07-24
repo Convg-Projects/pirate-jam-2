@@ -395,7 +395,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8855295262919154062}
@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 845560275
+  GlobalObjectIdHash: 1096252183
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -504,4 +504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fedaaf0e90c9d5b4d9ba4dbab2096278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBlank: 0
+  renderer: {fileID: 4750971057580133857}
   Damage: 10
+  validHit:
+    m_InternalValue: 0

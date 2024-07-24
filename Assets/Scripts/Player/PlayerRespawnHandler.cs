@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using Unity.Services.Authentication;
 using TMPro;
 
 public class PlayerRespawnHandler : NetworkBehaviour
@@ -13,6 +14,14 @@ public class PlayerRespawnHandler : NetworkBehaviour
   [SerializeField]private GameObject colliderParent;
   public float maxRespawnTime = 10f;
   public NetworkVariable<float> respawnTime = new NetworkVariable<float>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+
+  public override void OnNetworkSpawn(){
+    if(!IsOwner){
+      gameCanvas.SetActive(false);
+    }
+
+    base.OnNetworkSpawn();
+  }
 
   void Update(){
     if(GetComponent<Health>().dead.Value){

@@ -5,15 +5,29 @@ using Unity.Netcode;
 
 public class ProjectileController : NetworkBehaviour
 {
+  [SerializeField]private GameObject renderer;
   public int Damage = 10;
   private float lifeLeft = 4f;
   private bool dead = false;
+  public NetworkVariable<bool> validHit = new NetworkVariable<bool>(false);
+  private NetworkObject networkObject;
+
+  public override void OnNetworkSpawn(){
+    if(!IsHost){
+      renderer.SetActive(false);
+    }
+    networkObject = GetComponent<NetworkObject>();
+    base.OnNetworkSpawn();
+  }
 
   void OnCollisionEnter(Collision col){
-    if(!IsSpawned){return;}
-    if(col.gameObject.GetComponent<Health>() != null){
+    if(col.gameObject.GetComponent<Health>() != null && networkObject.OwnerClientId != col.gameObject.GetComponent<NetworkObject>().OwnerClientId){
       Health healthController = col.gameObject.GetComponent<Health>();
-      healthController.ChangeHealthServerRpc(-Damage);
+      healthController.ChangeHealthServerRpc(-Damage, networkObject.OwnerClientId);
+      DestroyProjectileRpc();
+      return;
+    }
+    if(col.gameObject.GetComponent<Health>() == null){
       DestroyProjectileRpc();
     }
   }
@@ -25,11 +39,6 @@ public class ProjectileController : NetworkBehaviour
       DestroyProjectileRpc();
     }
   }
-
-  /*[Rpc(SendTo.Server)]
-  public void SetShooterRpc(){
-
-  }*/
 
   [Rpc(SendTo.Server)]
   void DestroyProjectileRpc(){
