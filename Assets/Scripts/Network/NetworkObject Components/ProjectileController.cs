@@ -7,6 +7,7 @@ public class ProjectileController : NetworkBehaviour
 {
   [SerializeField]private GameObject impactParticlePrefab;
   [SerializeField]private GameObject renderer;
+  [SerializeField]private float blastRadius = 1.5f;
   public int Damage = 10;
   private float lifeLeft = 4f;
   private bool dead = false;
@@ -22,14 +23,23 @@ public class ProjectileController : NetworkBehaviour
   }
 
   void OnCollisionEnter(Collision col){
-    if(col.gameObject.GetComponent<Health>() != null && networkObject.OwnerClientId != col.gameObject.GetComponent<NetworkObject>().OwnerClientId){
-      Health healthController = col.gameObject.GetComponent<Health>();
-      healthController.ChangeHealthServerRpc(-Damage, networkObject.OwnerClientId);
-      DestroyProjectileRpc();
-      return;
+    Collider[] hitColliders = Physics.OverlapSphere(transform.position, blastRadius);
+    bool hasHit = false;
+    foreach (Collider hitCollider in hitColliders){
+      if(hitCollider.transform.parent != null){
+        if(hitCollider.transform.parent.gameObject.GetComponent<Health>() != null && networkObject.OwnerClientId != hitCollider.transform.parent.gameObject.GetComponent<NetworkObject>().OwnerClientId){
+          Health healthController = hitCollider.transform.parent.gameObject.GetComponent<Health>();
+          healthController.ChangeHealthServerRpc(-Damage, networkObject.OwnerClientId);
+          hasHit = true;
+          break;
+        }
+        if(hitCollider.transform.parent.gameObject.GetComponent<NetworkObject>() == null){
+          hasHit = true;
+        }
+      }
     }
-    if(col.gameObject.GetComponent<Health>() == null){
-      DestroyProjectileRpc();
+    if(hasHit){
+      DestroyProjectileRpc(transform.position);
     }
   }
 
@@ -37,20 +47,18 @@ public class ProjectileController : NetworkBehaviour
     lifeLeft -= Time.deltaTime;
     if(lifeLeft <= 0f && !dead){
       dead = true;
-      DestroyProjectileRpc();
+      DestroyProjectileRpc(transform.position);
     }
   }
 
   [Rpc(SendTo.Everyone)]
-  void SpawnImpactParticleRpc(Vector3 spawnPosition){
+  void DestroyProjectileRpc(Vector3 particleSpawnPosition){
     GameObject particleInstance = GameObject.Instantiate(impactParticlePrefab);
 
-    particleInstance.transform.position = spawnPosition;
-  }
+    particleInstance.transform.position = particleSpawnPosition;
 
-  [Rpc(SendTo.Server)]
-  void DestroyProjectileRpc(){
-    SpawnImpactParticleRpc(transform.position);
-    GetComponent<NetworkObject>().Despawn();
+    if(IsHost){
+      GetComponent<NetworkObject>().Despawn();
+    }
   }
 }
