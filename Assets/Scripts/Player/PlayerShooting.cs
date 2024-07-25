@@ -46,19 +46,21 @@ public class PlayerShooting : NetworkBehaviour
     if(weaponData.hitscan){
       RaycastHit hit;
       Physics.Raycast(fireTransform.position, bulletSpawnDirection, out hit, 50f);
+      Debug.DrawRay(fireTransform.position, bulletSpawnDirection * 50f, Color.cyan, 5f, true);
 
-      for (int i = 0; i < weaponData.numberOfShots; ++i){
-        if(hit.transform.parent == null){continue;}
-        if(hit.transform.parent.gameObject.GetComponent<Health>() != null && networkObject.OwnerClientId != hit.transform.parent.gameObject.GetComponent<NetworkObject>().OwnerClientId){
-          Health healthController = hit.transform.parent.gameObject.GetComponent<Health>();
-          healthController.ChangeHealthServerRpc(-weaponData.damage, networkObject.OwnerClientId);
-        }
+      if(hit.collider == null){return;}
 
-        GameObject particleInstance = GameObject.Instantiate(weaponData.hitscanHitParticlePrefab);
-        Destroy(particleInstance, 5f);
+      GameObject particleInstance = GameObject.Instantiate(weaponData.hitscanHitParticlePrefab);
+      Destroy(particleInstance, 5f);
+      particleInstance.transform.position = hit.point;
 
-        particleInstance.transform.position = hit.transform.position;
+      if(hit.collider.transform.parent == null){return;}
+
+      if(hit.collider.transform.parent.gameObject.GetComponent<Health>() != null && networkObject.OwnerClientId != hit.collider.transform.parent.gameObject.GetComponent<NetworkObject>().OwnerClientId){
+        Health healthController = hit.collider.transform.parent.gameObject.GetComponent<Health>();
+        healthController.ChangeHealthServerRpc(-weaponData.damage, networkObject.OwnerClientId);
       }
+
     } else {
       SpawnFakeBulletRpc(fireTransform.position, bulletSpawnDirection, NetworkManager.Singleton.LocalClientId);
 
