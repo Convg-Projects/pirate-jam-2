@@ -8,7 +8,7 @@ public class ProjectileController : NetworkBehaviour
   [SerializeField]private GameObject impactParticlePrefab;
   [SerializeField]private GameObject renderer;
   [SerializeField]private float blastRadius = 1.5f;
-  public int Damage = 10;
+  [HideInInspector]public int damage = 10;
   private float lifeLeft = 4f;
   private bool dead = false;
   public NetworkVariable<bool> validHit = new NetworkVariable<bool>(false);
@@ -30,7 +30,7 @@ public class ProjectileController : NetworkBehaviour
         if(hitCollider.transform.parent != null){
           if(hitCollider.transform.parent.gameObject.GetComponent<Health>() != null && networkObject.OwnerClientId != hitCollider.transform.parent.gameObject.GetComponent<NetworkObject>().OwnerClientId){
             Health healthController = hitCollider.transform.parent.gameObject.GetComponent<Health>();
-            healthController.ChangeHealthServerRpc(-Damage, networkObject.OwnerClientId);
+            healthController.ChangeHealthServerRpc(-damage, networkObject.OwnerClientId);
             hasHit = true;
             break;
           }
@@ -56,6 +56,7 @@ public class ProjectileController : NetworkBehaviour
   [Rpc(SendTo.Everyone)]
   void DestroyProjectileRpc(Vector3 particleSpawnPosition){
     GameObject particleInstance = GameObject.Instantiate(impactParticlePrefab);
+    Destroy(particleInstance, 5f);
 
     particleInstance.transform.position = particleSpawnPosition;
 
