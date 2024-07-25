@@ -13,6 +13,7 @@ public class ProjectileController : NetworkBehaviour
   private bool dead = false;
   public NetworkVariable<bool> validHit = new NetworkVariable<bool>(false);
   private NetworkObject networkObject;
+  bool hasHit = false;
 
   public override void OnNetworkSpawn(){
     if(!IsHost){
@@ -23,23 +24,24 @@ public class ProjectileController : NetworkBehaviour
   }
 
   void OnCollisionEnter(Collision col){
-    Collider[] hitColliders = Physics.OverlapSphere(transform.position, blastRadius);
-    bool hasHit = false;
-    foreach (Collider hitCollider in hitColliders){
-      if(hitCollider.transform.parent != null){
-        if(hitCollider.transform.parent.gameObject.GetComponent<Health>() != null && networkObject.OwnerClientId != hitCollider.transform.parent.gameObject.GetComponent<NetworkObject>().OwnerClientId){
-          Health healthController = hitCollider.transform.parent.gameObject.GetComponent<Health>();
-          healthController.ChangeHealthServerRpc(-Damage, networkObject.OwnerClientId);
-          hasHit = true;
-          break;
-        }
-        if(hitCollider.transform.parent.gameObject.GetComponent<NetworkObject>() == null){
-          hasHit = true;
+    if(!hasHit && IsHost){
+      Collider[] hitColliders = Physics.OverlapSphere(transform.position, blastRadius);
+      foreach (Collider hitCollider in hitColliders){
+        if(hitCollider.transform.parent != null){
+          if(hitCollider.transform.parent.gameObject.GetComponent<Health>() != null && networkObject.OwnerClientId != hitCollider.transform.parent.gameObject.GetComponent<NetworkObject>().OwnerClientId){
+            Health healthController = hitCollider.transform.parent.gameObject.GetComponent<Health>();
+            healthController.ChangeHealthServerRpc(-Damage, networkObject.OwnerClientId);
+            hasHit = true;
+            break;
+          }
+          if(hitCollider.transform.parent.gameObject.GetComponent<NetworkObject>() == null){
+            hasHit = true;
+          }
         }
       }
-    }
-    if(hasHit){
-      DestroyProjectileRpc(transform.position);
+      if(hasHit){
+        DestroyProjectileRpc(transform.position);
+      }
     }
   }
 

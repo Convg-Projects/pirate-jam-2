@@ -40,6 +40,8 @@ public class PlayerShooting : NetworkBehaviour
       var localInstance = Instantiate(NetworkManager.GetNetworkPrefabOverride(dummyProjectilePrefab));
       localInstance.transform.position = spawnPosition;
 
+      localInstance.GetComponent<DummyProjectileController>().ownerId = ownerId;
+
       Rigidbody localInstanceRB = localInstance.GetComponent<Rigidbody>();
       localInstanceRB.AddForce(bulletForce * spawnDirection, ForceMode.Impulse);
     }
