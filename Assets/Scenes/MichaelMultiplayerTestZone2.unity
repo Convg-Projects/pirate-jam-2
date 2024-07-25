@@ -37130,7 +37130,7 @@ MonoBehaviour:
   bronzeText: {fileID: 148456904}
   localText: {fileID: 1307456056}
   clockText: {fileID: 1759607681}
-  gameDuration: 60
+  gameDuration: 300
   timeLeft:
     m_InternalValue: 0
 --- !u!4 &879726329

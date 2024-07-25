@@ -12,12 +12,16 @@ public class DummyProjectileController : MonoBehaviour
   }
 
   void OnCollisionEnter(Collision col){
-    if(col.gameObject.GetComponent<NetworkObject>() == null){
+    if(col.transform.parent == null){
       Destroy(gameObject);
-      return;
-    }
-    if(col.gameObject.GetComponent<NetworkObject>().OwnerClientId != ownerId){
-      Destroy(gameObject);
+    } else {
+      if(col.transform.parent.gameObject.GetComponent<NetworkObject>() == null){
+        Destroy(gameObject);
+        return;
+      }
+      if(col.transform.parent.gameObject.GetComponent<NetworkObject>().OwnerClientId != ownerId){
+        Destroy(gameObject);
+      }
     }
   }
 }
