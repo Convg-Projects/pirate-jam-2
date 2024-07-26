@@ -26,11 +26,13 @@ public class PlayerNetworking : NetworkBehaviour
   }
 
   public override void OnNetworkDespawn(){
-    if(IsOwner){
-      Cursor.visible = true;
-      Cursor.lockState = CursorLockMode.None;
-      SceneManager.LoadScene(0);
-    }
+    if(!IsOwner){return;}
+
+    NetworkManager.Singleton.Shutdown();
+
+    Cursor.visible = true;
+    Cursor.lockState = CursorLockMode.None;
+    SceneManager.LoadScene(0);
   }
 
   void OnApplicationQuit() {
