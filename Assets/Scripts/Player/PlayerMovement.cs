@@ -79,6 +79,7 @@ public class PlayerMovement : NetworkBehaviour
     if(haltMovementTime <= 0f){
       Move();
     }
+    DoGravity();
   }
 
   void Update(){
@@ -96,6 +97,10 @@ public class PlayerMovement : NetworkBehaviour
     } else {
       Debug.DrawRay(cam.transform.position, cam.transform.forward * 3, Color.red);
     }
+  }
+
+  void DoGravity(){
+    rb.AddForce(Physics.gravity * (25 * (gravityMultiplier - 1)) * Time.fixedDeltaTime, ForceMode.Acceleration);
   }
 
   void Move(){
@@ -136,7 +141,6 @@ public class PlayerMovement : NetworkBehaviour
   }
 
   void Jump(){
-    rb.AddForce(Physics.gravity * (gravityMultiplier - 1), ForceMode.Acceleration);
     noyoteTime -= Time.deltaTime;
 
     if(!grounded){
@@ -175,8 +179,8 @@ public class PlayerMovement : NetworkBehaviour
   }
 
   void Look(){
-    transform.Rotate(0f, Input.GetAxis(horizontalLookAxis) * lookSensitivity * Time.deltaTime * 25f, 0f);
-    camRotationX = Mathf.Clamp(camRotationX + Input.GetAxis(verticalLookAxis) * lookSensitivity * Time.deltaTime * 25f, -85f, 85f);
+    transform.Rotate(0f, Input.GetAxis(horizontalLookAxis) * lookSensitivity, 0f);
+    camRotationX = Mathf.Clamp(camRotationX + Input.GetAxis(verticalLookAxis) * lookSensitivity, -85f, 85f);
 
     cam.transform.localRotation = Quaternion.Euler(-camRotationX, 0, 0);
   }
