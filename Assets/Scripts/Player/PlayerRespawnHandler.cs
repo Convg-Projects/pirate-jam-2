@@ -33,7 +33,7 @@ public class PlayerRespawnHandler : NetworkBehaviour
 
         if(respawnTime.Value <= 0f){
           GetComponent<Health>().SetDeadRpc(false);
-          transform.position = Vector3.zero;
+          transform.position = PlayerSpawnManager.Instance.GetRandomSpawn();
         }
       }
 

@@ -13,6 +13,7 @@ public class PlayerShooting : NetworkBehaviour
 
   public override void OnNetworkSpawn(){
     networkObject = GetComponent<NetworkObject>();
+    weaponData = WeaponManager.Instance.weaponData;
 
     base.OnNetworkSpawn();
   }
