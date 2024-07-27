@@ -68,12 +68,12 @@ public class LobbyCreateUI : MonoBehaviour {
     }
 
     private void UpdateText() {
-        lobbyNameText.text = "Lobby Name: " + lobbyName;
+        lobbyNameText.text = lobbyName;
         publicPrivateText.text = isPrivate ? "Private" : "Public";
-        maxPlayersText.text = "Max Players: " + maxPlayers.ToString();
+        maxPlayersText.text = maxPlayers.ToString();
     }
 
-    private void Hide() {
+    public void Hide() {
         gameObject.SetActive(false);
     }
 

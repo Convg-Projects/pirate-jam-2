@@ -17,7 +17,7 @@ public class EditPlayerName : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI playerNameText;
 
 
-    private string playerName = "PlayerName";
+    private string playerName = "Guest";
 
 
     private void Awake() {
@@ -31,7 +31,7 @@ public class EditPlayerName : MonoBehaviour {
             (string newName) => {
                 playerName = newName;
 
-                playerNameText.text = playerName;
+                playerNameText.text = "Playing as: " + playerName;
 
                 OnNameChanged?.Invoke(this, EventArgs.Empty);
             });

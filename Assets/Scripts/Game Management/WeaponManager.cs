@@ -6,6 +6,8 @@ public class WeaponManager : MonoBehaviour
 {
   public static WeaponManager Instance { get; private set; }
 
+  [SerializeField]private LoadoutEditUI loadoutUI;
+
   public WeaponScriptableObject weaponData;
 
   void Awake(){
@@ -20,5 +22,7 @@ public class WeaponManager : MonoBehaviour
 
   public void SetWeapon(WeaponScriptableObject newWeaponData){
     weaponData = newWeaponData;
+    loadoutUI.weaponData = newWeaponData;
+    loadoutUI.Show();
   }
 }

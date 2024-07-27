@@ -6213,7 +6213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2852063757
+  GlobalObjectIdHash: 2855046969
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -6295,7 +6295,7 @@ MonoBehaviour:
   crouchSpeedMultiplier: 0.5
   capsuleCollider: {fileID: 7983759248973798970}
   jumpForce: 120
-  gravityMultiplier: 2.7
+  gravityMultiplier: 2.8
   maxDragDelay: 0.05
   maxCoyoteTime: 0.1
   maxNoyoteTime: 0.3

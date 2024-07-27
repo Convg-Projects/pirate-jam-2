@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/WeaponScriptableObject", order = 1)]
 public class WeaponScriptableObject : ScriptableObject
 {
+  public string description = "This is a great weapon choice";
+
   public bool auto = false;
   public bool hitscan = false;
 

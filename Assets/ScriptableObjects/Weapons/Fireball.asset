@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648463238ff44e947902d1f7748c82b6, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
+  description: Slow but explosive, the fireball is a fierce weapon
   auto: 1
   hitscan: 0
   numberOfShots: 1
   spread: 0.1
   maxFiringCooldown: 0.08
   bulletForce: 150
+  damage: 15
+  hitscanHitParticlePrefab: {fileID: 0}
   projectilePrefab: {fileID: 5547158417193266677, guid: a82643ed4a76255469a01cf462db198d,
     type: 3}
   dummyProjectilePrefab: {fileID: 5547158417193266677, guid: 8a39b07966b780e4bb865d6e8e49cbd8,
