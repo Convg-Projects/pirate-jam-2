@@ -187,7 +187,7 @@ public class PlayerMovement : NetworkBehaviour
 
   void DoDeathBarrier(){
     if(transform.position.y <= -10f){
-      GetComponent<Health>().ChangeHealthServerRpc(-99999, 99999);
+      GetComponent<Health>().ChangeHealthServerRpc(-99999, 9999);
     }
   }
 

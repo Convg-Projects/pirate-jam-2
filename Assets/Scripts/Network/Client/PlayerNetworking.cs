@@ -6,14 +6,12 @@ using Unity.Netcode;
 
 public class PlayerNetworking : NetworkBehaviour
 {
-  public void Update(){
-    if(Input.GetKeyDown(KeyCode.Escape) && IsOwner){
-      ServerRpcParams serverRpcParams = default;
-      ulong clientId = NetworkManager.Singleton.LocalClientId;
+  public void Disconnect(){
+    ServerRpcParams serverRpcParams = default;
+    ulong clientId = NetworkManager.Singleton.LocalClientId;
 
-      LobbyManager.Instance.LeaveLobby();
-      DisconnectSelfRPC(clientId);
-    }
+    LobbyManager.Instance.LeaveLobby();
+    DisconnectSelfRPC(clientId);
   }
 
   [Rpc(SendTo.Server)]

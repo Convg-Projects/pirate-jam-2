@@ -13,14 +13,19 @@ public class PlayerScore : NetworkBehaviour
     currentScore.Value = 0;
 
     base.OnNetworkSpawn();
-    ScoreManager.Instance.SyncTime();
+
+    if(!IsHost){
+      ScoreManager.Instance.ActivateTimer();
+      ScoreManager.Instance.SyncTime();
+    }
   }
 
   private void Update(){
     ScoreText.text = "Kills: " + currentScore.Value;
   }
 
-  public void UpdateScore(int increase){
+  public void UpdateScore(int increase, string enemyName){
     currentScore.Value += increase;
+    GetComponent<PlayerDeathMessageHandler>().ShowDeathMessage(enemyName);
   }
 }

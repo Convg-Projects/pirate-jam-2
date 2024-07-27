@@ -11,6 +11,8 @@ public class PlayerSpawnManager : MonoBehaviour
   void Awake(){
     if(Instance != null){
       Debug.Log("There is already a Player Spawn Manager instance. Destroying component!");
+    } else {
+      Instance = this;
     }
   }
 

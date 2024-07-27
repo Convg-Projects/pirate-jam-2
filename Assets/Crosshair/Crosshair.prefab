@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 487507617357205535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,5 +88,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a526ccbe488a5b4884133201380e11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalTexture: {fileID: 2800000, guid: 57127fda785adb1479a30a7c484ebca3, type: 3}
-  changedTexture: {fileID: 2800000, guid: a682e9896ff6f40409393d5513328c89, type: 3}
+  originalTexture: {fileID: 2800000, guid: 243016069ea7bc84e95010235dad828e, type: 3}
+  changedTexture: {fileID: 2800000, guid: f0e1b386fd75d3c44871e2fe2f38335a, type: 3}

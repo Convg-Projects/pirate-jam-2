@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Unity.Netcode;
 using TMPro;
 
@@ -10,7 +11,7 @@ public class Health : NetworkBehaviour
   [SerializeField]private bool destroyOnDeath = false;
   [SerializeField]private bool isPlayer = false;
   [SerializeField]private bool displayHealth = false;
-  [SerializeField]private TextMeshProUGUI healthText;
+  [SerializeField]private Slider healthSlider;
 
   NetworkVariable<int> health = new NetworkVariable<int>();
   public NetworkVariable<bool> dead = new NetworkVariable<bool>();
@@ -22,7 +23,7 @@ public class Health : NetworkBehaviour
       ChangeHealthServerRpc(maxHealth, 0);
       health.OnValueChanged += OnHealthChanged;
       if(displayHealth){
-        healthText.text = "Health: " + maxHealth.ToString();
+        healthSlider.value = 1;
       }
     }
 
@@ -31,7 +32,7 @@ public class Health : NetworkBehaviour
 
   public void OnHealthChanged(int previous, int current){
     if(displayHealth){
-      healthText.text = "Health: " + health.Value.ToString();
+      healthSlider.value = (float) health.Value / (float) maxHealth;
     }
     if(current <= 0 && !dead.Value){
       HandleDeathRpc();
@@ -40,8 +41,11 @@ public class Health : NetworkBehaviour
 
   [Rpc(SendTo.Server)]
   public void ChangeHealthServerRpc(int amount, ulong attackerId){
-      health.Value += amount;
-      lastAttackerId.Value = attackerId;
+    lastAttackerId.Value = attackerId;
+    health.Value += amount;
+    if(health.Value + amount <= 0 && !dead.Value){
+      HandleDeathRpc();
+    }
   }
 
   [Rpc(SendTo.Server)]
@@ -50,8 +54,9 @@ public class Health : NetworkBehaviour
     if(destroyOnDeath){
       GetComponent<NetworkObject>().Despawn();
     }
-    if(lastAttackerId.Value < (ulong) 9999){
-      NetworkManager.Singleton.ConnectedClients[lastAttackerId.Value].PlayerObject.gameObject.GetComponent<PlayerScore>().UpdateScore(1);
+    if(lastAttackerId.Value < (ulong) 9999 && isPlayer){
+      GameObject attacker = NetworkManager.Singleton.ConnectedClients[lastAttackerId.Value].PlayerObject.gameObject;
+      attacker.GetComponent<PlayerScore>().UpdateScore(1, GetComponent<PlayerId>().playerName.Value.stringValue);
     }
     SetDeadRpc(true);
   }

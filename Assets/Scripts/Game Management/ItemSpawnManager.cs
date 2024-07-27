@@ -32,7 +32,7 @@ public class ItemSpawnManager : MonoBehaviour
 
       if(availableSpawns.Count == 0){return;}
       GameObject instance = GameObject.Instantiate(items[Random.Range(0, items.Length)]);
-      Transform spawnPoint = availableSpawns[Random.Range(0, spawnPositions.Length)];
+      Transform spawnPoint = availableSpawns[Random.Range(0, availableSpawns.Count)];
 
       instance.transform.position = spawnPoint.position;
       instance.transform.parent = spawnPoint;

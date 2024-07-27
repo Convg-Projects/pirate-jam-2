@@ -9,13 +9,14 @@ public class ScoreManager : NetworkBehaviour
 {
   public static ScoreManager Instance { get; private set; }
 
+  [SerializeField]private GameObject timerObject;
   [SerializeField]private GameObject endgameCanvas;
   [SerializeField]private GameObject restartButton;
   [SerializeField]private TextMeshProUGUI goldText;
   [SerializeField]private TextMeshProUGUI silverText;
   [SerializeField]private TextMeshProUGUI bronzeText;
   [SerializeField]private TextMeshProUGUI localText;
-  [SerializeField]private TextMeshProUGUI clockText;
+  public TextMeshProUGUI clockText;
 
   [SerializeField]private float gameDuration = 500f;
   public NetworkVariable<float> timeLeft = new NetworkVariable<float>();
@@ -42,6 +43,9 @@ public class ScoreManager : NetworkBehaviour
     }
 
     base.OnNetworkSpawn();
+
+    SyncTime();
+    ActivateTimer();
   }
 
   void Update(){
@@ -69,6 +73,10 @@ public class ScoreManager : NetworkBehaviour
 
   public void OnTimeChanged(float previous, float current){
     SyncTime();
+  }
+
+  public void ActivateTimer(){
+    timerObject.SetActive(true);
   }
 
   [Rpc(SendTo.Everyone)]

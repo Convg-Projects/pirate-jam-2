@@ -14,6 +14,7 @@ public class PlayerRespawnHandler : NetworkBehaviour
   [SerializeField]private GameObject colliderParent;
   public float maxRespawnTime = 10f;
   public NetworkVariable<float> respawnTime = new NetworkVariable<float>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+  private bool isDead = false;
 
   public override void OnNetworkSpawn(){
     if(!IsOwner){
@@ -37,9 +38,13 @@ public class PlayerRespawnHandler : NetworkBehaviour
         }
       }
 
-      ChangeActiveStatus(false);
+      if(isDead){
+        ChangeActiveStatus(false);
+      }
     } else {
-      ChangeActiveStatus(true);
+      if(!isDead){
+        ChangeActiveStatus(true);
+      }
     }
   }
 
@@ -50,11 +55,14 @@ public class PlayerRespawnHandler : NetworkBehaviour
 
   public void ChangeActiveStatus(bool active){
     if(active){
+      isDead = true;
       colliderParent.SetActive(true);
+
       GetComponent<Rigidbody>().isKinematic = false;
       GetComponent<PlayerMovement>().enabled = true;
       GetComponent<PlayerShooting>().enabled = true;
       GetComponent<Health>().enabled = true;
+
       renderer.SetActive(true);
       GetComponent<PlayerWorldModelHandler>().DeactivateOwnerWorldmodel();
 
@@ -63,11 +71,14 @@ public class PlayerRespawnHandler : NetworkBehaviour
         gameCanvas.SetActive(true);
       }
     } else {
+      isDead = false;
       colliderParent.SetActive(false);
+
       GetComponent<Rigidbody>().isKinematic = true;
       GetComponent<PlayerMovement>().enabled = false;
       GetComponent<PlayerShooting>().enabled = false;
       GetComponent<Health>().enabled = false;
+
       renderer.SetActive(false);
       if(IsOwner){
         deathCanvas.SetActive(true);
