@@ -8,15 +8,12 @@ public class PlayerShooting : NetworkBehaviour
   [SerializeField]private Transform fireTransform;
   [SerializeField]private WeaponScriptableObject weaponData;
 
-  private int currentAmmo;
-
   private float firingCooldown;
   private NetworkObject networkObject;
 
   public override void OnNetworkSpawn(){
     networkObject = GetComponent<NetworkObject>();
     weaponData = WeaponManager.Instance.weaponData;
-    currentAmmo = maxAmmo;
 
     base.OnNetworkSpawn();
   }
@@ -29,7 +26,6 @@ public class PlayerShooting : NetworkBehaviour
 
   void CheckFiring(){
     firingCooldown -= Time.deltaTime;
-    if(currentAmmo <= 0){return;}
 
     if (weaponData.auto && Input.GetMouseButton(0) && firingCooldown <= 0f){
       for (int i = 0; i < weaponData.numberOfShots; ++i){
