@@ -7,6 +7,8 @@ public class WeaponScriptableObject : ScriptableObject
 {
   public string description = "This is a great weapon choice";
 
+  public int maxAmmo = 100f;
+
   public bool auto = false;
   public bool hitscan = false;
 
