@@ -49,6 +49,11 @@ public class Health : NetworkBehaviour
   }
 
   [Rpc(SendTo.Server)]
+  public void ResetHealthRpc(){
+    health.Value = maxHealth;
+  }
+
+  [Rpc(SendTo.Server)]
   public void HandleDeathRpc(){
     if(dead.Value){return;}
     if(destroyOnDeath){

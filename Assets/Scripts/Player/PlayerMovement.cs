@@ -195,6 +195,9 @@ public class PlayerMovement : NetworkBehaviour
     if(collisionInfo.transform.tag == "Ground"){
       grounded = CheckGrounded();
     }
+    if(collisionInfo.transform.tag == "DeathZone"){
+      GetComponent<Health>().ChangeHealthServerRpc(-99999, 9999);
+    }
   }
 
   void OnCollisionExit(){

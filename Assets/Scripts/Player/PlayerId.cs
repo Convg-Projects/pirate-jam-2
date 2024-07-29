@@ -6,6 +6,7 @@ using Unity.Services.Core;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using Unity.Netcode;
+using TMPro;
 
 public class PlayerId : NetworkBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerId : NetworkBehaviour
       stringValue = "name"
     }
   );
+  [SerializeField]private TextMeshProUGUI nameText;
 
   public struct customString : INetworkSerializable {
     public string stringValue;
@@ -34,16 +36,27 @@ public class PlayerId : NetworkBehaviour
         }
       }
 
+      if(IsOwner){
+        nameText.gameObject.SetActive(false);
+      }
+
       base.OnNetworkSpawn();
     }
   }
 
-  [Rpc(SendTo.Server)]
+  [Rpc(SendTo.Everyone)]
   public void SetNameRpc(string newName){
-    playerName.Value = new customString{ stringValue = newName };
+    if(IsHost){
+      playerName.Value = new customString{ stringValue = newName };
+    }
+    nameText.text = "<mark=#00000099> " + newName + " </mark>";
   }
 
   void Update(){
-    playerNameString = playerName.Value.stringValue;
+    if(!IsOwner){
+      playerNameString = playerName.Value.stringValue;
+      nameText.text = "<mark=#00000099> " + playerName.Value.stringValue + " </mark>";
+      nameText.transform.parent.LookAt(NetworkManager.Singleton.LocalClient.PlayerObject.transform.position);
+    }
   }
 }

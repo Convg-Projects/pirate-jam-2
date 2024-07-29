@@ -18,7 +18,7 @@ public class ScoreManager : NetworkBehaviour
   [SerializeField]private TextMeshProUGUI localText;
   public TextMeshProUGUI clockText;
 
-  [SerializeField]private float gameDuration = 500f;
+  public float gameDuration = 500f;
   public NetworkVariable<float> timeLeft = new NetworkVariable<float>();
   private float localTimeLeft;
   private float timerHeartbeatTime;
