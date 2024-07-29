@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using TMPro;
 
 public class PlayerShooting : NetworkBehaviour
 {
   [SerializeField]private Transform fireTransform;
   [SerializeField]private WeaponScriptableObject weaponData;
+  [SerializeField]private TextMeshProUGUI ammoText;
 
   private int currentAmmo;
 
@@ -16,7 +18,7 @@ public class PlayerShooting : NetworkBehaviour
   public override void OnNetworkSpawn(){
     networkObject = GetComponent<NetworkObject>();
     weaponData = WeaponManager.Instance.weaponData;
-    currentAmmo = maxAmmo;
+    currentAmmo = weaponData.maxAmmo;
 
     base.OnNetworkSpawn();
   }
@@ -24,6 +26,7 @@ public class PlayerShooting : NetworkBehaviour
   void Update(){
     if(IsOwner){
       CheckFiring();
+      ammoText.text = currentAmmo + "/" + weaponData.maxAmmo;
     }
   }
 
@@ -44,6 +47,7 @@ public class PlayerShooting : NetworkBehaviour
   }
 
   private void FireBullet(){
+    --currentAmmo;
     Vector3 bulletSpawnDirection = fireTransform.forward;
     Vector3 spreadVector = new Vector3(Random.insideUnitCircle.x * weaponData.spread, Random.insideUnitCircle.y * weaponData.spread, 0f);
     bulletSpawnDirection += transform.TransformDirection(spreadVector);
@@ -73,6 +77,10 @@ public class PlayerShooting : NetworkBehaviour
     }
 
     firingCooldown = weaponData.maxFiringCooldown;
+  }
+
+  public void ResetAmmo(){
+    currentAmmo = weaponData.maxAmmo;
   }
 
   [Rpc(SendTo.Everyone)]

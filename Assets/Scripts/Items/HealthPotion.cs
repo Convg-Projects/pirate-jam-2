@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class HealthPotion : MonoBehaviour
+public class HealthPotion : NetworkBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  void OnCollisionEnter(Collision col){
+    if(col.gameObject.GetComponent<NetworkObject>() == null){return;}
+    if(col.gameObject.GetComponent<PlayerId>() == null){return;}
+    col.gameObject.GetComponent<Health>().ResetHealthRpc();
+    DestroyPotionRpc();
+  }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  [Rpc(SendTo.Server)]
+  public void DestroyPotionRpc(){
+    GetComponent<NetworkObject>().Despawn();
+  }
 }
