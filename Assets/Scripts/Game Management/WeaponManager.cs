@@ -8,7 +8,8 @@ public class WeaponManager : MonoBehaviour
 
   [SerializeField]private LoadoutEditUI loadoutUI;
 
-  public WeaponScriptableObject weaponData;
+  public WeaponScriptableObject[] weaponDataObjects;
+  public int weapon = 0;
 
   void Awake(){
     if (Instance != null){
@@ -20,9 +21,9 @@ public class WeaponManager : MonoBehaviour
 
   }
 
-  public void SetWeapon(WeaponScriptableObject newWeaponData){
-    weaponData = newWeaponData;
-    loadoutUI.weaponData = newWeaponData;
+  public void SetWeapon(int newWeaponData){
+    weapon = newWeaponData;
+    loadoutUI.weaponData = weaponDataObjects[newWeaponData];
     loadoutUI.Show();
   }
 }

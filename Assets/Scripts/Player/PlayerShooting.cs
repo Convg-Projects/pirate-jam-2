@@ -7,8 +7,10 @@ using TMPro;
 public class PlayerShooting : NetworkBehaviour
 {
   [SerializeField]private Transform fireTransform;
-  [SerializeField]private WeaponScriptableObject weaponData;
+  [SerializeField]private WeaponScriptableObject[] weaponDataObjects;
   [SerializeField]private TextMeshProUGUI ammoText;
+
+  public NetworkVariable<int> weapon = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
   private int currentAmmo;
 
@@ -17,8 +19,10 @@ public class PlayerShooting : NetworkBehaviour
 
   public override void OnNetworkSpawn(){
     networkObject = GetComponent<NetworkObject>();
-    weaponData = WeaponManager.Instance.weaponData;
-    currentAmmo = weaponData.maxAmmo;
+    if(IsOwner){
+      weapon.Value = WeaponManager.Instance.weapon;
+      currentAmmo = weaponDataObjects[weapon.Value].maxAmmo;
+    }
 
     base.OnNetworkSpawn();
   }
@@ -26,7 +30,7 @@ public class PlayerShooting : NetworkBehaviour
   void Update(){
     if(IsOwner){
       CheckFiring();
-      ammoText.text = currentAmmo + "/" + weaponData.maxAmmo;
+      ammoText.text = currentAmmo + "/" + weaponDataObjects[weapon.Value].maxAmmo;
     }
   }
 
@@ -34,13 +38,13 @@ public class PlayerShooting : NetworkBehaviour
     firingCooldown -= Time.deltaTime;
     if(currentAmmo <= 0){return;}
 
-    if (weaponData.auto && Input.GetMouseButton(0) && firingCooldown <= 0f){
-      for (int i = 0; i < weaponData.numberOfShots; ++i){
+    if (weaponDataObjects[weapon.Value].auto && Input.GetMouseButton(0) && firingCooldown <= 0f){
+      for (int i = 0; i < weaponDataObjects[weapon.Value].numberOfShots; ++i){
         FireBullet();
       }
     }
-    if (!weaponData.auto && Input.GetMouseButtonDown(0) && firingCooldown <= 0f){
-      for (int i = 0; i < weaponData.numberOfShots; ++i){
+    if (!weaponDataObjects[weapon.Value].auto && Input.GetMouseButtonDown(0) && firingCooldown <= 0f){
+      for (int i = 0; i < weaponDataObjects[weapon.Value].numberOfShots; ++i){
         FireBullet();
       }
     }
@@ -49,17 +53,17 @@ public class PlayerShooting : NetworkBehaviour
   private void FireBullet(){
     --currentAmmo;
     Vector3 bulletSpawnDirection = fireTransform.forward;
-    Vector3 spreadVector = new Vector3(Random.insideUnitCircle.x * weaponData.spread, Random.insideUnitCircle.y * weaponData.spread, 0f);
+    Vector3 spreadVector = new Vector3(Random.insideUnitCircle.x * weaponDataObjects[weapon.Value].spread, Random.insideUnitCircle.y * weaponDataObjects[weapon.Value].spread, 0f);
     bulletSpawnDirection += transform.TransformDirection(spreadVector);
 
-    if(weaponData.hitscan){
+    if(weaponDataObjects[weapon.Value].hitscan){
       RaycastHit hit;
       Physics.Raycast(fireTransform.position, bulletSpawnDirection, out hit, 50f);
       Debug.DrawRay(fireTransform.position, bulletSpawnDirection * 50f, Color.cyan, 5f, true);
 
       if(hit.collider == null){return;}
 
-      GameObject particleInstance = GameObject.Instantiate(weaponData.hitscanHitParticlePrefab);
+      GameObject particleInstance = GameObject.Instantiate(weaponDataObjects[weapon.Value].hitscanHitParticlePrefab);
       Destroy(particleInstance, 5f);
       particleInstance.transform.position = hit.point;
 
@@ -67,38 +71,38 @@ public class PlayerShooting : NetworkBehaviour
 
       if(hit.collider.transform.parent.gameObject.GetComponent<Health>() != null && networkObject.OwnerClientId != hit.collider.transform.parent.gameObject.GetComponent<NetworkObject>().OwnerClientId){
         Health healthController = hit.collider.transform.parent.gameObject.GetComponent<Health>();
-        healthController.ChangeHealthServerRpc(-weaponData.damage, networkObject.OwnerClientId);
+        healthController.ChangeHealthServerRpc(-weaponDataObjects[weapon.Value].damage, networkObject.OwnerClientId);
       }
 
     } else {
       SpawnFakeBulletRpc(fireTransform.position, bulletSpawnDirection, NetworkManager.Singleton.LocalClientId);
 
-      SpawnBulletRpc(fireTransform.position, bulletSpawnDirection, weaponData.damage, NetworkManager.Singleton.LocalClientId);
+      SpawnBulletRpc(fireTransform.position, bulletSpawnDirection, weaponDataObjects[weapon.Value].damage, NetworkManager.Singleton.LocalClientId);
     }
 
-    firingCooldown = weaponData.maxFiringCooldown;
+    firingCooldown = weaponDataObjects[weapon.Value].maxFiringCooldown;
   }
 
   public void ResetAmmo(){
-    currentAmmo = weaponData.maxAmmo;
+    currentAmmo = weaponDataObjects[weapon.Value].maxAmmo;
   }
 
   [Rpc(SendTo.Everyone)]
   private void SpawnFakeBulletRpc(Vector3 spawnPosition, Vector3 spawnDirection, ulong ownerId){
     if(!IsHost){ //Spawn a fake bullet to make clients happy
-      var localInstance = Instantiate(NetworkManager.GetNetworkPrefabOverride(weaponData.dummyProjectilePrefab));
+      var localInstance = Instantiate(NetworkManager.GetNetworkPrefabOverride(weaponDataObjects[weapon.Value].dummyProjectilePrefab));
       localInstance.transform.position = spawnPosition;
 
       localInstance.GetComponent<DummyProjectileController>().ownerId = ownerId;
 
       Rigidbody localInstanceRB = localInstance.GetComponent<Rigidbody>();
-      localInstanceRB.AddForce(weaponData.bulletForce * spawnDirection, ForceMode.Impulse);
+      localInstanceRB.AddForce(weaponDataObjects[weapon.Value].bulletForce * spawnDirection, ForceMode.Impulse);
     }
   }
 
   [Rpc(SendTo.Server)]
   private void SpawnBulletRpc(Vector3 spawnPosition, Vector3 spawnDirection, int bulletDamage, ulong ownerId){
-    var instance = Instantiate(NetworkManager.GetNetworkPrefabOverride(weaponData.projectilePrefab));
+    var instance = Instantiate(NetworkManager.GetNetworkPrefabOverride(weaponDataObjects[weapon.Value].projectilePrefab));
     instance.transform.position = spawnPosition;
 
     var instanceNetworkObject = instance.GetComponent<NetworkObject>();
@@ -107,6 +111,6 @@ public class PlayerShooting : NetworkBehaviour
     instance.GetComponent<ProjectileController>().damage = bulletDamage;
 
     Rigidbody instanceRB = instance.GetComponent<Rigidbody>();
-    instanceRB.AddForce(weaponData.bulletForce * spawnDirection.normalized, ForceMode.Impulse);
+    instanceRB.AddForce(weaponDataObjects[weapon.Value].bulletForce * spawnDirection.normalized, ForceMode.Impulse);
   }
 }

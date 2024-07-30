@@ -6491,7 +6491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2852063757
+  GlobalObjectIdHash: 2855046969
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -6633,8 +6633,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireTransform: {fileID: 9063106904294025050}
-  weaponData: {fileID: 11400000, guid: 5983781795c050b4580d64761f538b58, type: 2}
+  weaponDataObjects:
+  - {fileID: 11400000, guid: 41507b7b4476b0843953efd46c985a4a, type: 2}
+  - {fileID: 11400000, guid: 0aec37bd2efaf614d911dfc4805a68d2, type: 2}
+  - {fileID: 11400000, guid: 5983781795c050b4580d64761f538b58, type: 2}
   ammoText: {fileID: 4472382313910583302}
+  weapon:
+    m_InternalValue: 0
 --- !u!114 &4429453749069171661
 MonoBehaviour:
   m_ObjectHideFlags: 0
