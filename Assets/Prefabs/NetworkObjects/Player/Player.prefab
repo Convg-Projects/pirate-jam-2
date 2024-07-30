@@ -6673,7 +6673,7 @@ MonoBehaviour:
   crouchSpeedMultiplier: 0.5
   capsuleCollider: {fileID: 7983759248973798970}
   jumpForce: 120
-  gravityMultiplier: 2.8
+  gravityMultiplier: 3.5
   maxDragDelay: 0.05
   maxCoyoteTime: 0.1
   maxNoyoteTime: 0.3
@@ -6682,7 +6682,7 @@ MonoBehaviour:
   forwardSpeed: 3.5
   sideSpeed: 1
   maxGroundSpeed: 80
-  maxAirSpeed: 20
+  maxAirSpeed: 40
   maxAcceleration: 10
   groundDrag: 50
   dragRamp: 0.5
@@ -6882,7 +6882,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 82
   orthographic: 0
   orthographic size: 5
   m_Depth: 0

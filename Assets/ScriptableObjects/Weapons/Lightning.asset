@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 648463238ff44e947902d1f7748c82b6, type: 3}
-  m_Name: TestHitscan
+  m_Name: Lightning
   m_EditorClassIdentifier: 
   description: Fast and accurate, your opponents won't see you coming!
   maxAmmo: 100
@@ -20,7 +20,7 @@ MonoBehaviour:
   spread: 0
   maxFiringCooldown: 0.1
   bulletForce: 100
-  damage: 15
+  damage: 2
   hitscanHitParticlePrefab: {fileID: 4738918471963668642, guid: 478d00553608f6445a9f07d513cbffb0,
     type: 3}
   projectilePrefab: {fileID: 0}

@@ -10,20 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 648463238ff44e947902d1f7748c82b6, type: 3}
-  m_Name: Fireball
+  m_Name: Earth
   m_EditorClassIdentifier: 
-  description: 'A single blast of fire that has a large damage radius and a cooldown
-    between firing. '
-  maxAmmo: 8
+  description: Small clusters of earth that reward loose aim and fast movement
+  maxAmmo: 60
   auto: 1
   hitscan: 0
-  numberOfShots: 1
-  spread: 0
+  numberOfShots: 6
+  spread: 0.06
   maxFiringCooldown: 1
-  bulletForce: 40
-  damage: 50
+  bulletForce: 30
+  damage: 10
   hitscanHitParticlePrefab: {fileID: 0}
-  projectilePrefab: {fileID: 5547158417193266677, guid: a82643ed4a76255469a01cf462db198d,
+  projectilePrefab: {fileID: 5547158417193266677, guid: 1a4b80f731752e24ab42a9229b219e88,
     type: 3}
-  dummyProjectilePrefab: {fileID: 5547158417193266677, guid: 8a39b07966b780e4bb865d6e8e49cbd8,
+  dummyProjectilePrefab: {fileID: 5547158417193266677, guid: 9d6a4bbdd973e234d8e9a44aba321a17,
     type: 3}
