@@ -8,7 +8,7 @@ public class DeathZoneManager : NetworkBehaviour
   public static DeathZoneManager Instance { get; private set; }
   [SerializeField]private float maxDistance;
 
-  void OnNetworkSpawn(){
+  public override void OnNetworkSpawn(){
     if (Instance != null){
       Debug.Log("There is already a Death Zone Manager instance. Destroying component!");
       Destroy(this);
