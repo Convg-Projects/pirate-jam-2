@@ -1,0 +1,12 @@
+# Made in Blockbench 4.10.4
+newmtl m_760d1cd0-2f0e-1108-a875-14adfb0f9ce2
+map_Kd wideTowerAndFloor.png
+newmtl m_6f50fe17-57c9-36cc-e911-e61d7233663f
+map_Kd castleEdge.png
+newmtl m_70960244-c44b-3627-60a4-473d458a1b2a
+map_Kd additionalTowerQuarter.png
+newmtl m_ca350cc8-0b67-b827-472e-3e48595501d0
+map_Kd flags.png
+newmtl m_4d9529f9-3b38-31c8-cf93-4fbfeeba96f9
+map_Kd clothTower.png
+newmtl none

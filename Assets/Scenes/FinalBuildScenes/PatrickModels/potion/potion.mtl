@@ -1,0 +1,8 @@
+# Made in Blockbench 4.10.4
+newmtl m_c56468a3-446e-b378-1310-503b738f12aa
+map_Kd potionGlass.png
+newmtl m_6a6c1929-58a8-f8a2-086b-09fcb2fec3a6
+map_Kd potionCork.png
+newmtl m_9b82c45d-02d9-588b-d5d1-6a808f5447c9
+map_Kd potionInside.png
+newmtl none
