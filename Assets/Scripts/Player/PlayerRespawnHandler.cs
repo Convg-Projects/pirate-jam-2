@@ -9,7 +9,7 @@ public class PlayerRespawnHandler : NetworkBehaviour
 {
   [SerializeField]private GameObject deathCanvas;
   [SerializeField]private GameObject gameCanvas;
-  [SerializeField]private GameObject renderer;
+  [SerializeField]private GameObject[] rendererObjects;
   [SerializeField]private TextMeshProUGUI countdownText;
   [SerializeField]private GameObject colliderParent;
   public float maxRespawnTime = 10f;
@@ -63,7 +63,9 @@ public class PlayerRespawnHandler : NetworkBehaviour
       GetComponent<PlayerShooting>().enabled = true;
       GetComponent<Health>().enabled = true;
 
-      renderer.SetActive(true);
+      foreach(GameObject G in rendererObjects){
+        G.SetActive(true);
+      }
       GetComponent<PlayerWorldModelHandler>().DeactivateOwnerWorldmodel();
 
       if(IsOwner){
@@ -79,7 +81,9 @@ public class PlayerRespawnHandler : NetworkBehaviour
       GetComponent<PlayerShooting>().enabled = false;
       GetComponent<Health>().enabled = false;
 
-      renderer.SetActive(false);
+      foreach(GameObject G in rendererObjects){
+        G.SetActive(false);
+      }
       if(IsOwner){
         deathCanvas.SetActive(true);
         gameCanvas.SetActive(false);

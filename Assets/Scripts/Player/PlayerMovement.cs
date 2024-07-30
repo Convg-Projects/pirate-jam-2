@@ -18,6 +18,8 @@ public class PlayerMovement : NetworkBehaviour
   [SerializeField]private float crouchSpeedMultiplier = 0.5f;
   [SerializeField]private CapsuleCollider capsuleCollider;
 
+  [SerializeField]private Animator animator;
+
   [SerializeField]private float jumpForce = 35f;
   [SerializeField]private float gravityMultiplier = 2f;
   [SerializeField]private float maxDragDelay = 0.05f;
@@ -87,7 +89,6 @@ public class PlayerMovement : NetworkBehaviour
     dragDelay -= Time.deltaTime;
 
     Look();
-    //groundDrag = CheckGrounded();
     Jump();
     Crouch();
     DoDeathBarrier();
@@ -106,6 +107,12 @@ public class PlayerMovement : NetworkBehaviour
   void Move(){
     Vector3 wishVector = transform.TransformDirection(new Vector3(Input.GetAxis(horizontalMovementAxis) * sideSpeed, 0f, Input.GetAxis(verticalMovementAxis) * forwardSpeed)).normalized;
     float currentSpeed = Vector3.Dot(rb.velocity, wishVector);
+
+    if(wishVector.magnitude == 0f){
+      animator.SetBool("moving", false);
+    } else {
+      animator.SetBool("moving", true);
+    }
 
     if(grounded && dragDelay <= 0f){
       //drag
@@ -141,6 +148,7 @@ public class PlayerMovement : NetworkBehaviour
   }
 
   void Jump(){
+    animator.SetBool("airborne", !grounded);
     noyoteTime -= Time.deltaTime;
 
     if(!grounded){
@@ -165,6 +173,8 @@ public class PlayerMovement : NetworkBehaviour
   }
 
   void Crouch(){
+    animator.SetBool("crouched", crouched);
+
     if(Input.GetKey(KeyCode.LeftShift)){
       crouched = true;
       cam.transform.localPosition = new Vector3(cam.transform.localPosition.x, camStandHeight - crouchDistance, cam.transform.localPosition.z);
