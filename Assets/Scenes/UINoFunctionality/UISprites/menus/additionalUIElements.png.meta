@@ -672,7 +672,7 @@ TextureImporter:
         width: 15
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -693,7 +693,7 @@ TextureImporter:
         width: 15
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -714,7 +714,7 @@ TextureImporter:
         width: 15
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -722,6 +722,48 @@ TextureImporter:
       bones: []
       spriteID: 13fa57b8c4b0f534492f60d54f508627
       internalID: 1228665761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: additionalUIElements_25
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 89
+        width: 76
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acec32d05717bb543b2a682defd5772a
+      internalID: -979060634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: additionalUIElements_26
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 70
+        width: 76
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbf7684a70be80e488daafbaffdf9c51
+      internalID: -933339063
       vertices: []
       indices: 
       edges: []
@@ -755,6 +797,8 @@ TextureImporter:
       additionalUIElements_22: 672715375
       additionalUIElements_23: -1293696530
       additionalUIElements_24: 1228665761
+      additionalUIElements_25: -979060634
+      additionalUIElements_26: -933339063
       additionalUIElements_3: -2131503700
       additionalUIElements_4: 2087289122
       additionalUIElements_5: 1736963792

@@ -71,8 +71,8 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _WindDensity: {r: 1, g: 1, b: 0, a: 0}
-    - _WindMovement: {r: 1, g: 1, b: 0, a: 0}
-    - _WindStrength: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _WindDensity: {r: 1, g: 0, b: 0, a: 0}
+    - _WindMovement: {r: 1, g: 0, b: 0, a: 0}
+    - _WindStrength: {r: 0.2, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
