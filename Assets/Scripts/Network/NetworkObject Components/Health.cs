@@ -12,6 +12,7 @@ public class Health : NetworkBehaviour
   [SerializeField]private bool isPlayer = false;
   [SerializeField]private bool displayHealth = false;
   [SerializeField]private Slider healthSlider;
+  [SerializeField]private GameObject hitAudioPrefab;
 
   NetworkVariable<int> health = new NetworkVariable<int>();
   public NetworkVariable<bool> dead = new NetworkVariable<bool>();
@@ -33,6 +34,11 @@ public class Health : NetworkBehaviour
   public void OnHealthChanged(int previous, int current){
     if(displayHealth){
       healthSlider.value = (float) health.Value / (float) maxHealth;
+    }
+    if(current < previous){
+      GameObject audioInstance = GameObject.Instantiate(hitAudioPrefab);
+      audioInstance.transform.position = transform.position;
+      Destroy(audioInstance, 0.5f);
     }
     if(current <= 0 && !dead.Value){
       HandleDeathRpc();
@@ -68,10 +74,16 @@ public class Health : NetworkBehaviour
 
   [Rpc(SendTo.Server)]
   public void SetDeadRpc(bool isDead){
-    Debug.Log("Changing deadness");
     if(isDead && isPlayer){
       PlayerRespawnHandler respawnHandler = GetComponent<PlayerRespawnHandler>();
+      if(lastAttackerId.Value < (ulong) 9999){
+        respawnHandler.attackerName.Value = new PlayerRespawnHandler.customString{ stringValue = NetworkManager.Singleton.ConnectedClients[lastAttackerId.Value].PlayerObject.gameObject.GetComponent<PlayerId>().playerName.Value.stringValue};
+        NetworkManager.Singleton.ConnectedClients[lastAttackerId.Value].PlayerObject.gameObject.GetComponent<PlayerDeathMessageHandler>().ShowDeathMessage(NetworkManager.Singleton.ConnectedClients[lastAttackerId.Value].PlayerObject.gameObject.GetComponent<PlayerId>().playerName.Value.stringValue);
+      } else {
+        respawnHandler.attackerName.Value = new PlayerRespawnHandler.customString{ stringValue = "The Abyss" };
+      }
       respawnHandler.ResetTimerRpc();
+
     }
     if(!isDead){
       health.Value = maxHealth;

@@ -41,7 +41,6 @@ public class ItemSpawnManager : NetworkBehaviour
 
   void DoSpawns(){
     timeBetweenSpawns -= Time.deltaTime;
-    Debug.Log(timeBetweenSpawns);
 
     if(timeBetweenSpawns <= 0f){
       List<Transform> availableSpawns = new List<Transform>();
