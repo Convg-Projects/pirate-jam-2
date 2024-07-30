@@ -114,6 +114,21 @@ public class PlayerMovement : NetworkBehaviour
       animator.SetBool("moving", true);
     }
 
+    PlayerAudioManager audioManager = GetComponent<PlayerAudioManager>();
+    if(grounded && (wishVector.magnitude <= -0.25f || wishVector.magnitude >= 0.25f)){
+      if(audioManager.moving.Value == false){
+        audioManager.moving.Value = true;
+      }
+    } else {
+      if(audioManager.moving.Value == true){
+        audioManager.moving.Value = false;
+      }
+    }
+
+    if(audioManager.crouched.Value == !crouched){
+      audioManager.crouched.Value = crouched;
+    }
+
     if(grounded && dragDelay <= 0f){
       //drag
       float subtractSpeed = Mathf.Clamp(rb.velocity.magnitude * dragRamp, 0f, groundDrag * Time.fixedDeltaTime);

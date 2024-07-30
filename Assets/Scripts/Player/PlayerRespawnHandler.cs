@@ -11,14 +11,35 @@ public class PlayerRespawnHandler : NetworkBehaviour
   [SerializeField]private GameObject gameCanvas;
   [SerializeField]private GameObject[] rendererObjects;
   [SerializeField]private TextMeshProUGUI countdownText;
+  [SerializeField]private TextMeshProUGUI killerText;
   [SerializeField]private GameObject colliderParent;
+
+  public NetworkVariable<customString> attackerName = new NetworkVariable<customString>(
+    new customString {
+      stringValue = "name"
+    }
+  );
+
+  public struct customString : INetworkSerializable {
+    public string stringValue;
+
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter {
+      serializer.SerializeValue(ref stringValue);
+    }
+  }
+
   public float maxRespawnTime = 10f;
   public NetworkVariable<float> respawnTime = new NetworkVariable<float>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+
+  private ulong lastAttackerId;
   private bool isDead = false;
 
   public override void OnNetworkSpawn(){
     if(!IsOwner){
       gameCanvas.SetActive(false);
+    }
+    if(IsHost){
+      attackerName.Value = new customString{ stringValue = "name error" };
     }
 
     base.OnNetworkSpawn();
@@ -30,7 +51,7 @@ public class PlayerRespawnHandler : NetworkBehaviour
       }
       if(IsOwner){
         respawnTime.Value -= Time.deltaTime;
-        countdownText.text = respawnTime.Value + "s";
+        countdownText.text = Mathf.FloorToInt(respawnTime.Value) + "   seconds";
 
         if(respawnTime.Value <= 0f){
           GetComponent<Health>().SetDeadRpc(false);
@@ -75,6 +96,8 @@ public class PlayerRespawnHandler : NetworkBehaviour
     } else {
       isDead = false;
       colliderParent.SetActive(false);
+
+      killerText.text = "<mark=#00000099> " + attackerName.Value.stringValue + " </mark>";
 
       GetComponent<Rigidbody>().isKinematic = true;
       GetComponent<PlayerMovement>().enabled = false;

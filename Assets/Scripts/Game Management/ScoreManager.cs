@@ -12,9 +12,12 @@ public class ScoreManager : NetworkBehaviour
   [SerializeField]private GameObject timerObject;
   [SerializeField]private GameObject endgameCanvas;
   [SerializeField]private GameObject restartButton;
-  [SerializeField]private TextMeshProUGUI goldText;
-  [SerializeField]private TextMeshProUGUI silverText;
-  [SerializeField]private TextMeshProUGUI bronzeText;
+  [SerializeField]private TextMeshProUGUI goldNameText;
+  [SerializeField]private TextMeshProUGUI silverNameText;
+  [SerializeField]private TextMeshProUGUI bronzeNameText;
+  [SerializeField]private TextMeshProUGUI goldNumberText;
+  [SerializeField]private TextMeshProUGUI silverNumberText;
+  [SerializeField]private TextMeshProUGUI bronzeNumberText;
   [SerializeField]private TextMeshProUGUI localText;
   public TextMeshProUGUI clockText;
 
@@ -81,10 +84,12 @@ public class ScoreManager : NetworkBehaviour
 
   [Rpc(SendTo.Everyone)]
   public void EndGameRpc(){
+    Cursor.visible = true;
+    Cursor.lockState = CursorLockMode.None;
     endgameCanvas.SetActive(true);
 
     if(IsHost){
-      restartButton.SetActive(true); // Allow only the host to restart the game
+      //restartButton.SetActive(true); // Allow only the host to restart the game
 
       // Find and display scores
       IReadOnlyDictionary<ulong, NetworkClient> connectedClients = NetworkManager.Singleton.ConnectedClients;
@@ -130,40 +135,52 @@ public class ScoreManager : NetworkBehaviour
 
   [Rpc(SendTo.Everyone)]
   public void ShowScoresRpc(int goldScore, int silverScore, int bronzeScore, string goldName, string silverName, string bronzeName){
-    goldText.text = goldName + ": " + goldScore;
-    silverText.text = silverName + ": " + silverScore;
-    bronzeText.text = bronzeName + ": " + bronzeScore;
+    goldNameText.text = goldName;
+    silverNameText.text = silverName;
+    bronzeNameText.text = bronzeName;
+    goldNumberText.text = goldScore.ToString();
+    silverNumberText.text = silverScore.ToString();
+    bronzeNumberText.text = bronzeScore.ToString();
 
-    GameObject localPlayerObject = NetworkManager.Singleton.LocalClient.PlayerObject.gameObject;
-    localText.text = localPlayerObject.GetComponent<PlayerId>().playerName.Value.stringValue + ": " + localPlayerObject.GetComponent<PlayerScore>().currentScore.Value;
+    //GameObject localPlayerObject = NetworkManager.Singleton.LocalClient.PlayerObject.gameObject;
+    //localText.text = localPlayerObject.GetComponent<PlayerId>().playerName.Value.stringValue + localPlayerObject.GetComponent<PlayerScore>().currentScore.Value;
 
-    goldText.gameObject.SetActive(true);
-    silverText.gameObject.SetActive(true);
-    bronzeText.gameObject.SetActive(true);
-    localText.gameObject.SetActive(true);
+    goldNameText.gameObject.SetActive(true);
+    silverNameText.gameObject.SetActive(true);
+    bronzeNameText.gameObject.SetActive(true);
+    goldNumberText.gameObject.SetActive(true);
+    silverNumberText.gameObject.SetActive(true);
+    bronzeNumberText.gameObject.SetActive(true);
+    //localText.gameObject.SetActive(true);
   }
 
   [Rpc(SendTo.Everyone)]
   public void ShowScoresRpc(int goldScore, int silverScore, string goldName, string silverName){
-    goldText.text = goldName + ": " + goldScore;
-    silverText.text = silverName + ": " + silverScore;
+    goldNameText.text = goldName;
+    silverNameText.text = silverName;
+    goldNumberText.text = goldScore.ToString();
+    silverNumberText.text = silverScore.ToString();
 
-    GameObject localPlayerObject = NetworkManager.Singleton.LocalClient.PlayerObject.gameObject;
-    localText.text = localPlayerObject.GetComponent<PlayerId>().playerName.Value.stringValue + ": " + localPlayerObject.GetComponent<PlayerScore>().currentScore.Value;
+    //GameObject localPlayerObject = NetworkManager.Singleton.LocalClient.PlayerObject.gameObject;
+    //localText.text = localPlayerObject.GetComponent<PlayerId>().playerName.Value.stringValue + localPlayerObject.GetComponent<PlayerScore>().currentScore.Value;
 
-    goldText.gameObject.SetActive(true);
-    silverText.gameObject.SetActive(true);
-    localText.gameObject.SetActive(true);
+    goldNameText.gameObject.SetActive(true);
+    silverNameText.gameObject.SetActive(true);
+    goldNumberText.gameObject.SetActive(true);
+    silverNumberText.gameObject.SetActive(true);
+    //localText.gameObject.SetActive(true);
   }
 
   [Rpc(SendTo.Everyone)]
   public void ShowScoresRpc(int goldScore, string goldName){
-    goldText.text = goldName + ": " + goldScore;
+    goldNameText.text = goldName;
+    goldNumberText.text = goldScore.ToString();
 
-    GameObject localPlayerObject = NetworkManager.Singleton.LocalClient.PlayerObject.gameObject;
-    localText.text = localPlayerObject.GetComponent<PlayerId>().playerName.Value.stringValue + ": " + localPlayerObject.GetComponent<PlayerScore>().currentScore.Value;
+    //GameObject localPlayerObject = NetworkManager.Singleton.LocalClient.PlayerObject.gameObject;
+    //localText.text = localPlayerObject.GetComponent<PlayerId>().playerName.Value.stringValue + localPlayerObject.GetComponent<PlayerScore>().currentScore.Value;
 
-    goldText.gameObject.SetActive(true);
-    localText.gameObject.SetActive(true);
+    goldNameText.gameObject.SetActive(true);
+    goldNumberText.gameObject.SetActive(true);
+    //localText.gameObject.SetActive(true);
   }
 }

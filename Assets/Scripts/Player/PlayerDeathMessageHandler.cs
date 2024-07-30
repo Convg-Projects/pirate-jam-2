@@ -22,6 +22,7 @@ public class PlayerDeathMessageHandler : MonoBehaviour
 
   public void ShowDeathMessage(string name){
     deathMessageText.text = "ELIMINATED <color=#FF7171>" + name + "</color>";
+    deathMessageTime = maxDeathMessageTime;
     deathMessageText.gameObject.SetActive(true);
   }
 }
