@@ -5,6 +5,7 @@ using Unity.Netcode;
 
 public class ProjectileController : NetworkBehaviour
 {
+  [SerializeField]private GameObject DestructionAudio;
   [SerializeField]private GameObject impactParticlePrefab;
   [SerializeField]private GameObject renderer;
   [SerializeField]private float blastRadius = 1.5f;
@@ -40,6 +41,9 @@ public class ProjectileController : NetworkBehaviour
         }
       }
       if(hasHit){
+        GameObject audioInstance = GameObject.Instantiate(DestructionAudio);
+        audioInstance.transform.position = transform.position;
+        audioInstance.transform.parent = transform.parent;
         DestroyProjectileRpc(transform.position);
       }
     }

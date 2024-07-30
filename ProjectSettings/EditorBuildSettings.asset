@@ -32,5 +32,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UINoFunctionality/ADJUSTEDUI.unity
     guid: ebda9931d716adc459820044f2dd4905
+  - enabled: 1
+    path: Assets/Scenes/MichaelMultiplayerTestZone3.unity
+    guid: 7fef5cdc21e035f4c9cb792841751551
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

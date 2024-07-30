@@ -5,7 +5,8 @@ using Unity.Netcode;
 
 public class DummyProjectileController : MonoBehaviour
 {
-  public ulong ownerId;
+  [HideInInspector]public ulong ownerId;
+  [SerializeField]private GameObject DestructionAudio;
 
   void Start(){
     //Destroy(gameObject, 4f);
@@ -13,14 +14,19 @@ public class DummyProjectileController : MonoBehaviour
 
   void OnCollisionEnter(Collision col){
     if(col.gameObject.GetComponent<NetworkObject>() == null){
-      Debug.Log("hit object");
+      GameObject audioInstance = GameObject.Instantiate(DestructionAudio);
+      audioInstance.transform.position = transform.position;
+      audioInstance.transform.parent = transform.parent;
+
       Destroy(gameObject);
       return;
     }
     if(col.gameObject.GetComponent<NetworkObject>().OwnerClientId != ownerId){
-      Debug.Log("hit other player");
+      GameObject audioInstance = GameObject.Instantiate(DestructionAudio);
+      audioInstance.transform.position = transform.position;
+      audioInstance.transform.parent = transform.parent;
+
       Destroy(gameObject);
     }
-    Debug.Log("hit local player");
   }
 }
