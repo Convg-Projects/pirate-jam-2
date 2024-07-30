@@ -17,7 +17,7 @@ MonoBehaviour:
   auto: 1
   hitscan: 0
   numberOfShots: 6
-  spread: 0.06
+  spread: 0.01
   maxFiringCooldown: 1
   bulletForce: 30
   damage: 10
