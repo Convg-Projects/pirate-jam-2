@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 'A single blast of fire that has a large damage radius and a cooldown
     between firing. '
-  maxAmmo: 8
+  maxAmmo: 32
   auto: 1
   hitscan: 0
   numberOfShots: 1
   spread: 0
-  maxFiringCooldown: 1
+  maxFiringCooldown: 2
   bulletForce: 40
   damage: 50
   hitscanHitParticlePrefab: {fileID: 0}

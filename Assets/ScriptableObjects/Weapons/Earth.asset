@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Earth
   m_EditorClassIdentifier: 
   description: Small clusters of earth that reward loose aim and fast movement
-  maxAmmo: 60
+  maxAmmo: 72
   auto: 1
   hitscan: 0
   numberOfShots: 6
-  spread: 0.01
+  spread: 0
   maxFiringCooldown: 1
   bulletForce: 30
-  damage: 10
+  damage: 8
   hitscanHitParticlePrefab: {fileID: 0}
   projectilePrefab: {fileID: 5547158417193266677, guid: 1a4b80f731752e24ab42a9229b219e88,
     type: 3}

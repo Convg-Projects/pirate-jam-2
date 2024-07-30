@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648463238ff44e947902d1f7748c82b6, type: 3}
   m_Name: Lightning
   m_EditorClassIdentifier: 
-  description: Fast and accurate, your opponents won't see you coming!
-  maxAmmo: 100
+  description: A straight beam of lightning that deals small gradual damage and rewards
+    focus and precise aim.
+  maxAmmo: 200
   auto: 1
   hitscan: 1
   numberOfShots: 1
   spread: 0
   maxFiringCooldown: 0.1
   bulletForce: 100
-  damage: 2
-  hitscanHitParticlePrefab: {fileID: 4738918471963668642, guid: 478d00553608f6445a9f07d513cbffb0,
+  damage: 3
+  hitscanHitParticlePrefab: {fileID: 3074821842346425236, guid: 9c275fa8f591ca84796068e27f7cde38,
     type: 3}
   projectilePrefab: {fileID: 0}
   dummyProjectilePrefab: {fileID: 0}
