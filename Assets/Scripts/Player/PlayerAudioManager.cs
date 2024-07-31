@@ -17,6 +17,8 @@ public class PlayerAudioManager : NetworkBehaviour {
     if(IsOwner){
       GameObject.Instantiate(musicPrefab);
     }
+
+    base.OnNetworkSpawn();
   }
 
   void Update(){
