@@ -21,14 +21,13 @@ public class PlayerDeathMessageHandler : NetworkBehaviour
         Debug.Log("3");
         deathMessageText.gameObject.SetActive(false);
       } else {
-        Debug.Log(deathMessageTime);
+        deathMessageText.text = "ELIMINATED <color=#FF7171>" + GetComponent<PlayerRespawnHandler>().attackerName.Value.stringValue + "</color>";
       }
     }
   }
 
   [Rpc(SendTo.Owner)]
   public void ShowDeathMessageRpc(){
-    Debug.Log("2");
     deathMessageText.text = "ELIMINATED <color=#FF7171>" + GetComponent<PlayerRespawnHandler>().attackerName.Value.stringValue + "</color>";
     deathMessageTime = maxDeathMessageTime;
     deathMessageText.gameObject.SetActive(true);

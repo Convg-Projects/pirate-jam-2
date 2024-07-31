@@ -81,7 +81,6 @@ public class Health : NetworkBehaviour
       PlayerRespawnHandler respawnHandler = GetComponent<PlayerRespawnHandler>();
       if(lastAttackerId.Value < (ulong) 9999){
         GameObject playerObject = NetworkManager.Singleton.ConnectedClients[lastAttackerId.Value].PlayerObject.gameObject;
-        Debug.Log("1");
         respawnHandler.attackerName.Value = new PlayerRespawnHandler.customString{ stringValue = NetworkManager.Singleton.ConnectedClients[lastAttackerId.Value].PlayerObject.gameObject.GetComponent<PlayerId>().playerName.Value.stringValue};
         playerObject.GetComponent<PlayerDeathMessageHandler>().ShowDeathMessageRpc();
       } else {
