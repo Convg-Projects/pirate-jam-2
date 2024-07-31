@@ -9790,6 +9790,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5421745468958677172}
     m_Modifications:
+    - target: {fileID: 368709551778689573, guid: bc331c65fe91e1141be5b5b286594abf,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 683391079630825497, guid: bc331c65fe91e1141be5b5b286594abf,
         type: 3}
       propertyPath: m_LocalPosition.x

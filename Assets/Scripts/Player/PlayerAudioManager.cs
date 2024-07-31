@@ -7,10 +7,17 @@ public class PlayerAudioManager : NetworkBehaviour {
   public NetworkVariable<bool> moving = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
   public NetworkVariable<bool> crouched = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
+  [SerializeField]private GameObject musicPrefab;
   [SerializeField]private GameObject[] footstepSounds;
 
   private float maxFootstepTime = 0.6f;
   private float footstepTime;
+
+  public override void OnNetworkSpawn(){
+    if(IsOwner){
+      GameObject.Instantiate(musicPrefab);
+    }
+  }
 
   void Update(){
     PlayMoveSounds();
