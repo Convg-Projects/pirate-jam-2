@@ -7,12 +7,12 @@ using TMPro;
 public class PlayerShooting : NetworkBehaviour
 {
   [SerializeField]private Transform fireTransform;
-  [SerializeField]private WeaponScriptableObject[] weaponDataObjects;
+  public WeaponScriptableObject[] weaponDataObjects;
   [SerializeField]private TextMeshProUGUI ammoText;
 
   public NetworkVariable<int> weapon = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
-  private int currentAmmo;
+  [HideInInspector]public int currentAmmo;
 
   private float firingCooldown;
   private NetworkObject networkObject;
