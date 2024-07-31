@@ -92,6 +92,7 @@ public class PlayerShooting : NetworkBehaviour
     if(!IsHost){ //Spawn a fake bullet to make clients happy
       var localInstance = Instantiate(NetworkManager.GetNetworkPrefabOverride(weaponDataObjects[weapon.Value].dummyProjectilePrefab));
       localInstance.transform.position = spawnPosition;
+      localInstance.transform.forward = spawnDirection;
 
       localInstance.GetComponent<DummyProjectileController>().ownerId = ownerId;
 
@@ -104,6 +105,7 @@ public class PlayerShooting : NetworkBehaviour
   private void SpawnBulletRpc(Vector3 spawnPosition, Vector3 spawnDirection, int bulletDamage, ulong ownerId){
     var instance = Instantiate(NetworkManager.GetNetworkPrefabOverride(weaponDataObjects[weapon.Value].projectilePrefab));
     instance.transform.position = spawnPosition;
+    instance.transform.forward = spawnDirection;
 
     var instanceNetworkObject = instance.GetComponent<NetworkObject>();
     instanceNetworkObject.SpawnWithOwnership(ownerId);

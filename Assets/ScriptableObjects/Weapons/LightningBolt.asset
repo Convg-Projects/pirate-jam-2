@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Small beams of energy that shoot rapidly and reward people who focus
     on aim rather than movement.
-  maxAmmo: 60
+  maxAmmo: 120
   auto: 1
   hitscan: 0
   numberOfShots: 1
-  spread: 0
+  spread: 0.01
   maxFiringCooldown: 0.1
-  bulletForce: 80
+  bulletForce: 120
   damage: 5
   hitscanHitParticlePrefab: {fileID: 0}
   projectilePrefab: {fileID: 5547158417193266677, guid: 9dbf93eaf1751bd46a67ce2f8ebe0bba,
     type: 3}
-  dummyProjectilePrefab: {fileID: 5547158417193266677, guid: 8a39b07966b780e4bb865d6e8e49cbd8,
+  dummyProjectilePrefab: {fileID: 5547158417193266677, guid: 0313efb8f461d4044a610e64c79e032c,
     type: 3}
