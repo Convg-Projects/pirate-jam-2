@@ -99,7 +99,7 @@ public class PlayerRespawnHandler : NetworkBehaviour
       isDead = false;
       colliderParent.SetActive(false);
 
-      killerText.text = "<mark=#00000099> " + attackerName.Value.stringValue + " </mark>";
+      killerText.text = "<mark=#00000099>" + attackerName.Value.stringValue + "</mark>";
 
       GetComponent<Rigidbody>().isKinematic = true;
       GetComponent<PlayerMovement>().enabled = false;
