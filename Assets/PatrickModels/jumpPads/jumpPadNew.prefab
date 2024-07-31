@@ -9881,7 +9881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectRange: 0.5
-  boostForce: 80
+  boostForce: 60
   maxBoostCooldown: 0.5
 --- !u!4 &5421745468958677172 stripped
 Transform:

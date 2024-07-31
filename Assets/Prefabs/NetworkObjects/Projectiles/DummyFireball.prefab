@@ -10553,8 +10553,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 3
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -10589,7 +10589,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -10682,8 +10682,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 3
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -10718,7 +10718,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -10835,6 +10835,7 @@ MonoBehaviour:
   ownerId: 0
   DestructionAudio: {fileID: 5397101840331922465, guid: ffc271f868a59c9489a37cd8449f2624,
     type: 3}
+  unparentedAudio: {fileID: 5457023989592673167}
 --- !u!1 &6367076982285749878
 GameObject:
   m_ObjectHideFlags: 0

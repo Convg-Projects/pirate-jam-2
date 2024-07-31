@@ -20,9 +20,9 @@ public class Health : NetworkBehaviour
   NetworkVariable<ulong> lastAttackerId = new NetworkVariable<ulong>();
 
   public override void OnNetworkSpawn(){
+    health.OnValueChanged += OnHealthChanged;
     if(IsOwner){
       ChangeHealthServerRpc(maxHealth, 0);
-      health.OnValueChanged += OnHealthChanged;
       if(displayHealth){
         healthSlider.value = 1;
       }
@@ -32,13 +32,16 @@ public class Health : NetworkBehaviour
   }
 
   public void OnHealthChanged(int previous, int current){
-    if(displayHealth){
-      healthSlider.value = (float) health.Value / (float) maxHealth;
-    }
     if(current < previous){
       GameObject audioInstance = GameObject.Instantiate(hitAudioPrefab);
       audioInstance.transform.position = transform.position;
       Destroy(audioInstance, 0.5f);
+    }
+
+    if(!IsOwner){return;}
+
+    if(displayHealth){
+      healthSlider.value = (float) health.Value / (float) maxHealth;
     }
     if(current <= 0 && !dead.Value){
       HandleDeathRpc();

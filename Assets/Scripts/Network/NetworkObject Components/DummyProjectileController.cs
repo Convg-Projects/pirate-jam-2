@@ -7,9 +7,13 @@ public class DummyProjectileController : MonoBehaviour
 {
   [HideInInspector]public ulong ownerId;
   [SerializeField]private GameObject DestructionAudio;
+  [SerializeField]private GameObject unparentedAudio;
 
   void Start(){
-    //Destroy(gameObject, 4f);
+    if(unparentedAudio != null){
+      unparentedAudio.transform.parent = null;
+      Destroy(unparentedAudio, 1f);
+    }
   }
 
   void OnCollisionEnter(Collision col){
