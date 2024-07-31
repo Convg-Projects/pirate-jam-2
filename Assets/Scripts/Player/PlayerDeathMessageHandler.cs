@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 using TMPro;
 
-public class PlayerDeathMessageHandler : MonoBehaviour
+public class PlayerDeathMessageHandler : NetworkBehaviour
 {
   [SerializeField]private TextMeshProUGUI deathMessageText;
   [SerializeField]private float maxDeathMessageTime = 3f;
@@ -13,15 +14,22 @@ public class PlayerDeathMessageHandler : MonoBehaviour
   }
 
   void Update(){
-    deathMessageTime -= Time.deltaTime;
+    if(IsOwner){
+      deathMessageTime -= Time.deltaTime;
 
-    if(deathMessageTime <= 0f){
-      deathMessageText.gameObject.SetActive(false);
+      if(deathMessageTime <= 0f){
+        Debug.Log("3");
+        deathMessageText.gameObject.SetActive(false);
+      } else {
+        Debug.Log(deathMessageTime);
+      }
     }
   }
 
-  public void ShowDeathMessage(string name){
-    deathMessageText.text = "ELIMINATED <color=#FF7171>" + name + "</color>";
+  [Rpc(SendTo.Owner)]
+  public void ShowDeathMessageRpc(){
+    Debug.Log("2");
+    deathMessageText.text = "ELIMINATED <color=#FF7171>" + GetComponent<PlayerRespawnHandler>().attackerName.Value.stringValue + "</color>";
     deathMessageTime = maxDeathMessageTime;
     deathMessageText.gameObject.SetActive(true);
   }

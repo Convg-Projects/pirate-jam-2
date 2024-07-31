@@ -80,8 +80,10 @@ public class Health : NetworkBehaviour
     if(isDead && isPlayer){
       PlayerRespawnHandler respawnHandler = GetComponent<PlayerRespawnHandler>();
       if(lastAttackerId.Value < (ulong) 9999){
+        GameObject playerObject = NetworkManager.Singleton.ConnectedClients[lastAttackerId.Value].PlayerObject.gameObject;
+        Debug.Log("1");
         respawnHandler.attackerName.Value = new PlayerRespawnHandler.customString{ stringValue = NetworkManager.Singleton.ConnectedClients[lastAttackerId.Value].PlayerObject.gameObject.GetComponent<PlayerId>().playerName.Value.stringValue};
-        NetworkManager.Singleton.ConnectedClients[lastAttackerId.Value].PlayerObject.gameObject.GetComponent<PlayerDeathMessageHandler>().ShowDeathMessage(NetworkManager.Singleton.ConnectedClients[lastAttackerId.Value].PlayerObject.gameObject.GetComponent<PlayerId>().playerName.Value.stringValue);
+        playerObject.GetComponent<PlayerDeathMessageHandler>().ShowDeathMessageRpc();
       } else {
         respawnHandler.attackerName.Value = new PlayerRespawnHandler.customString{ stringValue = "The Abyss" };
       }

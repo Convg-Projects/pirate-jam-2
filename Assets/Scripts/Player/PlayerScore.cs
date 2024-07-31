@@ -26,6 +26,6 @@ public class PlayerScore : NetworkBehaviour
 
   public void UpdateScore(int increase, string enemyName){
     currentScore.Value += increase;
-    GetComponent<PlayerDeathMessageHandler>().ShowDeathMessage(enemyName);
+    //GetComponent<PlayerDeathMessageHandler>().ShowDeathMessage(enemyName);
   }
 }
