@@ -6215,7 +6215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2852063757
+  GlobalObjectIdHash: 2855046969
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -6478,6 +6478,8 @@ MonoBehaviour:
     m_InternalValue: 0
   crouched:
     m_InternalValue: 0
+  musicPrefab: {fileID: 2393652668515993966, guid: 2fcd7414359b753489281a9260ea0424,
+    type: 3}
   footstepSounds:
   - {fileID: 6979365122310805962, guid: 80f772363adace849adcb3a4a8d29cfd, type: 3}
   - {fileID: 277603039449999048, guid: e9e4220810e92e84aafbd815f7a47a41, type: 3}

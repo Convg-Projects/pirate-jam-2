@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1580484730
+  GlobalObjectIdHash: 936917373
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233944ae74821ea4d98106417638d698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupSoundPrefab: {fileID: 4505320065468010087, guid: cb6a3ac4391672444ba142087a745334,
+    type: 3}
 --- !u!1001 &4806287624524873694
 PrefabInstance:
   m_ObjectHideFlags: 0

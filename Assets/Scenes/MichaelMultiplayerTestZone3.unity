@@ -14348,7 +14348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &725938572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16555,7 +16555,7 @@ MonoBehaviour:
   timerObject: {fileID: 652220332}
   endgameCanvas: {fileID: 725938571}
   restartButton: {fileID: 0}
-  winnerNameText: {fileID: 0}
+  winnerNameText: {fileID: 1892270991}
   goldNameText: {fileID: 120378526}
   silverNameText: {fileID: 998586122}
   bronzeNameText: {fileID: 1730066908}
