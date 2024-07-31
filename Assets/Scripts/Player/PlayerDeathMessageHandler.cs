@@ -18,7 +18,6 @@ public class PlayerDeathMessageHandler : NetworkBehaviour
       deathMessageTime -= Time.deltaTime;
 
       if(deathMessageTime <= 0f){
-        Debug.Log("3");
         deathMessageText.gameObject.SetActive(false);
       } else {
         deathMessageText.text = "ELIMINATED <color=#FF7171>" + GetComponent<PlayerRespawnHandler>().attackerName.Value.stringValue + "</color>";
