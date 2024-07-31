@@ -83,6 +83,8 @@ public class PlayerRespawnHandler : NetworkBehaviour
       GetComponent<PlayerMovement>().enabled = true;
       GetComponent<PlayerShooting>().enabled = true;
       GetComponent<Health>().enabled = true;
+      PlayerShooting playerShooting = GetComponent<PlayerShooting>();
+      playerShooting.currentAmmo = playerShooting.weaponDataObjects[playerShooting.weapon.Value].maxAmmo;
 
       foreach(GameObject G in rendererObjects){
         G.SetActive(true);

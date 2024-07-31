@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1989579642868098622
+--- !u!1 &1384823850383833987
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1768038787226359373}
-  - component: {fileID: 882212265848496604}
+  - component: {fileID: 7648041080902753442}
+  - component: {fileID: 2475278638561972965}
   m_Layer: 0
-  m_Name: wood (8)
+  m_Name: click
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1768038787226359373
+--- !u!4 &7648041080902753442
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989579642868098622}
+  m_GameObject: {fileID: 1384823850383833987}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,20 +32,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &882212265848496604
+--- !u!82 &2475278638561972965
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989579642868098622}
+  m_GameObject: {fileID: 1384823850383833987}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 88b4a3052354d16458c1313837a721ea, type: 3}
-  m_Resource: {fileID: 8300000, guid: 88b4a3052354d16458c1313837a721ea, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3252c4dbc014dc5488ab1014f7026d67, type: 3}
+  m_Resource: {fileID: 8300000, guid: 3252c4dbc014dc5488ab1014f7026d67, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.29
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

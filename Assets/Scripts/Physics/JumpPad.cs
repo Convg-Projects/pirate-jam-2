@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class JumpPad : MonoBehaviour
+public class JumpPad : NetworkBehaviour
 {
+  [SerializeField]private GameObject jumpAudioPrefab;
   [SerializeField]private float effectRange = 0.5f;
   [SerializeField]private float boostForce = 50f;
   [SerializeField]private float maxBoostCooldown = 0.5f;
@@ -21,6 +23,8 @@ public class JumpPad : MonoBehaviour
 
     for(int i = 0; i < numColliders; ++i){
       if(hitColliders[i].transform.tag == "Player" && boostCooldown <= 0f){
+        PlayJumpSoundRpc();
+
         Rigidbody playerRB = hitColliders[i].transform.parent.gameObject.GetComponent<Rigidbody>();
 
         Vector3 newVelocity = playerRB.velocity;
@@ -35,5 +39,12 @@ public class JumpPad : MonoBehaviour
         boostCooldown = maxBoostCooldown;
       }
     }
+  }
+
+  [Rpc(SendTo.Everyone)]
+  private void PlayJumpSoundRpc(){
+    GameObject audioInstance = GameObject.Instantiate(jumpAudioPrefab);
+    audioInstance.transform.position = transform.position;
+    Destroy(audioInstance, 2f);
   }
 }

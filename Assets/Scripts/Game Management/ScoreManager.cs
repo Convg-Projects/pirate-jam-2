@@ -12,6 +12,7 @@ public class ScoreManager : NetworkBehaviour
   [SerializeField]private GameObject timerObject;
   [SerializeField]private GameObject endgameCanvas;
   [SerializeField]private GameObject restartButton;
+  [SerializeField]private TextMeshProUGUI winnerNameText;
   [SerializeField]private TextMeshProUGUI goldNameText;
   [SerializeField]private TextMeshProUGUI silverNameText;
   [SerializeField]private TextMeshProUGUI bronzeNameText;
@@ -135,6 +136,7 @@ public class ScoreManager : NetworkBehaviour
 
   [Rpc(SendTo.Everyone)]
   public void ShowScoresRpc(int goldScore, int silverScore, int bronzeScore, string goldName, string silverName, string bronzeName){
+    winnerNameText.text = goldName;
     goldNameText.text = goldName;
     silverNameText.text = silverName;
     bronzeNameText.text = bronzeName;
@@ -156,6 +158,7 @@ public class ScoreManager : NetworkBehaviour
 
   [Rpc(SendTo.Everyone)]
   public void ShowScoresRpc(int goldScore, int silverScore, string goldName, string silverName){
+    winnerNameText.text = goldName;
     goldNameText.text = goldName;
     silverNameText.text = silverName;
     goldNumberText.text = goldScore.ToString();
@@ -173,6 +176,7 @@ public class ScoreManager : NetworkBehaviour
 
   [Rpc(SendTo.Everyone)]
   public void ShowScoresRpc(int goldScore, string goldName){
+    winnerNameText.text = goldName;
     goldNameText.text = goldName;
     goldNumberText.text = goldScore.ToString();
 

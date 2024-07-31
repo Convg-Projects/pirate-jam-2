@@ -20,13 +20,13 @@ public class PlayerAudioManager : NetworkBehaviour {
     if(!moving.Value){return;}
 
     footstepTime -= Time.deltaTime;
-    if(footstepTime <= 0f){
+    if(footstepTime <= 0f && !crouched.Value){
       GameObject soundInstance = GameObject.Instantiate(footstepSounds[Random.Range(0, footstepSounds.Length)]);
       soundInstance.transform.position = transform.position;
 
       Destroy(soundInstance, 0.5f);
 
-      footstepTime = maxFootstepTime * (crouched.Value ? 1f : 0.5f);
+      footstepTime = maxFootstepTime * 0.5f;
     }
   }
 

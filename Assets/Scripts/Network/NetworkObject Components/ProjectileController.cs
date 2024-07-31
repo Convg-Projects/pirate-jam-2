@@ -9,6 +9,7 @@ public class ProjectileController : NetworkBehaviour
   [SerializeField]private GameObject impactParticlePrefab;
   [SerializeField]private GameObject renderer;
   [SerializeField]private float blastRadius = 1.5f;
+  [SerializeField]private GameObject unparentedAudio;
   [HideInInspector]public int damage = 10;
   private float lifeLeft = 4f;
   private bool dead = false;
@@ -19,6 +20,11 @@ public class ProjectileController : NetworkBehaviour
   public override void OnNetworkSpawn(){
     if(!IsHost){
       renderer.SetActive(false);
+      unparentedAudio = null;
+    }
+    if(unparentedAudio != null){
+      unparentedAudio.transform.parent = null;
+      Destroy(unparentedAudio, 1f);
     }
     networkObject = GetComponent<NetworkObject>();
     base.OnNetworkSpawn();
