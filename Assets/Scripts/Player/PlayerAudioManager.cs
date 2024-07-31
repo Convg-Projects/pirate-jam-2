@@ -13,13 +13,13 @@ public class PlayerAudioManager : NetworkBehaviour {
   private float maxFootstepTime = 0.6f;
   private float footstepTime;
 
-  public override void OnNetworkSpawn(){
+  /*public override void OnNetworkSpawn(){
     if(IsOwner){
       GameObject.Instantiate(musicPrefab);
     }
 
     base.OnNetworkSpawn();
-  }
+  }*/
 
   void Update(){
     PlayMoveSounds();
