@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648463238ff44e947902d1f7748c82b6, type: 3}
   m_Name: LightningBolt
   m_EditorClassIdentifier: 
-  description: 'A single blast of fire that has a large damage radius and a cooldown
-    between firing. '
-  maxAmmo: 32
+  description: Small beams of energy that shoot rapidly and reward people who focus
+    on aim rather than movement.
+  maxAmmo: 60
   auto: 1
   hitscan: 0
   numberOfShots: 1
   spread: 0
-  maxFiringCooldown: 2
-  bulletForce: 40
-  damage: 40
+  maxFiringCooldown: 0.1
+  bulletForce: 80
+  damage: 5
   hitscanHitParticlePrefab: {fileID: 0}
-  projectilePrefab: {fileID: 919132149155446097, guid: 91defd35152075448bef4c4d2aa0aff6,
+  projectilePrefab: {fileID: 5547158417193266677, guid: 9dbf93eaf1751bd46a67ce2f8ebe0bba,
     type: 3}
   dummyProjectilePrefab: {fileID: 5547158417193266677, guid: 8a39b07966b780e4bb865d6e8e49cbd8,
     type: 3}

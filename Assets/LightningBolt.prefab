@@ -10486,7 +10486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DestructionAudio: {fileID: 5397101840331922465, guid: ffc271f868a59c9489a37cd8449f2624,
     type: 3}
-  impactParticlePrefab: {fileID: 3074821842346425236, guid: d234c7fd2ab669449b94c675a124d5b6,
+  impactParticlePrefab: {fileID: 3074821842346425236, guid: 9c275fa8f591ca84796068e27f7cde38,
     type: 3}
   renderer: {fileID: 1893680370160438618}
   blastRadius: 1.5
