@@ -118,8 +118,8 @@ Transform:
   - {fileID: 5530945235164506106}
   - {fileID: 5324871731761462077}
   - {fileID: 3219054801888710850}
-  - {fileID: 5194548391437372941}
   - {fileID: 7604311171454272313}
+  - {fileID: 5194548391437372941}
   m_Father: {fileID: 5856918391756201954}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &8550476013900295349
@@ -10099,7 +10099,7 @@ GameObject:
   - component: {fileID: -7222064833598315744}
   - component: {fileID: 4682593639792084585}
   - component: {fileID: 8809432068777543064}
-  - component: {fileID: 6007526184001256944}
+  - component: {fileID: 7722173918196564675}
   m_Layer: 0
   m_Name: DummyLightningBolt
   m_TagString: Untagged
@@ -10214,7 +10214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6007526184001256944
+--- !u!114 &7722173918196564675
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10223,19 +10223,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5547158417193266677}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fedaaf0e90c9d5b4d9ba4dbab2096278, type: 3}
+  m_Script: {fileID: 11500000, guid: 594c2d368991e8a4db14fe4872f13c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestructionAudio: {fileID: 5397101840331922465, guid: ffc271f868a59c9489a37cd8449f2624,
+  ownerId: 0
+  DestructionAudio: {fileID: 5386737280767430371, guid: eb8f50ced7870374eab57a68dc4a9bf0,
     type: 3}
-  impactParticlePrefab: {fileID: 3074821842346425236, guid: 9c275fa8f591ca84796068e27f7cde38,
-    type: 3}
-  renderer: {fileID: 1893680370160438618}
-  blastRadius: 1.5
   unparentedAudio: {fileID: 5426892621660684476}
-  damage: 10
-  validHit:
-    m_InternalValue: 0
 --- !u!1 &6170093837837952250
 GameObject:
   m_ObjectHideFlags: 0
