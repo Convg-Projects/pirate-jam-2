@@ -22,10 +22,8 @@ public class PlayerMovement : NetworkBehaviour
 
   [SerializeField]private float jumpForce = 35f;
   [SerializeField]private float gravityMultiplier = 2f;
-  [SerializeField]private float maxDragDelay = 0.05f;
   [SerializeField]private float maxCoyoteTime = 0.2f;
   [SerializeField]private float maxNoyoteTime = 0.3f; //time after jumping that player can't jump again
-  private float dragDelay;
   private float coyoteTime = 0f;
   private float noyoteTime = 0f;
   private bool jumpBuffered = false;
@@ -37,8 +35,6 @@ public class PlayerMovement : NetworkBehaviour
   [SerializeField]private float maxGroundSpeed = 50f;
   [SerializeField]private float maxAirSpeed = 9f;
   [SerializeField]private float maxAcceleration = 10;
-  [SerializeField]private float groundDrag = 1f;
-  [SerializeField]private float dragRamp = 0.7f;
 
   [HideInInspector]public float haltMovementTime = 0f;
 
@@ -86,7 +82,6 @@ public class PlayerMovement : NetworkBehaviour
 
   void Update(){
     if(!IsOwner){return;}
-    dragDelay -= Time.deltaTime;
 
     Look();
     Jump();
@@ -106,7 +101,7 @@ public class PlayerMovement : NetworkBehaviour
 
   void Move(){
     Vector3 wishVector = transform.TransformDirection(new Vector3(Input.GetAxis(horizontalMovementAxis) * sideSpeed, 0f, Input.GetAxis(verticalMovementAxis) * forwardSpeed)).normalized;
-    float currentSpeed = Vector3.Dot(rb.velocity, wishVector);
+    float currentSpeed = rb.velocity.magnitude;
 
     if(wishVector.magnitude == 0f){
       animator.SetBool("moving", false);
@@ -129,31 +124,16 @@ public class PlayerMovement : NetworkBehaviour
       audioManager.crouched.Value = crouched;
     }
 
-    if(grounded && dragDelay <= 0f){
-      //drag
-      float subtractSpeed = Mathf.Clamp(rb.velocity.magnitude * dragRamp, 0f, groundDrag * Time.fixedDeltaTime);
-      Vector3 dragVector = subtractSpeed * rb.velocity;
-      //dragVector.y = 0f;
-      rb.velocity -= dragVector;
-
-      //recalculate speed
-      currentSpeed = Vector3.Dot(rb.velocity, wishVector);
-    }
-
     float speedUsed = (grounded ? maxGroundSpeed : maxAirSpeed);
     speedUsed *= crouched ? crouchSpeedMultiplier : 1f;
 
-    float addSpeed = Mathf.Clamp(speedUsed / 10f - currentSpeed, 0f, maxAcceleration * Time.fixedDeltaTime);
-
-    rb.velocity = (rb.velocity + addSpeed * wishVector);
+    Vector3 movementVector = speedUsed / 7.5f * wishVector;
+    rb.velocity = new Vector3(movementVector.x, rb.velocity.y, movementVector.z);
   }
 
   bool CheckGrounded(){
     RaycastHit hit;
     if(Physics.Raycast(transform.position, -transform.up, out hit, groundCheckDistance)){
-      if(!grounded){
-        dragDelay = maxDragDelay;
-      }
 
       coyoteTime = maxCoyoteTime;
       return true;
