@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7331907060625184367}
   - component: {fileID: 8550476013900295349}
   m_Layer: 0
-  m_Name: fireballNew
+  m_Name: renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10226,7 +10226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fedaaf0e90c9d5b4d9ba4dbab2096278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestructionAudio: {fileID: 5397101840331922465, guid: ffc271f868a59c9489a37cd8449f2624,
+  DestructionAudio: {fileID: 5386737280767430371, guid: eb8f50ced7870374eab57a68dc4a9bf0,
     type: 3}
   impactParticlePrefab: {fileID: 3074821842346425236, guid: 9c275fa8f591ca84796068e27f7cde38,
     type: 3}

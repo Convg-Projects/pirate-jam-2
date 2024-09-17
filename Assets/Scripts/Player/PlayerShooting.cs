@@ -90,7 +90,7 @@ public class PlayerShooting : NetworkBehaviour
   [Rpc(SendTo.Everyone)]
   private void SpawnFakeBulletRpc(Vector3 spawnPosition, Vector3 spawnDirection, ulong ownerId){
     if(!IsHost){ //Spawn a fake bullet to make clients happy
-      var localInstance = Instantiate(NetworkManager.GetNetworkPrefabOverride(weaponDataObjects[weapon.Value].dummyProjectilePrefab));
+      var localInstance = Instantiate(weaponDataObjects[weapon.Value].dummyProjectilePrefab);
       localInstance.transform.position = spawnPosition;
       localInstance.transform.forward = spawnDirection;
 

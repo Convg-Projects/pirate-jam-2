@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 7331907060625184367}
   - component: {fileID: 8550476013900295349}
   m_Layer: 0
-  m_Name: fireballNew
+  m_Name: renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10453,7 +10453,7 @@ MonoBehaviour:
   impactParticlePrefab: {fileID: 3074821842346425236, guid: d234c7fd2ab669449b94c675a124d5b6,
     type: 3}
   renderer: {fileID: 1893680370160438618}
-  blastRadius: 1.5
+  blastRadius: 2
   unparentedAudio: {fileID: 2902590399414064158}
   damage: 10
   validHit:

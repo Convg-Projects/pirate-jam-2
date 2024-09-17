@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 8935092996140088325}
   - component: {fileID: 1823840083793307144}
   m_Layer: 0
-  m_Name: fireballNew
+  m_Name: renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -391,6 +391,7 @@ MonoBehaviour:
   ownerId: 0
   DestructionAudio: {fileID: 5386737280767430371, guid: eb8f50ced7870374eab57a68dc4a9bf0,
     type: 3}
+  unparentedAudio: {fileID: 0}
 --- !u!1 &5777910608406079079
 GameObject:
   m_ObjectHideFlags: 0

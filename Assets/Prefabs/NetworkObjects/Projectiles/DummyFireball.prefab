@@ -5301,7 +5301,7 @@ GameObject:
   - component: {fileID: 6065662615508243110}
   - component: {fileID: 766686130299337726}
   m_Layer: 0
-  m_Name: fireballNew
+  m_Name: renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
