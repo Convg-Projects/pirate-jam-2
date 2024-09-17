@@ -6,17 +6,21 @@ using Unity.Netcode;
 public class PlayerDevActivator : NetworkBehaviour {
 
 	public NetworkVariable<bool> isDev = new NetworkVariable<bool>(false);
-	[SerializeField]private static string devPassword = "jayko";
-	[SerializeField]private static float timeForPassword = 2f;
+	[SerializeField]private string devPassword = "jayko";
+	[SerializeField]private float timeForPassword = 2f;
 
 	private string currentCode = "";
 	private float timeLeft = 2f;
 
 	void Update(){
-		if(Input.inputString[0] != devPassword[currentCode.Length]){
-			currentCode = "";
-		} else {
-			currentCode += Input.inputString;
+		if(isDev.Value){return;}
+
+		if(Input.inputString.Length != 0){
+			if(Input.inputString[0] != devPassword[currentCode.Length]){
+				currentCode = "";
+			} else {
+				currentCode += Input.inputString;
+			}
 		}
 
 		if(currentCode == ""){
@@ -30,7 +34,16 @@ public class PlayerDevActivator : NetworkBehaviour {
 		}
 
 		if(currentCode == devPassword){
-			isDev.Value = true;
+			SetDevModeRpc(true);
+			currentCode = "";
+			//potential network performance issue not resetting the string here
 		}
+		Debug.Log(currentCode);
+	}
+
+	[Rpc(SendTo.Server)]
+	public void SetDevModeRpc(bool mode){
+		isDev.Value = mode;
+		GetComponent<PlayerCosmeticHandler>().CheckSkinRPC();
 	}
 }

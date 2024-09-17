@@ -6147,6 +6147,8 @@ GameObject:
   - component: {fileID: -3875469363270453537}
   - component: {fileID: 2158445584922326241}
   - component: {fileID: 5680459848321537750}
+  - component: {fileID: 7837586515845766871}
+  - component: {fileID: -2338328139772001503}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -6215,7 +6217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2855046969
+  GlobalObjectIdHash: 2852063757
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -6490,6 +6492,45 @@ MonoBehaviour:
   - {fileID: 1339893244128488098, guid: 9bb503a69d65d68469e2d3b204076dac, type: 3}
   - {fileID: 5973984762275360486, guid: 108369f17e99862499fd41a6fa6b6dc6, type: 3}
   - {fileID: 4231059024979603316, guid: 33ae30611e24f62428d3c56a3631925c, type: 3}
+--- !u!114 &7837586515845766871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9061922284111309069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a914a2702c72fb4296bf28b20987dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDev:
+    m_InternalValue: 0
+  devPassword: apskdo
+  timeForPassword: 2
+--- !u!114 &-2338328139772001503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9061922284111309069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c884a2fd2866024ba880765a639610f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderers:
+  - {fileID: 2450532988438636771}
+  - {fileID: 2399073665134604380}
+  - {fileID: 5188604230894225888}
+  - {fileID: 890088555336219990}
+  - {fileID: 8017931048051138013}
+  - {fileID: 3112240419801818027}
+  - {fileID: 1445172036869298825}
+  defaultSkinMaterials:
+  - {fileID: 2100000, guid: 46ca8c868a02c364e9a6176af047fd8c, type: 2}
+  devSkinMaterial: {fileID: 2100000, guid: 578a231f525e7794fb042923db3deef4, type: 2}
 --- !u!1 &9061922284422667832
 GameObject:
   m_ObjectHideFlags: 0
