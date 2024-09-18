@@ -6583,7 +6583,13 @@ MonoBehaviour:
   - {fileID: 1445172036869298825}
   defaultSkinMaterials:
   - {fileID: 2100000, guid: 46ca8c868a02c364e9a6176af047fd8c, type: 2}
-  devSkinMaterial: {fileID: 2100000, guid: 578a231f525e7794fb042923db3deef4, type: 2}
+  - {fileID: 2100000, guid: 3f805963ea645454e83f02e5c2302764, type: 2}
+  - {fileID: 2100000, guid: ff0801bf78f742a4e8c0e8cfc205e2da, type: 2}
+  - {fileID: 2100000, guid: 1e810c1c971edfc40b582066d51941fe, type: 2}
+  - {fileID: 2100000, guid: 578a231f525e7794fb042923db3deef4, type: 2}
+  - {fileID: 2100000, guid: 1f0e816a13545ba4482fbc02d13f7cef, type: 2}
+  currentSkinIndex:
+    m_InternalValue: 0
 --- !u!1 &9061922284422667832
 GameObject:
   m_ObjectHideFlags: 0

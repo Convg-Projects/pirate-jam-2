@@ -14,6 +14,7 @@ public class PlayerDevActivator : NetworkBehaviour {
 
 	void Update(){
 		if(isDev.Value){return;}
+		if(!IsOwner){return;}
 
 		if(Input.inputString.Length != 0){
 			if(Input.inputString[0] != devPassword[currentCode.Length]){
@@ -36,7 +37,7 @@ public class PlayerDevActivator : NetworkBehaviour {
 		if(currentCode == devPassword){
 			SetDevModeRpc(true);
 			currentCode = "";
-			//potential network performance issue not resetting the string here
+			//potential network performance issue if you dont the string here
 		}
 		Debug.Log(currentCode);
 	}
@@ -44,6 +45,5 @@ public class PlayerDevActivator : NetworkBehaviour {
 	[Rpc(SendTo.Server)]
 	public void SetDevModeRpc(bool mode){
 		isDev.Value = mode;
-		GetComponent<PlayerCosmeticHandler>().CheckSkinRPC();
 	}
 }
