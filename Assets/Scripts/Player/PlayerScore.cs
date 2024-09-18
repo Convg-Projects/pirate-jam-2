@@ -14,7 +14,7 @@ public class PlayerScore : NetworkBehaviour
 
     base.OnNetworkSpawn();
 
-    if(!IsHost){
+    if(IsOwner && !IsHost){
       ScoreManager.Instance.ActivateTimer();
       ScoreManager.Instance.SyncTime();
     }

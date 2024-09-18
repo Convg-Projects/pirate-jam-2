@@ -37,6 +37,7 @@ public class ProjectileController : NetworkBehaviour
         if(hitCollider.transform.parent != null){
           if(hitCollider.transform.parent.gameObject.GetComponent<Health>() != null && networkObject.OwnerClientId != hitCollider.transform.parent.gameObject.GetComponent<NetworkObject>().OwnerClientId){
             Health healthController = hitCollider.transform.parent.gameObject.GetComponent<Health>();
+            healthController.ShowDamageEffect();
             healthController.ChangeHealthServerRpc(-damage, networkObject.OwnerClientId);
             hasHit = true;
             break;

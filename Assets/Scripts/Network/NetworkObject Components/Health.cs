@@ -14,6 +14,14 @@ public class Health : NetworkBehaviour
   [SerializeField]private Slider healthSlider;
   [SerializeField]private GameObject hitAudioPrefab;
 
+  [Header("Damage Effect")]
+  [SerializeField]private float damageEffectDuration = 0.1f;
+  [SerializeField]private SkinnedMeshRenderer[] meshRenderers;
+  [SerializeField]private Material damageEffectMaterial;
+  private List<Material> normalStateMaterials = new List<Material>();
+  private float damageEffectTime;
+  private bool damageEffectActive;
+
   NetworkVariable<int> health = new NetworkVariable<int>();
   public NetworkVariable<bool> dead = new NetworkVariable<bool>();
 
@@ -21,6 +29,7 @@ public class Health : NetworkBehaviour
 
   public override void OnNetworkSpawn(){
     health.OnValueChanged += OnHealthChanged;
+
     if(IsOwner){
       ChangeHealthServerRpc(maxHealth, 0);
       if(displayHealth){
@@ -31,8 +40,22 @@ public class Health : NetworkBehaviour
     base.OnNetworkSpawn();
   }
 
+  void Update(){
+    if(damageEffectActive){
+      if(damageEffectTime > 0f){
+        damageEffectTime -= Time.deltaTime;
+      } else {
+        ResetDamageEffect();
+
+        damageEffectActive = false;
+      }
+    }
+  }
+
   public void OnHealthChanged(int previous, int current){
     if(current < previous){
+      ShowDamageEffect();
+
       GameObject audioInstance = GameObject.Instantiate(hitAudioPrefab);
       audioInstance.transform.position = transform.position;
       Destroy(audioInstance, 0.5f);
@@ -46,6 +69,24 @@ public class Health : NetworkBehaviour
     if(current <= 0 && !dead.Value){
       HandleDeathRpc();
     }
+  }
+
+  public void ResetDamageEffect(){
+    for(int i = 0; i < meshRenderers.Length; ++i){
+      meshRenderers[i].material = normalStateMaterials[i];
+    }
+  }
+
+  public void ShowDamageEffect(){
+    if(damageEffectActive){return;}
+
+    normalStateMaterials = new List<Material>(); // constantly making new lists instead of somehow resetting it might cause performance problems?
+    for(int i = 0; i < meshRenderers.Length; ++i){
+      normalStateMaterials.Add(meshRenderers[i].material);
+      meshRenderers[i].material = damageEffectMaterial;
+    }
+    damageEffectTime = damageEffectDuration;
+    damageEffectActive = true;
   }
 
   [Rpc(SendTo.Server)]

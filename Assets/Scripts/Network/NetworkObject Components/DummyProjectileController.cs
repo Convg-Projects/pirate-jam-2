@@ -18,6 +18,10 @@ public class DummyProjectileController : MonoBehaviour
 
   void OnCollisionEnter(Collision col){
     if(col.gameObject.GetComponent<NetworkObject>() == null){
+      if(col.transform.parent.gameObject.GetComponent<Health>() != null){
+        col.transform.parent.gameObject.GetComponent<Health>().ShowDamageEffect();
+      }
+
       GameObject audioInstance = GameObject.Instantiate(DestructionAudio);
       audioInstance.transform.position = transform.position;
       audioInstance.transform.parent = transform.parent;

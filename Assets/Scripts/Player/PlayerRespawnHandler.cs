@@ -105,6 +105,7 @@ public class PlayerRespawnHandler : NetworkBehaviour
       GetComponent<PlayerMovement>().enabled = false;
       GetComponent<PlayerShooting>().enabled = false;
       GetComponent<Health>().enabled = false;
+      GetComponent<Health>().ResetDamageEffect();
 
       foreach(GameObject G in rendererObjects){
         G.SetActive(false);

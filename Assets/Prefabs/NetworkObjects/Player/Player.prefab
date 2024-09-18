@@ -6397,6 +6397,17 @@ MonoBehaviour:
   healthSlider: {fileID: 1276929367667930460}
   hitAudioPrefab: {fileID: 7441813851186374462, guid: 286729772c7e8164daee63bbe6033eb8,
     type: 3}
+  damageEffectDuration: 0.5
+  meshRenderers:
+  - {fileID: 2450532988438636771}
+  - {fileID: 2399073665134604380}
+  - {fileID: 5188604230894225888}
+  - {fileID: 890088555336219990}
+  - {fileID: 8017931048051138013}
+  - {fileID: 3112240419801818027}
+  - {fileID: 1445172036869298825}
+  damageEffectMaterial: {fileID: 2100000, guid: d05fd082a4ff62b42921ab78912d3e01,
+    type: 2}
   dead:
     m_InternalValue: 0
 --- !u!114 &-1551383383576372671

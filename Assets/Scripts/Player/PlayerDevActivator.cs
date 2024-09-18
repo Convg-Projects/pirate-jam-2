@@ -39,7 +39,6 @@ public class PlayerDevActivator : NetworkBehaviour {
 			currentCode = "";
 			//potential network performance issue if you dont the string here
 		}
-		Debug.Log(currentCode);
 	}
 
 	[Rpc(SendTo.Server)]

@@ -5,14 +5,20 @@ using Unity.Netcode;
 
 public class PlayerCosmeticHandler : NetworkBehaviour
 {
-  public SkinnedMeshRenderer[] meshRenderers;
+  [SerializeField]private SkinnedMeshRenderer[] meshRenderers;
   public Material[] defaultSkinMaterials;
 
   public NetworkVariable<int> currentSkinIndex = new NetworkVariable<int>(0);
 
   public override void OnNetworkSpawn(){
     currentSkinIndex.OnValueChanged += OnSkinChanged;
-    SetSkinRPC();
+    if(IsOwner){
+      SetSkinRPC();
+    } else {
+      for(int i = 0; i < meshRenderers.Length; ++i){
+        meshRenderers[i].material = defaultSkinMaterials[currentSkinIndex.Value];
+      }
+    }
 
     base.OnNetworkSpawn();
   }
