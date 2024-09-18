@@ -19,7 +19,7 @@ MonoBehaviour:
   hitscan: 0
   numberOfShots: 1
   spread: 0
-  maxFiringCooldown: 0.8
+  maxFiringCooldown: 1
   bulletForce: 50
   damage: 30
   hitscanHitParticlePrefab: {fileID: 0}
