@@ -12545,10 +12545,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 45774730}
-        m_TargetAssemblyTypeName: Unity.Netcode.Transports.UTP.UnityTransport, Unity.Netcode.Runtime
-        m_MethodName: DisconnectLocalClient
-        m_Mode: 1
+      - m_Target: {fileID: 45774731}
+        m_TargetAssemblyTypeName: Unity.Netcode.NetworkManager, Unity.Netcode.Runtime
+        m_MethodName: Shutdown
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
