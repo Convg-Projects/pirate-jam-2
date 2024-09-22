@@ -35,7 +35,9 @@ public class PlayerRespawnHandler : NetworkBehaviour
   private bool isDead = false;
 
   public override void OnNetworkSpawn(){
-    if(!IsOwner){
+    if(IsOwner){
+      transform.position = PlayerSpawnManager.Instance.GetRandomSpawn();
+    } else {
       gameCanvas.SetActive(false);
     }
     if(IsHost){
