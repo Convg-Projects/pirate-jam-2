@@ -52,7 +52,7 @@ public class PlayerMovement : NetworkBehaviour
 
     maxAcceleration *= maxGroundSpeed;
 
-    groundDistance = capsuleCollider.bounds.extents.y;
+    groundDistance = capsuleCollider.bounds.extents.y - capsuleCollider.center.y;
     groundCheckDistance += groundDistance;
     capsuleStandHeight = capsuleCollider.center.y;
     standHeight = capsuleCollider.height;
@@ -82,6 +82,8 @@ public class PlayerMovement : NetworkBehaviour
 
   void Update(){
     if(!IsOwner){return;}
+
+    Debug.Log(grounded);
 
     Look();
     Jump();
