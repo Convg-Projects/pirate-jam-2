@@ -57,9 +57,13 @@ public class ProjectileController : NetworkBehaviour
   }
 
   void OnTriggerEnter(Collider col){
+    Debug.Log("1");
     if(!hasHit && IsHost){
+      Debug.Log("2");
       if(col.transform.parent != null){
+        Debug.Log("3");
         if(col.transform.parent.gameObject.GetComponent<Health>() != null && networkObject.OwnerClientId != col.transform.parent.gameObject.GetComponent<NetworkObject>().OwnerClientId){
+          Debug.Log("4");
           Health healthController = col.transform.parent.gameObject.GetComponent<Health>();
           healthController.ShowDamageEffect();
           healthController.ChangeHealthServerRpc(-damage, networkObject.OwnerClientId);
@@ -67,6 +71,7 @@ public class ProjectileController : NetworkBehaviour
         }
       }
       if(hasHit){
+        Debug.Log("5");
         GameObject audioInstance = GameObject.Instantiate(DestructionAudio);
         audioInstance.transform.position = transform.position;
         audioInstance.transform.parent = transform.parent;

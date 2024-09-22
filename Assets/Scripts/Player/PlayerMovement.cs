@@ -83,8 +83,6 @@ public class PlayerMovement : NetworkBehaviour
   void Update(){
     if(!IsOwner){return;}
 
-    Debug.Log(grounded);
-
     Look();
     Jump();
     Crouch();

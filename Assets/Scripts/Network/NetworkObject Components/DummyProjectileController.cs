@@ -17,10 +17,10 @@ public class DummyProjectileController : MonoBehaviour
   }
 
   void OnCollisionEnter(Collision col){
+    if(col.transform.parent.gameObject.GetComponent<Health>() != null){
+      col.transform.parent.gameObject.GetComponent<Health>().ShowDamageEffect();
+    }
     if(col.gameObject.GetComponent<NetworkObject>() == null){
-      if(col.transform.parent.gameObject.GetComponent<Health>() != null){
-        col.transform.parent.gameObject.GetComponent<Health>().ShowDamageEffect();
-      }
 
       GameObject audioInstance = GameObject.Instantiate(DestructionAudio);
       audioInstance.transform.position = transform.position;
@@ -35,6 +35,23 @@ public class DummyProjectileController : MonoBehaviour
       audioInstance.transform.parent = transform.parent;
 
       Destroy(gameObject);
+    }
+  }
+
+  void OnTriggerEnter(Collider col){
+    if(col.transform.parent.gameObject.GetComponent<Health>() != null){
+      col.transform.parent.gameObject.GetComponent<Health>().ShowDamageEffect();
+    }
+    if(col.gameObject.GetComponent<NetworkObject>() == null){
+      return;
+    }
+    if(col.transform.parent.gameObject.GetComponent<NetworkObject>().OwnerClientId != ownerId){
+      GameObject audioInstance = GameObject.Instantiate(DestructionAudio);
+      audioInstance.transform.position = transform.position;
+      audioInstance.transform.parent = transform.parent;
+
+      Destroy(gameObject);
+      return;
     }
   }
 }

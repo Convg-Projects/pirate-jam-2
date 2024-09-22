@@ -3,25 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class AmmoPotion : NetworkBehaviour
+public class AmmoPotion : Potion
 {
-  [SerializeField]private GameObject pickupSoundPrefab;
-
-  void OnCollisionEnter(Collision col){
-    if(col.gameObject.GetComponent<NetworkObject>() == null){return;}
-    if(col.gameObject.GetComponent<PlayerShooting>() == null){return;}
-    col.gameObject.GetComponent<PlayerShooting>().ResetAmmo();
-    DestroyPotionRpc();
-  }
-
-  [Rpc(SendTo.Everyone)]
-  public void DestroyPotionRpc(){
-    GameObject audioInstance = GameObject.Instantiate(pickupSoundPrefab);
-    audioInstance.transform.position = transform.position;
-    Destroy(audioInstance, 3f);
-
-    if(IsHost){
-      GetComponent<NetworkObject>().Despawn();
+  public override void OnHit(PlayerPotionHandler potionHandler){
+    if(potionHandler.IsOwner){
+      potionHandler.gameObject.GetComponent<PlayerShooting>().ResetAmmo();
     }
+
+    base.OnHit(potionHandler);
   }
 }

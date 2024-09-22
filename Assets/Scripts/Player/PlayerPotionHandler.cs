@@ -5,15 +5,9 @@ using Unity.Netcode;
 
 public class PlayerPotionHandler : NetworkBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
+  void OnTriggerEnter(Collider col){
+    if(col.gameObject.GetComponent<Potion>() != null){
+      col.gameObject.GetComponent<Potion>().OnHit(this);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+  }
 }
