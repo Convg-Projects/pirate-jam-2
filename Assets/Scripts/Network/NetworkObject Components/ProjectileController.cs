@@ -56,6 +56,25 @@ public class ProjectileController : NetworkBehaviour
     }
   }
 
+  void OnTriggerEnter(Collider col){
+    if(!hasHit && IsHost){
+      if(col.transform.parent != null){
+        if(col.transform.parent.gameObject.GetComponent<Health>() != null && networkObject.OwnerClientId != col.transform.parent.gameObject.GetComponent<NetworkObject>().OwnerClientId){
+          Health healthController = col.transform.parent.gameObject.GetComponent<Health>();
+          healthController.ShowDamageEffect();
+          healthController.ChangeHealthServerRpc(-damage, networkObject.OwnerClientId);
+          hasHit = true;
+        }
+      }
+      if(hasHit){
+        GameObject audioInstance = GameObject.Instantiate(DestructionAudio);
+        audioInstance.transform.position = transform.position;
+        audioInstance.transform.parent = transform.parent;
+        DestroyProjectileRpc(transform.position);
+      }
+    }
+  }
+
   void Update(){
     lifeLeft -= Time.deltaTime;
     if(lifeLeft <= 0f && !dead){
