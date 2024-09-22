@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 431901539295718214}
   - component: {fileID: 6381852446346379208}
   - component: {fileID: 4577730799663046917}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3631325228968804716}
   - component: {fileID: 959524013210607561}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8935092996140088325}
   - component: {fileID: 1823840083793307144}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 5856918391756201954}
   - component: {fileID: 7800574611576528383}
   - component: {fileID: 8803620832502593196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DummyCluster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 7776606405587600867}
   - component: {fileID: 8146521889537863783}
   - component: {fileID: 2255232696625631399}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: trailWisps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5351,7 +5351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1912919128855216456}
   - component: {fileID: 1363957606519451862}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enchantment Of Tides Loop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5481,7 +5481,7 @@ GameObject:
   - component: {fileID: 8686628091014614823}
   - component: {fileID: 1009732949214710783}
   - component: {fileID: 7764146840019751437}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wisps
   m_TagString: Untagged
   m_Icon: {fileID: 0}

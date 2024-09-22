@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2453936316397525259}
   - component: {fileID: 2040798167406250712}
   - component: {fileID: 3551380906360425341}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wisps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4960,7 +4960,7 @@ GameObject:
   - component: {fileID: 3629543276092192750}
   - component: {fileID: 3596633504781296092}
   - component: {fileID: 2345182397282033551}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5045,7 +5045,7 @@ GameObject:
   - component: {fileID: 618825835034883985}
   - component: {fileID: 1458561227373310192}
   - component: {fileID: 6630132341457446930}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5161,7 +5161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4206163009202781300}
   - component: {fileID: 537707015542980564}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5300,7 +5300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6065662615508243110}
   - component: {fileID: 766686130299337726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5359,7 +5359,7 @@ GameObject:
   - component: {fileID: 8855295262919154062}
   - component: {fileID: 8691746894417155464}
   - component: {fileID: 4596523551321832719}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireballEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5445,7 +5445,7 @@ GameObject:
   - component: {fileID: 1641350863277945082}
   - component: {fileID: 1305573930147483151}
   - component: {fileID: 5865039522560185641}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5562,7 +5562,7 @@ GameObject:
   - component: {fileID: 8676083862326768668}
   - component: {fileID: 6235601051664902210}
   - component: {fileID: 2884965031772498400}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: trailLargeWisps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10510,7 +10510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 709838424481514607}
   - component: {fileID: 1041643021345764232}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lava Enchantment Loop 002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10639,7 +10639,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7929629299010492195}
   - component: {fileID: 3663270667873554469}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fire Gust 001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10769,7 +10769,7 @@ GameObject:
   - component: {fileID: 5856918391756201954}
   - component: {fileID: 7800574611576528383}
   - component: {fileID: 8803620832502593196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DummyFireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10847,7 +10847,7 @@ GameObject:
   - component: {fileID: 1872590852887911299}
   - component: {fileID: 3411122241193152760}
   - component: {fileID: 69848789674589957}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: trailFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15688,7 +15688,7 @@ GameObject:
   - component: {fileID: 4161584596609329941}
   - component: {fileID: 3270244299038777830}
   - component: {fileID: 3662748761152953755}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: trailWisps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20637,7 +20637,7 @@ GameObject:
   - component: {fileID: 7121630884123931836}
   - component: {fileID: 7533335989500770159}
   - component: {fileID: 83504572550292474}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: fireballGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

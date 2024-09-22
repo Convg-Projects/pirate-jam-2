@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8744694209371433670}
   - component: {fileID: 1159412194406648752}
   - component: {fileID: 7080240704263601091}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3471601157043361856}
   - component: {fileID: 754435791090079267}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4484503831731924960}
   - component: {fileID: 1622698594888859755}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enchantment Of Tides Loop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7331907060625184367}
   - component: {fileID: 8550476013900295349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 2631483753912724899}
   - component: {fileID: 2504407479919888370}
   - component: {fileID: 448037228739300076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: trailWisps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5407,7 +5407,7 @@ GameObject:
   - component: {fileID: 4682593639792084585}
   - component: {fileID: 8809432068777543064}
   - component: {fileID: 6007526184001256944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cluster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5469,7 +5469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2276575966
+  GlobalObjectIdHash: 2375324360
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -5554,7 +5554,7 @@ GameObject:
   - component: {fileID: 7517942292614942754}
   - component: {fileID: 6181021140466375522}
   - component: {fileID: 5944032366248253852}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wisps
   m_TagString: Untagged
   m_Icon: {fileID: 0}

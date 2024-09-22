@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5530945235164506106}
   - component: {fileID: 8744694209371433670}
   - component: {fileID: 1159412194406648752}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1248294001262710055}
   - component: {fileID: 3908811015409900684}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lava Enchantment Loop 002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7331907060625184367}
   - component: {fileID: 8550476013900295349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 7209036858811696712}
   - component: {fileID: 5956627340251177349}
   - component: {fileID: 1880573949984385030}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: trailFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5123,7 +5123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4575080001082703698}
   - component: {fileID: 266640461125931098}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fire Gust 001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5253,7 +5253,7 @@ GameObject:
   - component: {fileID: 3219054801888710850}
   - component: {fileID: 2839889168094447382}
   - component: {fileID: 2762489160727023817}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5370,7 +5370,7 @@ GameObject:
   - component: {fileID: 2631483753912724899}
   - component: {fileID: 2504407479919888370}
   - component: {fileID: 448037228739300076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: trailWisps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10322,7 +10322,7 @@ GameObject:
   - component: {fileID: 4682593639792084585}
   - component: {fileID: 8809432068777543064}
   - component: {fileID: 6007526184001256944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10384,7 +10384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1096252183
+  GlobalObjectIdHash: 845560275
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -10469,7 +10469,7 @@ GameObject:
   - component: {fileID: 1361066301875043182}
   - component: {fileID: 5649957608699665409}
   - component: {fileID: 3400777941612784710}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: trailLargeWisps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15418,7 +15418,7 @@ GameObject:
   - component: {fileID: 6651471127247816013}
   - component: {fileID: 8447948398871730172}
   - component: {fileID: 7628254496373183639}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: fireballGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20339,7 +20339,7 @@ GameObject:
   - component: {fileID: 7517942292614942754}
   - component: {fileID: 6181021140466375522}
   - component: {fileID: 5944032366248253852}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wisps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
