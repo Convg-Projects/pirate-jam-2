@@ -17,6 +17,7 @@ public class WeaponManager : MonoBehaviour
       Destroy(this);
     } else {
       Instance = this;
+      weapon = Random.Range(0, weaponDataObjects.Length);
     }
 
   }
