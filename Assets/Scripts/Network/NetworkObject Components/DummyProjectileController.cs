@@ -42,10 +42,11 @@ public class DummyProjectileController : MonoBehaviour
     if(col.transform.parent.gameObject.GetComponent<Health>() != null){
       col.transform.parent.gameObject.GetComponent<Health>().ShowDamageEffect();
     }
-    if(col.gameObject.GetComponent<NetworkObject>() == null){
+    if(col.transform.parent.gameObject.GetComponent<NetworkObject>() == null){
       return;
     }
     if(col.transform.parent.gameObject.GetComponent<NetworkObject>().OwnerClientId != ownerId){
+      Debug.Log("Isnt Ours");
       GameObject audioInstance = GameObject.Instantiate(DestructionAudio);
       audioInstance.transform.position = transform.position;
       audioInstance.transform.parent = transform.parent;
