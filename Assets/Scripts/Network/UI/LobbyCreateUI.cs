@@ -63,6 +63,9 @@ public class LobbyCreateUI : MonoBehaviour {
                 if(this.maxPlayers > 20){
                   this.maxPlayers = 20;
                 }
+                if(this.maxPlayers < 2){
+                  this.maxPlayers = 2;
+                }
                 UpdateText();
             });
         });
