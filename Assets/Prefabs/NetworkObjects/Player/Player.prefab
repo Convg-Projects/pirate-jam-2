@@ -6373,7 +6373,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &9061922284111309063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6386,7 +6386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2852063757
+  GlobalObjectIdHash: 2855046969
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -6485,11 +6485,13 @@ MonoBehaviour:
   sideSpeed: 3.5
   maxGroundSpeed: 80
   maxAirSpeed: 80
-  maxAcceleration: 10
+  maxAcceleration: 0.5
+  airDrag: 0.5
   haltMovementTime: 0
   horizontalLookAxis: Mouse X
   verticalLookAxis: Mouse Y
   lookSensitivity: 1
+  minimumYPosition: 18
   cam: {fileID: 9061922284422667836}
 --- !u!114 &-2231495766888008
 MonoBehaviour:

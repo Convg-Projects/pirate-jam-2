@@ -39,6 +39,7 @@ public class PlayerMovement : NetworkBehaviour
   [SerializeField]private float maxGroundSpeed = 50f;
   [SerializeField]private float maxAirSpeed = 9f;
   [SerializeField]private float maxAcceleration = 10;
+  [SerializeField]private float airDrag = 0.5f;
 
   [HideInInspector]public float haltMovementTime = 0f;
 
@@ -131,11 +132,19 @@ public class PlayerMovement : NetworkBehaviour
       audioManager.crouched.Value = crouched;
     }
 
-    float speedUsed = (grounded ? maxGroundSpeed : maxAirSpeed);
-    speedUsed *= crouched ? crouchSpeedMultiplier : 1f;
+    if(!grounded || wishVector.magnitude >= -0.25f || wishVector.magnitude <= 0.25f){
+      Vector3 dragVector = -rb.velocity * airDrag;
+      dragVector.y = 0f;
+      rb.velocity += dragVector;
+    }
 
-    Vector3 movementVector = speedUsed / 7.5f * wishVector;
-    rb.velocity = new Vector3(movementVector.x, rb.velocity.y, movementVector.z);
+    if(wishVector.magnitude <= -0.25f || wishVector.magnitude >= 0.25f){
+      float speedUsed = (grounded ? maxGroundSpeed : maxAirSpeed);
+      speedUsed *= crouched ? crouchSpeedMultiplier : 1f;
+
+      Vector3 movementVector = speedUsed / 7.5f * wishVector;
+      rb.velocity = new Vector3(movementVector.x, rb.velocity.y, movementVector.z);
+    }
   }
 
   bool CheckGrounded(){
