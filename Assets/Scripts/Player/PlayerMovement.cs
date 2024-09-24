@@ -5,12 +5,13 @@ using Unity.Netcode;
 
 public class PlayerMovement : NetworkBehaviour
 {
-  [Header("Movement")]
+  [Header("Grounding")]
   private bool grounded;
   private bool crouched = false;
   private float groundDistance;
   [SerializeField]private float groundCheckDistance = 0.1f;
 
+  [Header("Crouching")]
   private float standHeight;
   private float capsuleStandHeight;
   private float camStandHeight;
@@ -18,8 +19,10 @@ public class PlayerMovement : NetworkBehaviour
   [SerializeField]private float crouchSpeedMultiplier = 0.5f;
   [SerializeField]private CapsuleCollider capsuleCollider;
 
+  [Header("Animation")]
   [SerializeField]private Animator animator;
 
+  [Header("Jumping")]
   [SerializeField]private float jumpForce = 35f;
   [SerializeField]private float gravityMultiplier = 2f;
   [SerializeField]private float maxCoyoteTime = 0.2f;
@@ -28,6 +31,7 @@ public class PlayerMovement : NetworkBehaviour
   private float noyoteTime = 0f;
   private bool jumpBuffered = false;
 
+  [Header("Movement")]
   [SerializeField]private string horizontalMovementAxis = "Horizontal";
   [SerializeField]private string verticalMovementAxis = "Vertical";
   [SerializeField]private float forwardSpeed = 5f;
@@ -38,13 +42,16 @@ public class PlayerMovement : NetworkBehaviour
 
   [HideInInspector]public float haltMovementTime = 0f;
 
+  [Header("Input")]
   [SerializeField]private string horizontalLookAxis = "Mouse X";
   [SerializeField]private string verticalLookAxis = "Mouse Y";
   [SerializeField]private float lookSensitivity = 20f;
   private float camRotationX;
 
+  [Header("Other")]
   private Rigidbody rb;
   private Collider col;
+  [SerializeField]private float minimumYPosition = 18f;
   public Camera cam;
 
   public override void OnNetworkSpawn(){
@@ -191,7 +198,7 @@ public class PlayerMovement : NetworkBehaviour
   }
 
   void DoDeathBarrier(){
-    if(transform.position.y <= -10f){
+    if(transform.position.y <= minimumYPosition){
       GetComponent<Health>().ChangeHealthServerRpc(-99999, 9999);
     }
   }
