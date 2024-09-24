@@ -38,7 +38,7 @@ public class LobbyCreateUI : MonoBehaviour {
         });
 
         lobbyNameButton.onClick.AddListener(() => {
-            UI_InputWindow.Show_Static("Lobby Name", lobbyName, "abcdefghijklmnopqrstuvxywzABCDEFGHIJKLMNOPQRSTUVXYWZ .,-", 20,
+            UI_InputWindow.Show_Static("Lobby Name", lobbyName, "abcdefghijklmnopqrstuvxywzABCDEFGHIJKLMNOPQRSTUVXYWZ .,-", 16,
             () => {
                 // Cancel
             },
@@ -60,6 +60,9 @@ public class LobbyCreateUI : MonoBehaviour {
             },
             (int maxPlayers) => {
                 this.maxPlayers = maxPlayers;
+                if(this.maxPlayers > 20){
+                  this.maxPlayers = 20;
+                }
                 UpdateText();
             });
         });
