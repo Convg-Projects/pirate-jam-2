@@ -46,11 +46,11 @@ public class LobbyListUI : MonoBehaviour {
     }
 
     private void LobbyManager_OnKickedFromLobby(object sender, LobbyManager.LobbyEventArgs e) {
-        Show();
+        //Show();
     }
 
     private void LobbyManager_OnLeftLobby(object sender, EventArgs e) {
-        Show();
+        //Show();
     }
 
     private void LobbyManager_OnJoinedLobby(object sender, LobbyManager.LobbyEventArgs e) {

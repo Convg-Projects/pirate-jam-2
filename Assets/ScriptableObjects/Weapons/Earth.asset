@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648463238ff44e947902d1f7748c82b6, type: 3}
+  m_Name: Earth
+  m_EditorClassIdentifier: 
+  description: Small clusters of earth that reward loose aim and fast movement
+  maxAmmo: 30
+  auto: 1
+  hitscan: 0
+  numberOfShots: 1
+  spread: 0
+  maxFiringCooldown: 0.3
+  bulletForce: 45
+  damage: 15
+  hitscanHitParticlePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 5547158417193266677, guid: 1a4b80f731752e24ab42a9229b219e88,
+    type: 3}
+  dummyProjectilePrefab: {fileID: 5547158417193266677, guid: 9d6a4bbdd973e234d8e9a44aba321a17,
+    type: 3}

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648463238ff44e947902d1f7748c82b6, type: 3}
+  m_Name: LightningBolt
+  m_EditorClassIdentifier: 
+  description: Small beams of energy that shoot rapidly and reward people who focus
+    on aim rather than movement.
+  maxAmmo: 100
+  auto: 1
+  hitscan: 0
+  numberOfShots: 1
+  spread: 0.01
+  maxFiringCooldown: 0.15
+  bulletForce: 200
+  damage: 10
+  hitscanHitParticlePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 5547158417193266677, guid: 9dbf93eaf1751bd46a67ce2f8ebe0bba,
+    type: 3}
+  dummyProjectilePrefab: {fileID: 5547158417193266677, guid: 0313efb8f461d4044a610e64c79e032c,
+    type: 3}

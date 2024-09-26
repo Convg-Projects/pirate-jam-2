@@ -17,21 +17,21 @@ public class EditPlayerName : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI playerNameText;
 
 
-    private string playerName = "PlayerName";
+    private string playerName = "Guest";
 
 
     private void Awake() {
         Instance = this;
 
         GetComponent<Button>().onClick.AddListener(() => {
-            UI_InputWindow.Show_Static("Player Name", playerName, "abcdefghijklmnopqrstuvxywzABCDEFGHIJKLMNOPQRSTUVXYWZ.,-", 20,
+            UI_InputWindow.Show_Static("Player Name", playerName, "abcdefghijklmnopqrstuvxywzABCDEFGHIJKLMNOPQRSTUVXYWZ.,-", 10,
             () => {
                 // Cancel
             },
             (string newName) => {
                 playerName = newName;
 
-                playerNameText.text = playerName;
+                playerNameText.text = "Playing as: " + playerName;
 
                 OnNameChanged?.Invoke(this, EventArgs.Empty);
             });

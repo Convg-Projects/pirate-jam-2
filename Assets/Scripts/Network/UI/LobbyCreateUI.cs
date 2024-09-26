@@ -38,7 +38,7 @@ public class LobbyCreateUI : MonoBehaviour {
         });
 
         lobbyNameButton.onClick.AddListener(() => {
-            UI_InputWindow.Show_Static("Lobby Name", lobbyName, "abcdefghijklmnopqrstuvxywzABCDEFGHIJKLMNOPQRSTUVXYWZ .,-", 20,
+            UI_InputWindow.Show_Static("Lobby Name", lobbyName, "abcdefghijklmnopqrstuvxywzABCDEFGHIJKLMNOPQRSTUVXYWZ .,-", 16,
             () => {
                 // Cancel
             },
@@ -60,6 +60,12 @@ public class LobbyCreateUI : MonoBehaviour {
             },
             (int maxPlayers) => {
                 this.maxPlayers = maxPlayers;
+                if(this.maxPlayers > 20){
+                  this.maxPlayers = 20;
+                }
+                if(this.maxPlayers < 2){
+                  this.maxPlayers = 2;
+                }
                 UpdateText();
             });
         });
@@ -68,12 +74,12 @@ public class LobbyCreateUI : MonoBehaviour {
     }
 
     private void UpdateText() {
-        lobbyNameText.text = "Lobby Name: " + lobbyName;
+        lobbyNameText.text = lobbyName;
         publicPrivateText.text = isPrivate ? "Private" : "Public";
-        maxPlayersText.text = "Max Players: " + maxPlayers.ToString();
+        maxPlayersText.text = maxPlayers.ToString();
     }
 
-    private void Hide() {
+    public void Hide() {
         gameObject.SetActive(false);
     }
 

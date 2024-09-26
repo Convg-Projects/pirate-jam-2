@@ -5,7 +5,7 @@ using Unity.Netcode;
 
 public class PlayerWorldModelHandler : NetworkBehaviour
 {
-  [SerializeField]private GameObject worldModel;
+  [SerializeField]private GameObject[] worldModels;
 
   public override void OnNetworkSpawn(){
     DeactivateOwnerWorldmodel();
@@ -14,7 +14,9 @@ public class PlayerWorldModelHandler : NetworkBehaviour
 
   public void DeactivateOwnerWorldmodel(){
     if(IsOwner){
-      worldModel.SetActive(false);
+      foreach(GameObject G in worldModels){
+        G.SetActive(false);
+      }
     }
   }
 }

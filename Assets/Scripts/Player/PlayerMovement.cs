@@ -5,12 +5,13 @@ using Unity.Netcode;
 
 public class PlayerMovement : NetworkBehaviour
 {
-  [Header("Movement")]
+  [Header("Grounding")]
   private bool grounded;
   private bool crouched = false;
   private float groundDistance;
   [SerializeField]private float groundCheckDistance = 0.1f;
 
+  [Header("Crouching")]
   private float standHeight;
   private float capsuleStandHeight;
   private float camStandHeight;
@@ -18,16 +19,19 @@ public class PlayerMovement : NetworkBehaviour
   [SerializeField]private float crouchSpeedMultiplier = 0.5f;
   [SerializeField]private CapsuleCollider capsuleCollider;
 
+  [Header("Animation")]
+  [SerializeField]private Animator animator;
+
+  [Header("Jumping")]
   [SerializeField]private float jumpForce = 35f;
   [SerializeField]private float gravityMultiplier = 2f;
-  [SerializeField]private float maxDragDelay = 0.05f;
   [SerializeField]private float maxCoyoteTime = 0.2f;
   [SerializeField]private float maxNoyoteTime = 0.3f; //time after jumping that player can't jump again
-  private float dragDelay;
   private float coyoteTime = 0f;
   private float noyoteTime = 0f;
   private bool jumpBuffered = false;
 
+  [Header("Movement")]
   [SerializeField]private string horizontalMovementAxis = "Horizontal";
   [SerializeField]private string verticalMovementAxis = "Vertical";
   [SerializeField]private float forwardSpeed = 5f;
@@ -35,18 +39,20 @@ public class PlayerMovement : NetworkBehaviour
   [SerializeField]private float maxGroundSpeed = 50f;
   [SerializeField]private float maxAirSpeed = 9f;
   [SerializeField]private float maxAcceleration = 10;
-  [SerializeField]private float groundDrag = 1f;
-  [SerializeField]private float dragRamp = 0.7f;
+  [SerializeField]private float airDrag = 0.5f;
 
   [HideInInspector]public float haltMovementTime = 0f;
 
+  [Header("Input")]
   [SerializeField]private string horizontalLookAxis = "Mouse X";
   [SerializeField]private string verticalLookAxis = "Mouse Y";
   [SerializeField]private float lookSensitivity = 20f;
   private float camRotationX;
 
+  [Header("Other")]
   private Rigidbody rb;
   private Collider col;
+  [SerializeField]private float minimumYPosition = 18f;
   public Camera cam;
 
   public override void OnNetworkSpawn(){
@@ -54,7 +60,7 @@ public class PlayerMovement : NetworkBehaviour
 
     maxAcceleration *= maxGroundSpeed;
 
-    groundDistance = capsuleCollider.bounds.extents.y;
+    groundDistance = capsuleCollider.bounds.extents.y - capsuleCollider.center.y;
     groundCheckDistance += groundDistance;
     capsuleStandHeight = capsuleCollider.center.y;
     standHeight = capsuleCollider.height;
@@ -79,14 +85,13 @@ public class PlayerMovement : NetworkBehaviour
     if(haltMovementTime <= 0f){
       Move();
     }
+    DoGravity();
   }
 
   void Update(){
     if(!IsOwner){return;}
-    dragDelay -= Time.deltaTime;
 
     Look();
-    //groundDrag = CheckGrounded();
     Jump();
     Crouch();
     DoDeathBarrier();
@@ -98,35 +103,53 @@ public class PlayerMovement : NetworkBehaviour
     }
   }
 
+  void DoGravity(){
+    rb.AddForce(Physics.gravity * (25 * (gravityMultiplier - 1)) * Time.fixedDeltaTime, ForceMode.Acceleration);
+  }
+
   void Move(){
     Vector3 wishVector = transform.TransformDirection(new Vector3(Input.GetAxis(horizontalMovementAxis) * sideSpeed, 0f, Input.GetAxis(verticalMovementAxis) * forwardSpeed)).normalized;
-    float currentSpeed = Vector3.Dot(rb.velocity, wishVector);
+    float currentSpeed = rb.velocity.magnitude;
 
-    if(grounded && dragDelay <= 0f){
-      //drag
-      float subtractSpeed = Mathf.Clamp(rb.velocity.magnitude * dragRamp, 0f, groundDrag * Time.fixedDeltaTime);
-      Vector3 dragVector = subtractSpeed * rb.velocity;
-      //dragVector.y = 0f;
-      rb.velocity -= dragVector;
-
-      //recalculate speed
-      currentSpeed = Vector3.Dot(rb.velocity, wishVector);
+    if(wishVector.magnitude == 0f){
+      animator.SetBool("moving", false);
+    } else {
+      animator.SetBool("moving", true);
     }
 
-    float speedUsed = (grounded ? maxGroundSpeed : maxAirSpeed);
-    speedUsed *= crouched ? crouchSpeedMultiplier : 1f;
+    PlayerAudioManager audioManager = GetComponent<PlayerAudioManager>();
+    if(grounded && (wishVector.magnitude <= -0.25f || wishVector.magnitude >= 0.25f)){
+      if(audioManager.moving.Value == false){
+        audioManager.moving.Value = true;
+      }
+    } else {
+      if(audioManager.moving.Value == true){
+        audioManager.moving.Value = false;
+      }
+    }
 
-    float addSpeed = Mathf.Clamp(speedUsed / 10f - currentSpeed, 0f, maxAcceleration * Time.fixedDeltaTime);
+    if(audioManager.crouched.Value == !crouched){
+      audioManager.crouched.Value = crouched;
+    }
 
-    rb.velocity = (rb.velocity + addSpeed * wishVector);
+    if(!grounded || wishVector.magnitude >= -0.25f || wishVector.magnitude <= 0.25f){
+      Vector3 dragVector = -rb.velocity * airDrag;
+      dragVector.y = 0f;
+      rb.velocity += dragVector;
+    }
+
+    if(wishVector.magnitude <= -0.25f || wishVector.magnitude >= 0.25f){
+      float speedUsed = (grounded ? maxGroundSpeed : maxAirSpeed);
+      speedUsed *= crouched ? crouchSpeedMultiplier : 1f;
+
+      Vector3 movementVector = speedUsed / 7.5f * wishVector;
+      rb.velocity = new Vector3(movementVector.x, rb.velocity.y, movementVector.z);
+    }
   }
 
   bool CheckGrounded(){
     RaycastHit hit;
     if(Physics.Raycast(transform.position, -transform.up, out hit, groundCheckDistance)){
-      if(!grounded){
-        dragDelay = maxDragDelay;
-      }
 
       coyoteTime = maxCoyoteTime;
       return true;
@@ -136,7 +159,7 @@ public class PlayerMovement : NetworkBehaviour
   }
 
   void Jump(){
-    rb.AddForce(Physics.gravity * (gravityMultiplier - 1), ForceMode.Acceleration);
+    animator.SetBool("airborne", !grounded);
     noyoteTime -= Time.deltaTime;
 
     if(!grounded){
@@ -161,7 +184,9 @@ public class PlayerMovement : NetworkBehaviour
   }
 
   void Crouch(){
-    if(Input.GetKey(KeyCode.LeftControl)){
+    animator.SetBool("crouched", crouched);
+
+    if(Input.GetKey(KeyCode.LeftShift)){
       crouched = true;
       cam.transform.localPosition = new Vector3(cam.transform.localPosition.x, camStandHeight - crouchDistance, cam.transform.localPosition.z);
       capsuleCollider.center = new Vector3(capsuleCollider.center.x, capsuleStandHeight - crouchDistance/2, capsuleCollider.center.z);
@@ -175,21 +200,24 @@ public class PlayerMovement : NetworkBehaviour
   }
 
   void Look(){
-    transform.Rotate(0f, Input.GetAxis(horizontalLookAxis) * lookSensitivity * Time.deltaTime * 25f, 0f);
-    camRotationX = Mathf.Clamp(camRotationX + Input.GetAxis(verticalLookAxis) * lookSensitivity * Time.deltaTime * 25f, -85f, 85f);
+    transform.Rotate(0f, Input.GetAxis(horizontalLookAxis) * lookSensitivity, 0f);
+    camRotationX = Mathf.Clamp(camRotationX + Input.GetAxis(verticalLookAxis) * lookSensitivity, -85f, 85f);
 
     cam.transform.localRotation = Quaternion.Euler(-camRotationX, 0, 0);
   }
 
   void DoDeathBarrier(){
-    if(transform.position.y <= -10f){
-      GetComponent<Health>().ChangeHealthServerRpc(-99999, 99999);
+    if(transform.position.y <= minimumYPosition){
+      GetComponent<Health>().ChangeHealthServerRpc(-99999, 9999);
     }
   }
 
   void OnCollisionStay(Collision collisionInfo){
     if(collisionInfo.transform.tag == "Ground"){
       grounded = CheckGrounded();
+    }
+    if(collisionInfo.transform.tag == "DeathZone"){
+      GetComponent<Health>().ChangeHealthServerRpc(-99999, 9999);
     }
   }
 
