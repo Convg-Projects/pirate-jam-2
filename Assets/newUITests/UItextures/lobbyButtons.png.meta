@@ -1,0 +1,1280 @@
+fileFormatVersion: 2
+guid: 23083fe2dcfd3cd4cac1d2dba67d553a
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: lobbyButtons_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 238
+        width: 42
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b12310418c64e240b859f28f3a4bc98
+      internalID: 541228277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 220
+        width: 42
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b3dc42bc3eba1a45ac01b16a18eb605
+      internalID: -2103172934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_2
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 220
+        width: 42
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c03b732ca116d64f9e50e624f5581dc
+      internalID: 656624405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_3
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 238
+        width: 42
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4269e1d2f7541914cab0fa5e2e7430c3
+      internalID: 927511237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_4
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 220
+        width: 42
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a25b48cfe454504ba635c61d7b94577
+      internalID: 1040358351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 210
+        width: 83
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 774b95bae2473664f91731d4dfd0d183
+      internalID: -1578087269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 83
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c834438920399f4bb545d04f272cccf
+      internalID: -546852811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 190
+        width: 83
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63845bc29ebce1a40b2a190959c847c8
+      internalID: -400859766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_8
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 248
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5119ec59f755e44a96915c980cd339a
+      internalID: -772970342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_9
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 124fd0b5b22aa3043ae716376aa3c2be
+      internalID: 1556404527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_10
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 229
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c003aa1f8dfa454fb832b788c717097
+      internalID: 435227191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_11
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 220
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f19caff86ad0e644eb09b183efaf9a94
+      internalID: 1426865597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 93
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ffd3cfd4bb164c499156a99a1ac514a
+      internalID: -982330629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_13
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 0
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2904c930e9c494d4594ff50e4f3fe8f9
+      internalID: -935855543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_14
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 210
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bff561f30222c04681cd39ec826e09c
+      internalID: 1020458971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 148
+        width: 25
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6577618fa67dae74886b6046815cc7d9
+      internalID: -98322396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 25
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e50ed4748c701041b1f44cd2d57b270
+      internalID: -1740501825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_17
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 148
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e43007ed4fb08174887dfee67f0c3b6e
+      internalID: 2116924061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_18
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 162
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7136aee5e7fbe454baf920ee7cc34793
+      internalID: 1292815221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_19
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 0
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53e5efbcad3cfd945945e3f522171bc7
+      internalID: 1184606096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_20
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 162
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 028a89d31f4edbf42a4f3b273bcdc44c
+      internalID: 141584128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_21
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 148
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22f260eed0d6c0b4e91dc0ac5c86d26c
+      internalID: 1214383892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_22
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 44
+        width: 61
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1570a98649e3d1948ae4f956bda1c52a
+      internalID: -429974558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_23
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 59
+        width: 35
+        height: 3
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37fc3dd52ac301f44825591e45195216
+      internalID: -1715044827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_24
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 62
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb4fc1042d763aa46badc5362badd841
+      internalID: -1329712979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_25
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 59
+        width: 35
+        height: 3
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52975411253a0dd42b0076c4360c3651
+      internalID: 2116536194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_26
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 62
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57bb7a74ea9780a458c4a305b699ff0a
+      internalID: 67609141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_27
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 62
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0be472b902bf8a44c93312b5f0fb8257
+      internalID: 1629693331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_28
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 209
+        width: 83
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7b02c946f1c64d4db483523b7f8436d
+      internalID: -1674786669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_29
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 198
+        width: 83
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82b206607440e0b4cab81d19b7092f4b
+      internalID: -725668712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_30
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 187
+        width: 83
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95498ba90ce19ce40accd7b91c307431
+      internalID: 1022435308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_31
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 176
+        width: 83
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67a1e9506fdefea4795ec12ccd78899c
+      internalID: 1517434031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_32
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 0
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4f94ae1d4d4bf24d943516a95c94e9a
+      internalID: -1855941985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_33
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 238
+        width: 55
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad65869978a05bb43a39376ef99d76ce
+      internalID: 391548821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_34
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 238
+        width: 55
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e2099cc040707f47a518e4b8e492602
+      internalID: -1736912589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_35
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 224
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23f5f74bcea88f749b12e135c2095eb4
+      internalID: 698828551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_36
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 224
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b240df97cbe601f468c88ba7d027c749
+      internalID: 1146980528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_37
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 224
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa381b0b4f8ae3643a462eee82ccbbf2
+      internalID: -212100416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_38
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 224
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ac858c697584064980513250a6a7f88
+      internalID: 755262289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 92
+        width: 76
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1b36ceac52838543b97449fa0972752
+      internalID: 1657580711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_40
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 247
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bcefae61ebca224aacd8cbb35347138
+      internalID: 1607407448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_41
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 238
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4486b7194540db44f94a0ec69bd7529d
+      internalID: 1246532106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_42
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 247
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ca264cdf15c258419f7ae6bb2147149
+      internalID: 1947176055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_43
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 238
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00357aa7e1ff159409736c03e2cc74d3
+      internalID: -1676688592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_44
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 247
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73297231f21795246b2a6e2b8c0c3e0e
+      internalID: -832351502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_45
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 238
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc9475346ccc51a4880c400c777ef18c
+      internalID: 1679827630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_46
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 229
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d613269896cd2694496b1fec05f9d43c
+      internalID: 1287912628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_47
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 229
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab10d9fdeb68c72448989a8f80254026
+      internalID: 1432361712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_48
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 229
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a01f49d4730a9147b56a84eb88a21ef
+      internalID: -1726551500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_49
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 220
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c204d1a3e9d6df429951193be1fb8dc
+      internalID: -1217709516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_50
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 220
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfebffd3d36c25d45b0a9eb17bdff428
+      internalID: -1947669793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_51
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 220
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c93553e56d75e34d9e7055e07d95343
+      internalID: 777192468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lobbyButtons_52
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 92
+        width: 61
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51afcf4ed2900f0429fdb64750f21812
+      internalID: 984090755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: dbd0dc0f06f133f42b91a1cfd3d77042
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      lobbyButtons_0: 541228277
+      lobbyButtons_1: -2103172934
+      lobbyButtons_10: 435227191
+      lobbyButtons_11: 1426865597
+      lobbyButtons_12: -982330629
+      lobbyButtons_13: -935855543
+      lobbyButtons_14: 1020458971
+      lobbyButtons_15: -98322396
+      lobbyButtons_16: -1740501825
+      lobbyButtons_17: 2116924061
+      lobbyButtons_18: 1292815221
+      lobbyButtons_19: 1184606096
+      lobbyButtons_2: 656624405
+      lobbyButtons_20: 141584128
+      lobbyButtons_21: 1214383892
+      lobbyButtons_22: -429974558
+      lobbyButtons_23: -1715044827
+      lobbyButtons_24: -1329712979
+      lobbyButtons_25: 2116536194
+      lobbyButtons_26: 67609141
+      lobbyButtons_27: 1629693331
+      lobbyButtons_28: -1674786669
+      lobbyButtons_29: -725668712
+      lobbyButtons_3: 927511237
+      lobbyButtons_30: 1022435308
+      lobbyButtons_31: 1517434031
+      lobbyButtons_32: -1855941985
+      lobbyButtons_33: 391548821
+      lobbyButtons_34: -1736912589
+      lobbyButtons_35: 698828551
+      lobbyButtons_36: 1146980528
+      lobbyButtons_37: -212100416
+      lobbyButtons_38: 755262289
+      lobbyButtons_39: 1657580711
+      lobbyButtons_4: 1040358351
+      lobbyButtons_40: 1607407448
+      lobbyButtons_41: 1246532106
+      lobbyButtons_42: 1947176055
+      lobbyButtons_43: -1676688592
+      lobbyButtons_44: -832351502
+      lobbyButtons_45: 1679827630
+      lobbyButtons_46: 1287912628
+      lobbyButtons_47: 1432361712
+      lobbyButtons_48: -1726551500
+      lobbyButtons_49: -1217709516
+      lobbyButtons_5: -1578087269
+      lobbyButtons_50: -1947669793
+      lobbyButtons_51: 777192468
+      lobbyButtons_52: 984090755
+      lobbyButtons_6: -546852811
+      lobbyButtons_7: -400859766
+      lobbyButtons_8: -772970342
+      lobbyButtons_9: 1556404527
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
